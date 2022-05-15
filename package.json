@@ -8,7 +8,7 @@
     "build": "tsc",
     "format": "prettier --write '**/*.ts'",
     "lint": "eslint src/**/*.ts",
-    "package": "ncc build --source-map --license licenses.txt",
+    "package": "ncc build src/main.ts --source-map --license licenses.txt",
     "test": "jest",
     "all": "npm run build && npm run format && npm run lint && npm run package && npm test",
     "prepare": "husky install"
@@ -57,7 +57,6 @@
     "*.ts": [
       "yarn lint",
       "yarn format",
-      "yarn build",
       "yarn package",
       "git add dist"
     ]
