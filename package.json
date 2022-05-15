@@ -30,9 +30,11 @@
   },
   "devDependencies": {
     "@types/node": "*",
+    "@typescript-eslint/eslint-plugin": "*",
     "@typescript-eslint/parser": "*",
     "@vercel/ncc": "*",
     "eslint": "*",
+    "eslint-config-prettier": "*",
     "eslint-plugin-import": "*",
     "eslint-plugin-jest": "*",
     "eslint-plugin-unused-imports": "*",
