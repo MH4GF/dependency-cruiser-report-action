@@ -38,10 +38,10 @@
     "eslint-plugin-import": "*",
     "eslint-plugin-jest": "*",
     "eslint-plugin-unused-imports": "*",
-    "husky": ">=6",
+    "husky": "*",
     "jest": "*",
     "js-yaml": "*",
-    "lint-staged": ">=10",
+    "lint-staged": "*",
     "prettier": "*",
     "ts-jest": "*",
     "typescript": "*"
