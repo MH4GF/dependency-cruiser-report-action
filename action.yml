@@ -1,11 +1,14 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
-inputs:
-  milliseconds: # change this
-    required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+name: 'dependency-cruiser report'
+description: 'visualize dependenices of changed file in each pull request.'
+author: 'MH4GF<h.miyagi.cnw@gmail.com>'
 runs:
-  using: 'node16'
-  main: 'dist/index.js'
+  using: composite
+  steps:
+    - uses: actions/checkout@v3
+    - uses: ts-graphviz/setup-graphviz@v1
+    - id: changed-files
+      uses: tj-actions/changed-files@v20
+    - run: $GITHUB_ACTION_PATH/run.sh
+      shell: bash
+      env:
+        INPUT_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
