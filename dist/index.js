@@ -75,7 +75,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.runTest = void 0;
 const exec_1 = __nccwpck_require__(514);
 const runTest = () => __awaiter(void 0, void 0, void 0, function* () {
-    return yield (0, exec_1.exec)('npx -p dependency-cruiser depcruise --include-only "^src" --output-type dot src | dot -T svg > dependencygraph.svg');
+    return yield (0, exec_1.exec)('npx -p dependency-cruiser depcruise --include-only "^src" --output-type dot src');
 });
 exports.runTest = runTest;
 
