@@ -54,7 +54,12 @@
     "printWidth": 100
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.ts": "prettier --write"
+    "*.ts": [
+      "yarn lint",
+      "yarn format",
+      "yarn build",
+      "yarn package",
+      "git add dist"
+    ]
   }
 }
