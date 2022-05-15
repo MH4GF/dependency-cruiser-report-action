@@ -56,9 +56,7 @@
   "lint-staged": {
     "*.ts": [
       "yarn lint",
-      "yarn format",
-      "yarn package",
-      "git add dist"
+      "yarn format"
     ]
   }
 }

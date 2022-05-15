@@ -3258,6 +3258,7 @@ const runTest_1 = __nccwpck_require__(387);
 const run = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield (0, runTest_1.runTest)();
+        console.log('hello');
     }
     catch (error) {
         if (error instanceof Error)
