@@ -33,7 +33,6 @@
     "@typescript-eslint/parser": "*",
     "@vercel/ncc": "*",
     "eslint": "*",
-    "eslint-plugin-github": "*",
     "eslint-plugin-import": "*",
     "eslint-plugin-jest": "*",
     "eslint-plugin-unused-imports": "*",
