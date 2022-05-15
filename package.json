@@ -7,7 +7,6 @@
   "scripts": {
     "build": "tsc",
     "format": "prettier --write '**/*.ts'",
-    "format-check": "prettier --check '**/*.ts'",
     "lint": "eslint src/**/*.ts",
     "package": "ncc build --source-map --license licenses.txt",
     "test": "jest",
@@ -43,5 +42,12 @@
     "prettier": "*",
     "ts-jest": "*",
     "typescript": "*"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "all",
+    "printWidth": 100
   }
 }

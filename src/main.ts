@@ -1,6 +1,6 @@
 import * as core from '@actions/core'
 
-import {runTest} from './runTest'
+import { runTest } from './runTest'
 
 export const run = async (): Promise<void> => {
   try {
