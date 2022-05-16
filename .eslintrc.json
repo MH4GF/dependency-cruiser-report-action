@@ -1,5 +1,5 @@
 {
-  "plugins": ["jest", "@typescript-eslint", "unused-imports"],
+  "plugins": ["@typescript-eslint", "unused-imports"],
   "extends": [
     "prettier",
     "eslint:recommended",
@@ -39,7 +39,6 @@
   },
   "env": {
     "node": true,
-    "es6": true,
-    "jest/globals": true
+    "es6": true
   }
 }
