@@ -44,7 +44,8 @@
     "lint-staged": "*",
     "prettier": "*",
     "ts-jest": "*",
-    "typescript": "*"
+    "typescript": "*",
+    "vitest": "*"
   },
   "prettier": {
     "semi": false,
