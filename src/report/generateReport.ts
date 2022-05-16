@@ -7,9 +7,12 @@ export const generateReport = async (octokit: Octokit, repo: Repo, pr: PullReque
   const previousReport = await fetchPreviousReport(octokit, repo, pr)
 
   if (previousReport) {
-    // TODO
-    // await octokit.rest.issues.updateComment({
-    // })
+    await octokit.rest.issues.updateComment({
+      owner: repo.owner,
+      repo: repo.repo,
+      comment_id: previousReport.id,
+      body: reportBody(repo, pr),
+    })
   } else {
     await octokit.rest.issues.createComment({
       owner: repo.owner,

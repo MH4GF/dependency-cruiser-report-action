@@ -10253,9 +10253,12 @@ const fetchPreviousReport = async (octokit, repo, pr) => {
 const generateReport = async (octokit, repo, pr) => {
     const previousReport = await fetchPreviousReport(octokit, repo, pr);
     if (previousReport) {
-        // TODO
-        // await octokit.rest.issues.updateComment({
-        // })
+        await octokit.rest.issues.updateComment({
+            owner: repo.owner,
+            repo: repo.repo,
+            comment_id: previousReport.id,
+            body: reportBody(repo, pr),
+        });
     }
     else {
         await octokit.rest.issues.createComment({
