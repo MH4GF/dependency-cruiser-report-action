@@ -1,6 +1,6 @@
 import { Octokit, PullRequest, Repo } from '../type'
 
-import { uniqueTag } from './body/uniqueTag'
+import { reportBody } from './body/reportBody'
 import { fetchPreviousReport } from './fetchPreviousReport'
 
 export const generateReport = async (octokit: Octokit, repo: Repo, pr: PullRequest) => {
@@ -15,8 +15,7 @@ export const generateReport = async (octokit: Octokit, repo: Repo, pr: PullReque
       owner: repo.owner,
       repo: repo.repo,
       issue_number: pr.number,
-      // TODO
-      body: `${uniqueTag({ ...repo, number: pr.number })}  test comment`,
+      body: reportBody(repo, pr),
     })
   }
 }
