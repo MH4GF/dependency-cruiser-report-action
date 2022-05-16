@@ -9,7 +9,8 @@
     "format": "prettier --write '**/*.ts'",
     "lint": "eslint src/**/*.ts",
     "package": "ncc build src/main.ts --source-map --license licenses.txt",
-    "test": "jest",
+    "test": "vitest",
+    "coverage": "vitest run --coverage",
     "all": "npm run build && npm run format && npm run lint && npm run package && npm test",
     "prepare": "husky install"
   },
@@ -36,15 +37,13 @@
     "eslint": "*",
     "eslint-config-prettier": "*",
     "eslint-plugin-import": "*",
-    "eslint-plugin-jest": "*",
     "eslint-plugin-unused-imports": "*",
     "husky": "*",
-    "jest": "*",
     "js-yaml": "*",
     "lint-staged": "*",
     "prettier": "*",
-    "ts-jest": "*",
-    "typescript": "*"
+    "typescript": "*",
+    "vitest": "*"
   },
   "prettier": {
     "semi": false,
