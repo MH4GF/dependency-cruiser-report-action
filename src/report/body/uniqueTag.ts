@@ -3,7 +3,7 @@ import { createHash } from 'crypto'
 type Context = {
   owner: string
   repo: string
-  number: number
+  issueNumber: number
 }
 
 const hashedContext = (context: Context) => {

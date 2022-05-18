@@ -1,18 +1,20 @@
-import { Octokit, PullRequest, Repo } from '../type'
+import { Options } from '../options'
+import { Octokit } from '../type'
 
 import { uniqueTag } from './body/uniqueTag'
 
-export const fetchPreviousReport = async (octokit: Octokit, repo: Repo, pr: PullRequest) => {
+export const fetchPreviousReport = async (octokit: Octokit, options: Options) => {
   const comments = await octokit.paginate(
     'GET /repos/{owner}/{repo}/issues/{issue_number}/comments',
     {
-      ...repo,
-      issue_number: pr.number,
+      owner: options.owner,
+      repo: options.repo,
+      issue_number: options.issueNumber,
     },
   )
 
   const previousReport = comments.find((comment) => {
-    return comment.body?.startsWith(uniqueTag({ ...repo, number: pr.number }))
+    return comment.body?.startsWith(uniqueTag(options))
   })
 
   return previousReport

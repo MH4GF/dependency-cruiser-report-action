@@ -1,5 +1,5 @@
 import * as core from '@actions/core'
-import { getOctokit, context } from '@actions/github'
+import { getOctokit } from '@actions/github'
 
 import { getOptions } from './options'
 import { generateReport } from './report/generateReport'
@@ -10,7 +10,7 @@ export const run = async (): Promise<void> => {
   const octokit = getOctokit(options.token)
 
   await runDepcruise()
-  await generateReport(octokit, context.repo, options.pr)
+  await generateReport(octokit, options)
 }
 
 try {

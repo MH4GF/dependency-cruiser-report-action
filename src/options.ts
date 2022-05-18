@@ -1,11 +1,12 @@
 import * as core from '@actions/core'
 import { context } from '@actions/github'
 
-import { PullRequest } from './type'
-
-type Options = {
+export type Options = {
   token: string
-  pr: PullRequest
+  owner: string
+  repo: string
+  issueNumber: number
+  sha: string
 }
 
 export const getOptions = (): Options => {
@@ -15,5 +16,11 @@ export const getOptions = (): Options => {
     throw new Error('pull_request event payload is not found.')
   }
 
-  return { token, pr }
+  return {
+    token,
+    owner: context.repo.owner,
+    repo: context.repo.owner,
+    issueNumber: pr.number,
+    sha: context.sha,
+  }
 }

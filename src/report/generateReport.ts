@@ -1,24 +1,24 @@
-import { Octokit, PullRequest, Repo } from '../type'
+import { Options } from '../options'
+import { Octokit } from '../type'
 
 import { reportBody } from './body/reportBody'
 import { fetchPreviousReport } from './fetchPreviousReport'
 
-export const generateReport = async (octokit: Octokit, repo: Repo, pr: PullRequest) => {
-  const previousReport = await fetchPreviousReport(octokit, repo, pr)
+export const generateReport = async (octokit: Octokit, options: Options) => {
+  const previousReport = await fetchPreviousReport(octokit, options)
 
+  // TODO: add logging
   if (previousReport) {
     await octokit.rest.issues.updateComment({
-      owner: repo.owner,
-      repo: repo.repo,
+      ...options,
       comment_id: previousReport.id,
-      body: reportBody(repo, pr),
+      body: reportBody(options),
     })
   } else {
     await octokit.rest.issues.createComment({
-      owner: repo.owner,
-      repo: repo.repo,
-      issue_number: pr.number,
-      body: reportBody(repo, pr),
+      ...options,
+      issue_number: options.issueNumber,
+      body: reportBody(options),
     })
   }
 }
