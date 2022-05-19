@@ -10281,6 +10281,9 @@ const generateReport = async (octokit, options) => {
 var exec = __nccwpck_require__(1514);
 ;// CONCATENATED MODULE: ./src/runDepcruise.ts
 
+// type DepcruiseOptions = {
+//   target: string
+// }
 const runDepcruise = async () => {
     // TODO
     // - generate mermaid.js syntax text
