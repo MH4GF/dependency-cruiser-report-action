@@ -10216,7 +10216,12 @@ const external_crypto_namespaceObject = require("crypto");
 
 const hashedContext = (context) => {
     const hash = (0,external_crypto_namespaceObject.createHash)('sha256');
-    hash.update(JSON.stringify(context));
+    const json = {
+        owner: context.owner,
+        repo: context.repo,
+        issueNumber: context.issueNumber,
+    };
+    hash.update(JSON.stringify(json));
     return hash.digest('hex');
 };
 const uniqueTag = (context) => {

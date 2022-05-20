@@ -8,7 +8,12 @@ type Context = {
 
 const hashedContext = (context: Context) => {
   const hash = createHash('sha256')
-  hash.update(JSON.stringify(context))
+  const json = {
+    owner: context.owner,
+    repo: context.repo,
+    issueNumber: context.issueNumber,
+  }
+  hash.update(JSON.stringify(json))
   return hash.digest('hex')
 }
 
