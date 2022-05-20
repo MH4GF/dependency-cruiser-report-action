@@ -10204,7 +10204,7 @@ const getOptions = () => {
     return {
         token,
         owner: github.context.repo.owner,
-        repo: github.context.repo.owner,
+        repo: github.context.repo.repo,
         issueNumber: pr.number,
         sha: github.context.sha,
     };
@@ -10244,10 +10244,11 @@ visualize dependenices of changed files.
 ;// CONCATENATED MODULE: ./src/report/fetchPreviousReport.ts
 
 const fetchPreviousReport = async (octokit, options) => {
-    const comments = await octokit.paginate('GET /repos/{owner}/{repo}/issues/{issue_number}/comments', {
-        owner: options.owner,
-        repo: options.repo,
-        issue_number: options.issueNumber,
+    const { owner, repo, issueNumber } = options;
+    const comments = await octokit.paginate(`GET /repos/{owner}/{repo}/issues/{issue_number}/comments`, {
+        owner,
+        repo,
+        issue_number: issueNumber,
     });
     const previousReport = comments.find((comment) => {
         var _a;

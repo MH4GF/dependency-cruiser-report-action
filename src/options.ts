@@ -19,7 +19,7 @@ export const getOptions = (): Options => {
   return {
     token,
     owner: context.repo.owner,
-    repo: context.repo.owner,
+    repo: context.repo.repo,
     issueNumber: pr.number,
     sha: context.sha,
   }

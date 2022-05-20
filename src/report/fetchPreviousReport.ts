@@ -4,12 +4,13 @@ import { Octokit } from '../type'
 import { uniqueTag } from './body/uniqueTag'
 
 export const fetchPreviousReport = async (octokit: Octokit, options: Options) => {
+  const { owner, repo, issueNumber } = options
   const comments = await octokit.paginate(
-    'GET /repos/{owner}/{repo}/issues/{issue_number}/comments',
+    `GET /repos/{owner}/{repo}/issues/{issue_number}/comments`,
     {
-      owner: options.owner,
-      repo: options.repo,
-      issue_number: options.issueNumber,
+      owner,
+      repo,
+      issue_number: issueNumber,
     },
   )
 
