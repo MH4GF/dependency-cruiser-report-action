@@ -17,13 +17,14 @@ export const getOptions = (): Options => {
   if (pr === undefined) {
     throw new Error('pull_request event payload is not found.')
   }
+  const sha = context.payload.after as string
 
   return {
     token,
     owner: context.repo.owner,
     repo: context.repo.repo,
     issueNumber: pr.number,
-    sha: context.sha,
+    sha,
     targetFiles,
   }
 }

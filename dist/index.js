@@ -10202,12 +10202,13 @@ const getOptions = () => {
     if (pr === undefined) {
         throw new Error('pull_request event payload is not found.');
     }
+    const sha = github.context.payload.after;
     return {
         token,
         owner: github.context.repo.owner,
         repo: github.context.repo.repo,
         issueNumber: pr.number,
-        sha: github.context.sha,
+        sha,
         targetFiles,
     };
 };
