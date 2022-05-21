@@ -10198,6 +10198,7 @@ var github = __nccwpck_require__(5438);
 const getOptions = () => {
     const token = core.getInput('github_token', { required: true });
     const targetFiles = core.getInput('target_files', { required: true });
+    const depcruiseConfigFile = core.getInput('config_file', { required: false });
     const pr = github.context.payload.pull_request;
     if (pr === undefined) {
         throw new Error('pull_request event payload is not found.');
@@ -10210,6 +10211,7 @@ const getOptions = () => {
         issueNumber: pr.number,
         sha,
         targetFiles,
+        depcruiseConfigFile,
     };
 };
 
@@ -10291,10 +10293,11 @@ const generateReport = async (octokit, options) => {
 var exec = __nccwpck_require__(1514);
 ;// CONCATENATED MODULE: ./src/runDepcruise.ts
 
-const runDepcruise = async ({ targetFiles }) => {
+const runDepcruise = async ({ targetFiles, depcruiseConfigFile, }) => {
     // TODO
     // - generate mermaid.js syntax text
-    const cmd = `npx -p dependency-cruiser depcruise --config --output-type dot ${targetFiles}`;
+    const configOption = depcruiseConfigFile !== '' ? `--config ${depcruiseConfigFile}` : '';
+    const cmd = `npx -p dependency-cruiser depcruise --output-type dot ${configOption} ${targetFiles}`;
     return await (0,exec.exec)(cmd);
 };
 

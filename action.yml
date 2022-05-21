@@ -6,6 +6,9 @@ inputs:
     required: true
     description: 'A github access token'
     default: ${{ github.token }}
+  config-file:
+    required: false
+    description: 'read rules and options from file (e.g. .dependency-cruiser.js)'
 runs:
   using: composite
   steps:
@@ -17,3 +20,4 @@ runs:
       env:
         INPUT_GITHUB_TOKEN: ${{ inputs.github-token }}
         INPUT_TARGET_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+        INPUT_CONFIG_FILE: ${{ inputs.config-file }}
