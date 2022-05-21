@@ -10293,12 +10293,10 @@ const generateReport = async (octokit, options) => {
 var exec = __nccwpck_require__(1514);
 ;// CONCATENATED MODULE: ./src/runDepcruise.ts
 
-const runDepcruise = async ({ targetFiles, depcruiseConfigFile, }) => {
-    // TODO
-    // - generate mermaid.js syntax text
+const runDepcruise = ({ targetFiles, depcruiseConfigFile }) => {
     const configOption = depcruiseConfigFile !== '' ? `--config ${depcruiseConfigFile}` : '';
-    const cmd = `npx -p dependency-cruiser depcruise --output-type dot ${configOption} ${targetFiles}`;
-    return await (0,exec.exec)(cmd);
+    const cmd = `npx -p @mh4gf/dependency-cruiser depcruise --output-type plugin:@mh4gf/dependency-cruiser/mermaid-reporter-plugin ${configOption} ${targetFiles}`;
+    return (0,exec.exec)(cmd);
 };
 
 ;// CONCATENATED MODULE: ./src/main.ts

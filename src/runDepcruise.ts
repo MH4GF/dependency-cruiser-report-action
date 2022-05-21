@@ -5,13 +5,8 @@ type Options = {
   depcruiseConfigFile: string
 }
 
-export const runDepcruise = async ({
-  targetFiles,
-  depcruiseConfigFile,
-}: Options): Promise<number> => {
-  // TODO
-  // - generate mermaid.js syntax text
+export const runDepcruise = ({ targetFiles, depcruiseConfigFile }: Options): Promise<number> => {
   const configOption = depcruiseConfigFile !== '' ? `--config ${depcruiseConfigFile}` : ''
-  const cmd = `npx -p dependency-cruiser depcruise --output-type dot ${configOption} ${targetFiles}`
-  return await exec(cmd)
+  const cmd = `npx -p @mh4gf/dependency-cruiser depcruise --output-type plugin:@mh4gf/dependency-cruiser/mermaid-reporter-plugin ${configOption} ${targetFiles}`
+  return exec(cmd)
 }
