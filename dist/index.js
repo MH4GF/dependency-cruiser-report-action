@@ -10196,7 +10196,8 @@ var github = __nccwpck_require__(5438);
 
 
 const getOptions = () => {
-    const token = core.getInput('github-token', { required: true });
+    const token = core.getInput('github_token', { required: true });
+    const targetFiles = core.getInput('target_files', { required: true });
     const pr = github.context.payload.pull_request;
     if (pr === undefined) {
         throw new Error('pull_request event payload is not found.');
@@ -10207,6 +10208,7 @@ const getOptions = () => {
         repo: github.context.repo.repo,
         issueNumber: pr.number,
         sha: github.context.sha,
+        targetFiles,
     };
 };
 
@@ -10288,12 +10290,11 @@ const generateReport = async (octokit, options) => {
 var exec = __nccwpck_require__(1514);
 ;// CONCATENATED MODULE: ./src/runDepcruise.ts
 
-const runDepcruise = async () => {
+const runDepcruise = async ({ targetFiles }) => {
     // TODO
     // - generate mermaid.js syntax text
-    // - support .dependency-cruiser.js and test-script option from github actions
-    // - replace to chenged-files string from `src`
-    return await (0,exec.exec)('npx -p dependency-cruiser depcruise --include-only "^src" src');
+    const cmd = `npx -p dependency-cruiser depcruise --config --output-type dot ${targetFiles}`;
+    return await (0,exec.exec)(cmd);
 };
 
 ;// CONCATENATED MODULE: ./src/main.ts
@@ -10305,7 +10306,7 @@ const runDepcruise = async () => {
 const run = async () => {
     const options = getOptions();
     const octokit = (0,github.getOctokit)(options.token);
-    await runDepcruise();
+    await runDepcruise(options);
     await generateReport(octokit, options);
 };
 try {

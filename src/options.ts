@@ -7,10 +7,12 @@ export type Options = {
   repo: string
   issueNumber: number
   sha: string
+  targetFiles: string
 }
 
 export const getOptions = (): Options => {
-  const token = core.getInput('github-token', { required: true })
+  const token = core.getInput('github_token', { required: true })
+  const targetFiles = core.getInput('target_files', { required: true })
   const pr = context.payload.pull_request
   if (pr === undefined) {
     throw new Error('pull_request event payload is not found.')
@@ -22,5 +24,6 @@ export const getOptions = (): Options => {
     repo: context.repo.repo,
     issueNumber: pr.number,
     sha: context.sha,
+    targetFiles,
   }
 }

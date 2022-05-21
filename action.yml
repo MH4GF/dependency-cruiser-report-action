@@ -15,5 +15,5 @@ runs:
     - run: $GITHUB_ACTION_PATH/run.sh
       shell: bash
       env:
-        INPUT_GITHUB-TOKEN: ${{ inputs.github-token }}
-        INPUT_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+        INPUT_GITHUB_TOKEN: ${{ inputs.github-token }}
+        INPUT_TARGET_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
