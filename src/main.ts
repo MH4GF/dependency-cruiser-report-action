@@ -9,8 +9,8 @@ export const run = async (): Promise<void> => {
   const options = getOptions()
   const octokit = getOctokit(options.token)
 
-  await runDepcruise(options)
-  await generateReport(octokit, options)
+  const mermaidText = await runDepcruise(options)
+  await generateReport(octokit, options, mermaidText)
 }
 
 try {
