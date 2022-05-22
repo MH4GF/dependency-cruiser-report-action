@@ -27,7 +27,8 @@
   "license": "MIT",
   "dependencies": {
     "@actions/core": "*",
-    "@actions/exec": "*"
+    "@actions/exec": "*",
+    "@actions/github": "*"
   },
   "devDependencies": {
     "@types/node": "*",

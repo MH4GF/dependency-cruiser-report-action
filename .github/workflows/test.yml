@@ -26,8 +26,12 @@ jobs:
           yarn all
 
   test: # make sure the action works on a clean machine without building
+    permissions:
+      issues: read
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ts-graphviz/setup-graphviz@v1
       - uses: ./
+        with:
+          config-file: './.dependency-cruiser.js'
