@@ -10289,26 +10289,23 @@ const generateReport = async (octokit, options, mermaidText) => {
     }
 };
 
-// EXTERNAL MODULE: external "fs"
-var external_fs_ = __nccwpck_require__(7147);
-// EXTERNAL MODULE: external "path"
-var external_path_ = __nccwpck_require__(1017);
 // EXTERNAL MODULE: ./node_modules/@actions/exec/lib/exec.js
 var exec = __nccwpck_require__(1514);
 ;// CONCATENATED MODULE: ./src/runDepcruise.ts
 
-
-
-const DEPCRUISE_RESULT_FILE = 'depcruiser_result.mmd';
 const runDepcruise = async ({ targetFiles, depcruiseConfigFile, }) => {
-    const resultPath = external_path_.resolve(__dirname, DEPCRUISE_RESULT_FILE);
-    const outputToOption = `--output-to ${resultPath}`;
     const outputTypeOption = '--output-type plugin:@mh4gf/dependency-cruiser/mermaid-reporter-plugin';
     const configOption = depcruiseConfigFile !== '' ? `--config ${depcruiseConfigFile}` : '';
-    const cmd = `npx -p @mh4gf/dependency-cruiser depcruise ${outputToOption} ${outputTypeOption} ${configOption} ${targetFiles}`;
-    await (0,exec.exec)(cmd);
-    const result = external_fs_.readFileSync(resultPath);
-    return result.toString();
+    const cmd = `npx -p @mh4gf/dependency-cruiser depcruise ${outputTypeOption} ${configOption} ${targetFiles}`;
+    const options = { listeners: {} };
+    let result = '';
+    options.listeners = {
+        stdout: (data) => {
+            result += data.toString();
+        },
+    };
+    await (0,exec.exec)(cmd, [], options);
+    return result;
 };
 
 ;// CONCATENATED MODULE: ./src/main.ts
