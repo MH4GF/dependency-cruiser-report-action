@@ -10192,16 +10192,26 @@ __nccwpck_require__.d(__webpack_exports__, {
 var core = __nccwpck_require__(2186);
 // EXTERNAL MODULE: ./node_modules/@actions/github/lib/github.js
 var github = __nccwpck_require__(5438);
+// EXTERNAL MODULE: external "fs"
+var external_fs_ = __nccwpck_require__(7147);
 ;// CONCATENATED MODULE: ./src/options.ts
 
 
+
+const mayBeConfigFilePath = () => {
+    const path = `${process.env.GITHUB_ACTION_PATH || ''}/.dependency-cruiser.js`;
+    return (0,external_fs_.existsSync)(path) ? path : '';
+};
 const getSha = () => { var _a, _b, _c; 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access
 return (_a = github.context.payload.after) !== null && _a !== void 0 ? _a : (_c = (_b = github.context.payload.pull_request) === null || _b === void 0 ? void 0 : _b.head) === null || _c === void 0 ? void 0 : _c.sha; };
 const getOptions = () => {
     const token = core.getInput('github_token', { required: true });
     const targetFiles = core.getInput('target_files', { required: true });
-    const depcruiseConfigFile = core.getInput('config_file', { required: false });
+    let depcruiseConfigFile = core.getInput('config_file', { required: false });
+    if (depcruiseConfigFile === '') {
+        depcruiseConfigFile = mayBeConfigFilePath();
+    }
     const pr = github.context.payload.pull_request;
     if (pr === undefined) {
         throw new Error('pull_request event payload is not found.');
