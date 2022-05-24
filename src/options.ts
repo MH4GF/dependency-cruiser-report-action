@@ -11,6 +11,10 @@ export type Options = {
   depcruiseConfigFile: string
 }
 
+const getSha = (): string =>
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access
+  context.payload.after ?? context.payload.pull_request?.head?.sha
+
 export const getOptions = (): Options => {
   const token = core.getInput('github_token', { required: true })
   const targetFiles = core.getInput('target_files', { required: true })
@@ -19,14 +23,13 @@ export const getOptions = (): Options => {
   if (pr === undefined) {
     throw new Error('pull_request event payload is not found.')
   }
-  const sha = context.payload.after as string
 
   return {
     token,
     owner: context.repo.owner,
     repo: context.repo.repo,
     issueNumber: pr.number,
-    sha,
+    sha: getSha(),
     targetFiles,
     depcruiseConfigFile,
   }

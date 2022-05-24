@@ -10195,6 +10195,9 @@ var github = __nccwpck_require__(5438);
 ;// CONCATENATED MODULE: ./src/options.ts
 
 
+const getSha = () => { var _a, _b, _c; 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access
+return (_a = github.context.payload.after) !== null && _a !== void 0 ? _a : (_c = (_b = github.context.payload.pull_request) === null || _b === void 0 ? void 0 : _b.head) === null || _c === void 0 ? void 0 : _c.sha; };
 const getOptions = () => {
     const token = core.getInput('github_token', { required: true });
     const targetFiles = core.getInput('target_files', { required: true });
@@ -10203,13 +10206,12 @@ const getOptions = () => {
     if (pr === undefined) {
         throw new Error('pull_request event payload is not found.');
     }
-    const sha = github.context.payload.after;
     return {
         token,
         owner: github.context.repo.owner,
         repo: github.context.repo.repo,
         issueNumber: pr.number,
-        sha,
+        sha: getSha(),
         targetFiles,
         depcruiseConfigFile,
     };
