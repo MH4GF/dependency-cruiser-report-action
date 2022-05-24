@@ -14,7 +14,7 @@ export type Options = {
 }
 
 const mayBeConfigFilePath = () => {
-  const path = `${process.env.GITHUB_ACTION_PATH || ''}/.dependency-cruiser.js`
+  const path = `${process.env.GITHUB_WORKSPACE || ''}/.dependency-cruiser.js`
   return existsSync(path) ? path : ''
 }
 
