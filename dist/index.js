@@ -10202,16 +10202,17 @@ const mayBeConfigFilePath = () => {
     const path = `${process.env.GITHUB_WORKSPACE || ''}/.dependency-cruiser.js`;
     return (0,external_fs_.existsSync)(path) ? path : '';
 };
+const getConfigFilePath = () => {
+    const depcruiseConfigFile = core.getInput('config_file', { required: false });
+    return depcruiseConfigFile !== '' ? depcruiseConfigFile : mayBeConfigFilePath();
+};
 const getSha = () => { var _a, _b, _c; 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access
 return (_a = github.context.payload.after) !== null && _a !== void 0 ? _a : (_c = (_b = github.context.payload.pull_request) === null || _b === void 0 ? void 0 : _b.head) === null || _c === void 0 ? void 0 : _c.sha; };
 const getOptions = () => {
     const token = core.getInput('github_token', { required: true });
     const targetFiles = core.getInput('target_files', { required: true });
-    let depcruiseConfigFile = core.getInput('config_file', { required: false });
-    if (depcruiseConfigFile === '') {
-        depcruiseConfigFile = mayBeConfigFilePath();
-    }
+    const depcruiseConfigFilePath = getConfigFilePath();
     const pr = github.context.payload.pull_request;
     if (pr === undefined) {
         throw new Error('pull_request event payload is not found.');
@@ -10223,7 +10224,7 @@ const getOptions = () => {
         issueNumber: pr.number,
         sha: getSha(),
         targetFiles,
-        depcruiseConfigFile,
+        depcruiseConfigFilePath,
     };
 };
 
@@ -10314,9 +10315,9 @@ const generateReport = async (octokit, options, mermaidText, cmdText) => {
 var exec = __nccwpck_require__(1514);
 ;// CONCATENATED MODULE: ./src/runDepcruise.ts
 
-const runDepcruise = async ({ targetFiles, depcruiseConfigFile, }) => {
+const runDepcruise = async ({ targetFiles, depcruiseConfigFilePath, }) => {
     const outputTypeOption = '--output-type plugin:@mh4gf/dependency-cruiser/mermaid-reporter-plugin';
-    const configOption = depcruiseConfigFile !== '' ? `--config ${depcruiseConfigFile}` : '';
+    const configOption = depcruiseConfigFilePath !== '' ? `--config ${depcruiseConfigFilePath}` : '';
     const cmd = `npx -p @mh4gf/dependency-cruiser depcruise ${outputTypeOption} ${configOption} ${targetFiles}`;
     const options = { listeners: {} };
     let mermaid = '';

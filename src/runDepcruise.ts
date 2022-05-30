@@ -2,7 +2,7 @@ import { exec } from '@actions/exec'
 
 type Options = {
   targetFiles: string
-  depcruiseConfigFile: string
+  depcruiseConfigFilePath: string
 }
 
 type DepcruiseResult = {
@@ -12,10 +12,10 @@ type DepcruiseResult = {
 
 export const runDepcruise = async ({
   targetFiles,
-  depcruiseConfigFile,
+  depcruiseConfigFilePath,
 }: Options): Promise<DepcruiseResult> => {
   const outputTypeOption = '--output-type plugin:@mh4gf/dependency-cruiser/mermaid-reporter-plugin'
-  const configOption = depcruiseConfigFile !== '' ? `--config ${depcruiseConfigFile}` : ''
+  const configOption = depcruiseConfigFilePath !== '' ? `--config ${depcruiseConfigFilePath}` : ''
   const cmd = `npx -p @mh4gf/dependency-cruiser depcruise ${outputTypeOption} ${configOption} ${targetFiles}`
   const options = { listeners: {} }
   let mermaid = ''
