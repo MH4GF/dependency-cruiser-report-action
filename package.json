@@ -35,6 +35,7 @@
     "@typescript-eslint/eslint-plugin": "*",
     "@typescript-eslint/parser": "*",
     "@vercel/ncc": "*",
+    "dependency-cruiser": "*",
     "eslint": "*",
     "eslint-config-prettier": "*",
     "eslint-plugin-import": "*",
