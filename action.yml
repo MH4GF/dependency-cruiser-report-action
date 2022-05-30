@@ -14,7 +14,7 @@ runs:
   steps:
     - uses: actions/checkout@v3
     - id: changed-files
-      uses: tj-actions/changed-files@v20
+      uses: tj-actions/changed-files@v21
     - run: $GITHUB_ACTION_PATH/run.sh
       shell: bash
       env:
