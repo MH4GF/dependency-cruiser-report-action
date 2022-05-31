@@ -10316,9 +10316,9 @@ var exec = __nccwpck_require__(1514);
 ;// CONCATENATED MODULE: ./src/runDepcruise.ts
 
 const runDepcruise = async ({ targetFiles, depcruiseConfigFilePath, }) => {
-    const outputTypeOption = '--output-type plugin:@mh4gf/dependency-cruiser/mermaid-reporter-plugin';
+    const outputTypeOption = '--output-type plugin:dependency-cruiser/mermaid-reporter-plugin';
     const configOption = depcruiseConfigFilePath !== '' ? `--config ${depcruiseConfigFilePath}` : '';
-    const cmd = `npx -p @mh4gf/dependency-cruiser depcruise ${outputTypeOption} ${configOption} ${targetFiles}`;
+    const cmd = `yarn run -s depcruise ${outputTypeOption} ${configOption} ${targetFiles}`;
     const options = { listeners: {} };
     let mermaid = '';
     options.listeners = {
