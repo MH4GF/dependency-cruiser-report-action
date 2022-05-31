@@ -10,12 +10,17 @@ export type Options = {
   issueNumber: number
   sha: string
   targetFiles: string
-  depcruiseConfigFile: string
+  depcruiseConfigFilePath: string
 }
 
 const mayBeConfigFilePath = () => {
   const path = `${process.env.GITHUB_WORKSPACE || ''}/.dependency-cruiser.js`
   return existsSync(path) ? path : ''
+}
+
+const getConfigFilePath = () => {
+  const depcruiseConfigFile = core.getInput('config_file', { required: false })
+  return depcruiseConfigFile !== '' ? depcruiseConfigFile : mayBeConfigFilePath()
 }
 
 const getSha = (): string =>
@@ -25,10 +30,7 @@ const getSha = (): string =>
 export const getOptions = (): Options => {
   const token = core.getInput('github_token', { required: true })
   const targetFiles = core.getInput('target_files', { required: true })
-  let depcruiseConfigFile = core.getInput('config_file', { required: false })
-  if (depcruiseConfigFile === '') {
-    depcruiseConfigFile = mayBeConfigFilePath()
-  }
+  const depcruiseConfigFilePath = getConfigFilePath()
   const pr = context.payload.pull_request
   if (pr === undefined) {
     throw new Error('pull_request event payload is not found.')
@@ -41,6 +43,6 @@ export const getOptions = (): Options => {
     issueNumber: pr.number,
     sha: getSha(),
     targetFiles,
-    depcruiseConfigFile,
+    depcruiseConfigFilePath,
   }
 }
