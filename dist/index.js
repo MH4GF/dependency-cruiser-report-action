@@ -10192,6 +10192,14 @@ __nccwpck_require__.d(__webpack_exports__, {
 var core = __nccwpck_require__(2186);
 // EXTERNAL MODULE: ./node_modules/@actions/github/lib/github.js
 var github = __nccwpck_require__(5438);
+// EXTERNAL MODULE: ./node_modules/@actions/exec/lib/exec.js
+var exec = __nccwpck_require__(1514);
+;// CONCATENATED MODULE: ./src/installDependencies.ts
+
+const installDependencies = async () => {
+    return await (0,exec.exec)('yarn install');
+};
+
 // EXTERNAL MODULE: external "fs"
 var external_fs_ = __nccwpck_require__(7147);
 ;// CONCATENATED MODULE: ./src/options.ts
@@ -10311,8 +10319,6 @@ const generateReport = async (octokit, options, mermaidText, cmdText) => {
     }
 };
 
-// EXTERNAL MODULE: ./node_modules/@actions/exec/lib/exec.js
-var exec = __nccwpck_require__(1514);
 ;// CONCATENATED MODULE: ./src/runDepcruise.ts
 
 const runDepcruise = async ({ targetFiles, depcruiseConfigFilePath, }) => {
@@ -10336,9 +10342,11 @@ const runDepcruise = async ({ targetFiles, depcruiseConfigFilePath, }) => {
 
 
 
+
 const run = async () => {
     const options = getOptions();
     const octokit = (0,github.getOctokit)(options.token);
+    await installDependencies();
     const { mermaidText, cmdText } = await runDepcruise(options);
     await generateReport(octokit, options, mermaidText, cmdText);
 };

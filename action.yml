@@ -15,12 +15,6 @@ runs:
     - uses: actions/checkout@v3
     - id: changed-files
       uses: tj-actions/changed-files@v21
-    - uses: actions/setup-node@v3.2.0
-      with:
-        node-version: 16.x
-        cache: yarn
-    - run: yarn
-      shell: bash
     - run: $GITHUB_ACTION_PATH/run.sh
       shell: bash
       env:
