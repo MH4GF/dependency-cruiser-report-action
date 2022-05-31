@@ -10207,7 +10207,7 @@ var external_fs_ = __nccwpck_require__(7147);
 
 
 const mayBeConfigFilePath = () => {
-    const path = `${process.env.GITHUB_WORKSPACE || ''}/.dependency-cruiser.js`;
+    const path = '.dependency-cruiser.js';
     return (0,external_fs_.existsSync)(path) ? path : '';
 };
 const getConfigFilePath = () => {
