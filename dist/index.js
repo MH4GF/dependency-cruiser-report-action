@@ -10190,10 +10190,10 @@ __nccwpck_require__.d(__webpack_exports__, {
 
 // EXTERNAL MODULE: ./node_modules/@actions/core/lib/core.js
 var core = __nccwpck_require__(2186);
-// EXTERNAL MODULE: ./node_modules/@actions/github/lib/github.js
-var github = __nccwpck_require__(5438);
 // EXTERNAL MODULE: ./node_modules/@actions/exec/lib/exec.js
 var exec = __nccwpck_require__(1514);
+// EXTERNAL MODULE: ./node_modules/@actions/github/lib/github.js
+var github = __nccwpck_require__(5438);
 ;// CONCATENATED MODULE: ./src/installDependencies.ts
 
 const installDependencies = async () => {
@@ -10345,10 +10345,12 @@ const runDepcruise = async ({ targetFiles, depcruiseConfigFilePath, }) => {
 
 
 
+
 const run = async () => {
     const options = getOptions();
     const octokit = (0,github.getOctokit)(options.token);
     await installDependencies();
+    await (0,exec.exec)('npm ls --depth=0');
     const { mermaidText, cmdText } = await runDepcruise(options);
     await generateReport(octokit, options, mermaidText, cmdText);
 };

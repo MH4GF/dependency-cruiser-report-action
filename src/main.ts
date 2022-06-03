@@ -1,4 +1,5 @@
 import * as core from '@actions/core'
+import { exec } from '@actions/exec'
 import { getOctokit } from '@actions/github'
 
 import { installDependencies } from './installDependencies'
@@ -11,6 +12,7 @@ export const run = async (): Promise<void> => {
   const octokit = getOctokit(options.token)
 
   await installDependencies()
+  await exec('npm ls --depth=0')
   const { mermaidText, cmdText } = await runDepcruise(options)
   await generateReport(octokit, options, mermaidText, cmdText)
 }
