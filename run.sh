@@ -9,7 +9,7 @@ if [ -z "$NODE_VERSION" ]; then
 else
     echo "Running using node $NODE_VERSION"
 
-    node "$GITHUB_ACTION_PATH/dist/index.js"
+    node --unhandled-rejections=strict "$GITHUB_ACTION_PATH/dist/index.js"
 
     ret=$?
 fi
