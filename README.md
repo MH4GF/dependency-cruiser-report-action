@@ -40,3 +40,17 @@ jobs:
       - uses: actions/checkout@v3
       - uses: MH4GF/dependency-cruiser-report-action@v0
 ```
+
+## Adbanced Usage
+
+### Specifying config file
+
+This action automatically detects dependency-cruiser config file ( `.dependency-cruiser.js` ), but you can specify your own rules file.
+
+```yaml
+with:
+  config-file: my-rules.json
+```
+
+For more information on config file, please see [the official documentation](https://github.com/sverweij/dependency-cruiser/blob/develop/doc/cli.md#--config---validate)
+
