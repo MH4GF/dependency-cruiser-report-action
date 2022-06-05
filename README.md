@@ -12,7 +12,19 @@ This action uses [dependency-cruiser](https://github.com/sverweij/dependency-cru
 
 ## usage
 
-Create new action under `.github/workflows` .
+### Install in your project
+
+```bash
+npm install --save-dev dependency-cruiser
+```
+
+### Setup dependency-cruiser in the wizard
+
+```bash
+npm run depcruise --init
+```
+
+### Create new action under `.github/workflows` .
 
 ```yaml
 name: 'depcruise'
@@ -24,7 +36,6 @@ on:
 jobs:
   report:
     permissions:
-      issues: read
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
