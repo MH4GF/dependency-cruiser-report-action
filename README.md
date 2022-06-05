@@ -2,6 +2,8 @@
 
 A GitHub Actions that report to visualize dependencies of changed files each pull requests.
 
+![sample](./docs/assets/sample-light.png#gh-dark-mode-only)![sample](./docs/assets/sample-dark.png#gh-light-mode-only)
+
 <p align="center">
   <a href="https://github.com/MH4GF/dependency-cruiser-report-action/actions"><img alt="typescript-action status" src="https://github.com/MH4GF/dependency-cruiser-report-action/workflows/build-test/badge.svg"></a>
 </p>
