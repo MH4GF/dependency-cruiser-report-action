@@ -11,6 +11,7 @@ export type Options = {
   sha: string
   targetFiles: string
   depcruiseConfigFilePath: string
+  cruiseScript: string
 }
 
 const mayBeConfigFilePath = () => {
@@ -30,6 +31,7 @@ const getSha = (): string =>
 export const getOptions = (): Options => {
   const token = core.getInput('github_token', { required: true })
   const targetFiles = core.getInput('target_files', { required: true })
+  const cruiseScript = core.getInput('cruise_script', { required: true })
   const depcruiseConfigFilePath = getConfigFilePath()
   const pr = context.payload.pull_request
   if (pr === undefined) {
@@ -44,5 +46,6 @@ export const getOptions = (): Options => {
     sha: getSha(),
     targetFiles,
     depcruiseConfigFilePath,
+    cruiseScript,
   }
 }

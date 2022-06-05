@@ -40,3 +40,37 @@ jobs:
       - uses: actions/checkout@v3
       - uses: MH4GF/dependency-cruiser-report-action@v0
 ```
+
+## Adbanced Usage
+
+### Specifying config file
+
+This action automatically detects dependency-cruiser config file ( `.dependency-cruiser.js` ), but you can specify your own rules file.
+
+```yaml
+with:
+  config-file: my-rules.json
+```
+
+For more information on config file, please see [the official documentation](https://github.com/sverweij/dependency-cruiser/blob/develop/doc/cli.md#--config---validate)
+
+### Customizing cruise script
+
+This action automatically adds necessary flags to your cruise script. The default script is:
+
+```bash
+yarn run -s depcruise
+```
+
+So you don't need to specify additional flags - action will handle them automatically. So, after adding necessary flags, action will run this command:
+
+```bash
+ --output-type plugin:dependency-cruiser/mermaid-reporter-plugin --config ${SPECIFIED_CONFIG_FILE} ${DIFF_FILE_A DIFF_FILE_B ...etc}
+```
+
+But you can use different package manager, yarn for example:
+
+```yaml
+with:
+  cruise-script: npm run depcruise
+```

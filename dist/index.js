@@ -10220,6 +10220,7 @@ return (_a = github.context.payload.after) !== null && _a !== void 0 ? _a : (_c 
 const getOptions = () => {
     const token = core.getInput('github_token', { required: true });
     const targetFiles = core.getInput('target_files', { required: true });
+    const cruiseScript = core.getInput('cruise_script', { required: true });
     const depcruiseConfigFilePath = getConfigFilePath();
     const pr = github.context.payload.pull_request;
     if (pr === undefined) {
@@ -10233,6 +10234,7 @@ const getOptions = () => {
         sha: getSha(),
         targetFiles,
         depcruiseConfigFilePath,
+        cruiseScript,
     };
 };
 
@@ -10323,10 +10325,10 @@ const generateReport = async (octokit, options, mermaidText, cmdText) => {
 
 ;// CONCATENATED MODULE: ./src/runDepcruise.ts
 
-const runDepcruise = async ({ targetFiles, depcruiseConfigFilePath, }) => {
+const runDepcruise = async ({ targetFiles, depcruiseConfigFilePath, cruiseScript, }) => {
     const outputTypeOption = '--output-type plugin:dependency-cruiser/mermaid-reporter-plugin';
     const configOption = depcruiseConfigFilePath !== '' ? `--config ${depcruiseConfigFilePath}` : '';
-    const cmd = `yarn run -s depcruise ${outputTypeOption} ${configOption} ${targetFiles}`;
+    const cmd = `${cruiseScript} ${outputTypeOption} ${configOption} ${targetFiles}`;
     const options = { listeners: {} };
     let mermaid = '';
     options.listeners = {

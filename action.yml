@@ -9,6 +9,10 @@ inputs:
   config-file:
     required: false
     description: 'read rules and options from file (e.g. .dependency-cruiser.js)'
+  cruise-script:
+    required: true
+    description: 'specify depcruise script (e.g. yarn depcruise)'
+    default: yarn run -s depcruise
 runs:
   using: composite
   steps:
@@ -21,3 +25,4 @@ runs:
         INPUT_GITHUB_TOKEN: ${{ inputs.github-token }}
         INPUT_TARGET_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
         INPUT_CONFIG_FILE: ${{ inputs.config-file }}
+        INPUT_CRUISE_SCRIPT: ${{ inputs.cruise-script }}
