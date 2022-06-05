@@ -54,3 +54,23 @@ with:
 
 For more information on config file, please see [the official documentation](https://github.com/sverweij/dependency-cruiser/blob/develop/doc/cli.md#--config---validate)
 
+### Customizing cruise script
+
+This action automatically adds necessary flags to your cruise script. The default script is:
+
+```bash
+yarn run -s depcruise
+```
+
+So you don't need to specify additional flags - action will handle them automatically. So, after adding necessary flags, action will run this command:
+
+```bash
+ --output-type plugin:dependency-cruiser/mermaid-reporter-plugin --config ${SPECIFIED_CONFIG_FILE} ${DIFF_FILE_A DIFF_FILE_B ...etc}
+```
+
+But you can use different package manager, yarn for example:
+
+```yaml
+with:
+  cruise-script: npm run depcruise
+```
