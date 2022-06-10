@@ -2,6 +2,7 @@ import { exec } from '@actions/exec'
 
 type Options = {
   targetFiles: string
+  focus: string
   depcruiseConfigFilePath: string
   cruiseScript: string
 }
@@ -13,12 +14,14 @@ type DepcruiseResult = {
 
 export const runDepcruise = async ({
   targetFiles,
+  focus,
   depcruiseConfigFilePath,
   cruiseScript,
 }: Options): Promise<DepcruiseResult> => {
   const outputTypeOption = '--output-type plugin:dependency-cruiser/mermaid-reporter-plugin'
   const configOption = depcruiseConfigFilePath !== '' ? `--config ${depcruiseConfigFilePath}` : ''
-  const cmd = `${cruiseScript} ${outputTypeOption} ${configOption} ${targetFiles}`
+  const focusOption = `--focus ${focus}`
+  const cmd = `${cruiseScript} ${outputTypeOption} ${configOption} ${focusOption} ${targetFiles}`
   const options = { listeners: {} }
   let mermaid = ''
   options.listeners = {

@@ -12,8 +12,9 @@ const mockPath = join(__dirname, '__mocks__')
 describe('runDepcruise', () => {
   it('execute depcruise command', async () => {
     const options = {
-      targetFiles: `${mockPath}/test`,
-      depcruiseConfigFilePath: `${mockPath}/.dependency-cruiser.js`,
+      targetFiles: `test/runDepcruise/sample/__mocks__/test`,
+      focus: `"^test/runDepcruise/sample/__mocks__/test"`,
+      depcruiseConfigFilePath: `test/runDepcruise/sample/__mocks__/.dependency-cruiser.js`,
       cruiseScript: 'yarn run -s depcruise',
     }
     const result = await runDepcruise(options)

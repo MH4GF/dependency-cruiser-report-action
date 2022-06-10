@@ -3,6 +3,8 @@ import { existsSync } from 'fs'
 import * as core from '@actions/core'
 import { context } from '@actions/github'
 
+import { formatFocusOption } from './options/formatFocusOption'
+
 export type Options = {
   token: string
   owner: string
@@ -10,6 +12,7 @@ export type Options = {
   issueNumber: number
   sha: string
   targetFiles: string
+  focus: string
   depcruiseConfigFilePath: string
   cruiseScript: string
 }
@@ -31,6 +34,7 @@ const getSha = (): string =>
 export const getOptions = (): Options => {
   const token = core.getInput('github_token', { required: true })
   const targetFiles = core.getInput('target_files', { required: true })
+  const focus = formatFocusOption(targetFiles)
   const cruiseScript = core.getInput('cruise_script', { required: true })
   const depcruiseConfigFilePath = getConfigFilePath()
   const pr = context.payload.pull_request
@@ -45,6 +49,7 @@ export const getOptions = (): Options => {
     issueNumber: pr.number,
     sha: getSha(),
     targetFiles,
+    focus,
     depcruiseConfigFilePath,
     cruiseScript,
   }

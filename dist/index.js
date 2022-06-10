@@ -10202,7 +10202,14 @@ const installDependencies = async () => {
 
 // EXTERNAL MODULE: external "fs"
 var external_fs_ = __nccwpck_require__(7147);
+;// CONCATENATED MODULE: ./src/options/formatFocusOption.ts
+const formatFocusOption = (fileNames) => {
+    const files = fileNames.split(' ');
+    return `"${files.map((file) => `^${file}`).join('|')}"`;
+};
+
 ;// CONCATENATED MODULE: ./src/options.ts
+
 
 
 
@@ -10220,6 +10227,7 @@ return (_a = github.context.payload.after) !== null && _a !== void 0 ? _a : (_c 
 const getOptions = () => {
     const token = core.getInput('github_token', { required: true });
     const targetFiles = core.getInput('target_files', { required: true });
+    const focus = formatFocusOption(targetFiles);
     const cruiseScript = core.getInput('cruise_script', { required: true });
     const depcruiseConfigFilePath = getConfigFilePath();
     const pr = github.context.payload.pull_request;
@@ -10233,6 +10241,7 @@ const getOptions = () => {
         issueNumber: pr.number,
         sha: getSha(),
         targetFiles,
+        focus,
         depcruiseConfigFilePath,
         cruiseScript,
     };
@@ -10325,10 +10334,11 @@ const generateReport = async (octokit, options, mermaidText, cmdText) => {
 
 ;// CONCATENATED MODULE: ./src/runDepcruise.ts
 
-const runDepcruise = async ({ targetFiles, depcruiseConfigFilePath, cruiseScript, }) => {
+const runDepcruise = async ({ targetFiles, focus, depcruiseConfigFilePath, cruiseScript, }) => {
     const outputTypeOption = '--output-type plugin:dependency-cruiser/mermaid-reporter-plugin';
     const configOption = depcruiseConfigFilePath !== '' ? `--config ${depcruiseConfigFilePath}` : '';
-    const cmd = `${cruiseScript} ${outputTypeOption} ${configOption} ${targetFiles}`;
+    const focusOption = `--focus ${focus}`;
+    const cmd = `${cruiseScript} ${outputTypeOption} ${configOption} ${focusOption} ${targetFiles}`;
     const options = { listeners: {} };
     let mermaid = '';
     options.listeners = {
