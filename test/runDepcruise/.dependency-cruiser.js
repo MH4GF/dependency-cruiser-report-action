@@ -5,7 +5,7 @@ module.exports = {
       path: 'node_modules',
       dependencyTypes: ['npm', 'npm-dev', 'npm-optional', 'npm-peer', 'npm-bundled', 'npm-no-pkg'],
     },
-    includeOnly: '^test/runDepcruise/sample/__mocks__/test',
+    includeOnly: '^test/runDepcruise/',
     enhancedResolveOptions: {
       exportsFields: ['exports'],
       conditionNames: ['import', 'require', 'node', 'default'],
