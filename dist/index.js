@@ -10202,13 +10202,39 @@ const installDependencies = async () => {
 
 // EXTERNAL MODULE: external "fs"
 var external_fs_ = __nccwpck_require__(7147);
+;// CONCATENATED MODULE: ./src/options/filterSupportedFiles.ts
+const SUPPORTED_EXTENSIONS = [
+    '.js',
+    '.cjs',
+    '.mjs',
+    '.jsx',
+    '.ts',
+    '.tsx',
+    '.d.ts',
+    '.ls',
+    '.coffee',
+    '.litcoffee',
+    '.coffee.md',
+    '.csx',
+    '.cjsx',
+    '.vue',
+    '.svelte',
+];
+const filterSupportedFiles = (files) => {
+    const filtered = files.filter((file) => {
+        const ext = file.split('.').slice(-1)[0];
+        return SUPPORTED_EXTENSIONS.includes(`.${ext}`);
+    });
+    return filtered;
+};
+
 ;// CONCATENATED MODULE: ./src/options/formatFocusOption.ts
-const formatFocusOption = (fileNames) => {
-    const files = fileNames.split(' ');
+const formatFocusOption = (files) => {
     return `"${files.map((file) => `^${file}`).join('|')}"`;
 };
 
 ;// CONCATENATED MODULE: ./src/options.ts
+
 
 
 
@@ -10226,7 +10252,8 @@ const getSha = () => { var _a, _b, _c;
 return (_a = github.context.payload.after) !== null && _a !== void 0 ? _a : (_c = (_b = github.context.payload.pull_request) === null || _b === void 0 ? void 0 : _b.head) === null || _c === void 0 ? void 0 : _c.sha; };
 const getOptions = () => {
     const token = core.getInput('github_token', { required: true });
-    const targetFiles = core.getInput('target_files', { required: true });
+    const changedFiles = core.getInput('target_files', { required: true }).split(' ');
+    const targetFiles = filterSupportedFiles(changedFiles);
     const focus = formatFocusOption(targetFiles);
     const cruiseScript = core.getInput('cruise_script', { required: true });
     const depcruiseConfigFilePath = getConfigFilePath();
@@ -10240,7 +10267,7 @@ const getOptions = () => {
         repo: github.context.repo.repo,
         issueNumber: pr.number,
         sha: getSha(),
-        targetFiles,
+        targetFiles: targetFiles.join(' '),
         focus,
         depcruiseConfigFilePath,
         cruiseScript,
