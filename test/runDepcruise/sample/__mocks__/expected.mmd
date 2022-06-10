@@ -1,0 +1,35 @@
+flowchart LR
+
+subgraph test["test"]
+  subgraph test_runDepcruise["runDepcruise"]
+    subgraph test_runDepcruise_sample["sample"]
+      subgraph test_runDepcruise_sample___mocks__["__mocks__"]
+        subgraph test_runDepcruise_sample___mocks___test["test"]
+          subgraph test_runDepcruise_sample___mocks___test_fixtures["fixtures"]
+            subgraph test_runDepcruise_sample___mocks___test_fixtures_cjs["cjs"]
+              test_runDepcruise_sample___mocks___test_fixtures_cjs_one_only_one_js["one_only_one.js"]
+              test_runDepcruise_sample___mocks___test_fixtures_cjs_one_only_two_js["one_only_two.js"]
+              test_runDepcruise_sample___mocks___test_fixtures_cjs_root_one_js["root_one.js"]
+              test_runDepcruise_sample___mocks___test_fixtures_cjs_shared_js["shared.js"]
+              subgraph test_runDepcruise_sample___mocks___test_fixtures_cjs_sub["sub"]
+                test_runDepcruise_sample___mocks___test_fixtures_cjs_sub_dir_js["dir.js"]
+                test_runDepcruise_sample___mocks___test_fixtures_cjs_sub_depindir_js["depindir.js"]
+              end
+              test_runDepcruise_sample___mocks___test_fixtures_cjs_root_two_js["root_two.js"]
+              test_runDepcruise_sample___mocks___test_fixtures_cjs_somedata_json["somedata.json"]
+              test_runDepcruise_sample___mocks___test_fixtures_cjs_two_only_one_js["two_only_one.js"]
+            end
+          end
+        end
+      end
+    end
+  end
+end
+test_runDepcruise_sample___mocks___test_fixtures_cjs_root_one_js --> test_runDepcruise_sample___mocks___test_fixtures_cjs_one_only_two_js
+test_runDepcruise_sample___mocks___test_fixtures_cjs_root_one_js --> test_runDepcruise_sample___mocks___test_fixtures_cjs_shared_js
+test_runDepcruise_sample___mocks___test_fixtures_cjs_root_one_js --> test_runDepcruise_sample___mocks___test_fixtures_cjs_sub_dir_js
+test_runDepcruise_sample___mocks___test_fixtures_cjs_sub_dir_js --> test_runDepcruise_sample___mocks___test_fixtures_cjs_sub_depindir_js
+test_runDepcruise_sample___mocks___test_fixtures_cjs_root_two_js --> test_runDepcruise_sample___mocks___test_fixtures_cjs_shared_js
+test_runDepcruise_sample___mocks___test_fixtures_cjs_root_two_js --> test_runDepcruise_sample___mocks___test_fixtures_cjs_somedata_json
+test_runDepcruise_sample___mocks___test_fixtures_cjs_root_two_js --> test_runDepcruise_sample___mocks___test_fixtures_cjs_two_only_one_js
+test_runDepcruise_sample___mocks___test_fixtures_cjs_two_only_one_js --> test_runDepcruise_sample___mocks___test_fixtures_cjs_sub_dir_js
