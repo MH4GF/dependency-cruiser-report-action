@@ -1,3 +1,4 @@
+// @see: https://github.com/sverweij/dependency-cruiser/blob/0b07cb71e059b5cea7856643d89fcea91b8df717/src/extract/transpile/meta.js#L14
 const SUPPORTED_EXTENSIONS = [
   '.js',
   '.cjs',
