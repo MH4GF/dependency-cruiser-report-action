@@ -65,7 +65,7 @@ yarn run -s depcruise
 So you don't need to specify additional flags - action will handle them automatically. So, after adding necessary flags, action will run this command:
 
 ```bash
- --output-type plugin:dependency-cruiser/mermaid-reporter-plugin --config ${SPECIFIED_CONFIG_FILE} ${DIFF_FILE_A DIFF_FILE_B ...etc}
+ --output-type mermaid --config ${SPECIFIED_CONFIG_FILE} ${DIFF_FILE_A DIFF_FILE_B ...etc}
 ```
 
 But you can use different package manager, yarn for example:
@@ -74,3 +74,7 @@ But you can use different package manager, yarn for example:
 with:
   cruise-script: npm run depcruise
 ```
+
+## Compatibility
+
+This action requires dependency-cruiser v11.10.0 or newer.

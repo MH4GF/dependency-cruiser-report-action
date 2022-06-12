@@ -18,7 +18,7 @@ export const runDepcruise = async ({
   depcruiseConfigFilePath,
   cruiseScript,
 }: Options): Promise<DepcruiseResult> => {
-  const outputTypeOption = '--output-type plugin:dependency-cruiser/mermaid-reporter-plugin'
+  const outputTypeOption = '--output-type mermaid'
   const configOption = depcruiseConfigFilePath !== '' ? `--config ${depcruiseConfigFilePath}` : ''
   const focusOption = `--focus ${focus}`
   const cmd = `${cruiseScript} ${outputTypeOption} ${configOption} ${focusOption} ${targetFiles}`
