@@ -10363,7 +10363,7 @@ const generateReport = async (octokit, options, mermaidText, cmdText) => {
 ;// CONCATENATED MODULE: ./src/runDepcruise.ts
 
 const runDepcruise = async ({ targetFiles, focus, depcruiseConfigFilePath, cruiseScript, }) => {
-    const outputTypeOption = '--output-type plugin:dependency-cruiser/mermaid-reporter-plugin';
+    const outputTypeOption = '--output-type mermaid';
     const configOption = depcruiseConfigFilePath !== '' ? `--config ${depcruiseConfigFilePath}` : '';
     const focusOption = `--focus ${focus}`;
     const cmd = `${cruiseScript} ${outputTypeOption} ${configOption} ${focusOption} ${targetFiles}`;
