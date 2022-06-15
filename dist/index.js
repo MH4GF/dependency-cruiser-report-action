@@ -10192,6 +10192,25 @@ __nccwpck_require__.d(__webpack_exports__, {
 var core = __nccwpck_require__(2186);
 // EXTERNAL MODULE: ./node_modules/@actions/github/lib/github.js
 var github = __nccwpck_require__(5438);
+;// CONCATENATED MODULE: ./src/ActionError.ts
+
+class ActionError extends Error {
+    constructor(message, severity) {
+        super(message);
+        this.severity = severity;
+    }
+}
+const exitWithMessage = (error) => {
+    switch (error.severity) {
+        case 'warning':
+            process.exitCode = core.ExitCode.Success;
+            core.warning(error.message);
+            break;
+        default:
+            core.setFailed(error.message);
+    }
+};
+
 // EXTERNAL MODULE: ./node_modules/@actions/exec/lib/exec.js
 var exec = __nccwpck_require__(1514);
 ;// CONCATENATED MODULE: ./src/installDependencies.ts
@@ -10262,7 +10281,7 @@ const getOptions = () => {
     if (pr === undefined) {
         throw new Error('pull_request event payload is not found.');
     }
-    return {
+    const options = {
         token,
         owner: github.context.repo.owner,
         repo: github.context.repo.repo,
@@ -10273,6 +10292,7 @@ const getOptions = () => {
         depcruiseConfigFilePath,
         cruiseScript,
     };
+    return options;
 };
 
 ;// CONCATENATED MODULE: external "crypto"
@@ -10392,6 +10412,7 @@ const runDepcruise = async ({ targetFiles, focus, depcruiseConfigFilePath, cruis
 
 
 
+
 const run = async () => {
     const options = getOptions();
     const octokit = (0,github.getOctokit)(options.token);
@@ -10403,6 +10424,8 @@ try {
     void run();
 }
 catch (error) {
+    if (error instanceof ActionError)
+        exitWithMessage(error);
     if (error instanceof Error)
         core.setFailed(error.message);
 }

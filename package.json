@@ -28,7 +28,8 @@
   "dependencies": {
     "@actions/core": "*",
     "@actions/exec": "*",
-    "@actions/github": "*"
+    "@actions/github": "*",
+    "yup": "*"
   },
   "devDependencies": {
     "@types/node": "*",
