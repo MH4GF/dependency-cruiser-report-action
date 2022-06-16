@@ -16,9 +16,7 @@ export const run = async (): Promise<void> => {
   await generateReport(octokit, options, mermaidText, cmdText)
 }
 
-try {
-  void run()
-} catch (error) {
+run().catch((error) => {
   if (error instanceof ActionError) exitWithMessage(error)
-  if (error instanceof Error) core.setFailed(error.message)
-}
+  else if (error instanceof Error) core.setFailed(error.message)
+})

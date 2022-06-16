@@ -18633,15 +18633,12 @@ const run = async () => {
     const { mermaidText, cmdText } = await runDepcruise(options);
     await generateReport(octokit, options, mermaidText, cmdText);
 };
-try {
-    void run();
-}
-catch (error) {
+run().catch((error) => {
     if (error instanceof ActionError)
         exitWithMessage(error);
-    if (error instanceof Error)
+    else if (error instanceof Error)
         core.setFailed(error.message);
-}
+});
 
 })();
 
