@@ -1,34 +1,34 @@
 flowchart LR
 
-subgraph test["test"]
-  subgraph test_runDepcruise["runDepcruise"]
-    subgraph test_runDepcruise_sample["sample"]
-      subgraph test_runDepcruise_sample___mocks__["__mocks__"]
-        subgraph test_runDepcruise_sample___mocks___test["test"]
-          subgraph test_runDepcruise_sample___mocks___test_fixtures["fixtures"]
-            subgraph test_runDepcruise_sample___mocks___test_fixtures_cjs["cjs"]
-              test_runDepcruise_sample___mocks___test_fixtures_cjs_root_one_js["root_one.js"]
-              test_runDepcruise_sample___mocks___test_fixtures_cjs_root_two_js["root_two.js"]
-              test_runDepcruise_sample___mocks___test_fixtures_cjs_one_only_two_js["one_only_two.js"]
-              test_runDepcruise_sample___mocks___test_fixtures_cjs_shared_js["shared.js"]
-              subgraph test_runDepcruise_sample___mocks___test_fixtures_cjs_sub["sub"]
-                test_runDepcruise_sample___mocks___test_fixtures_cjs_sub_dir_js["dir.js"]
-              end
-              test_runDepcruise_sample___mocks___test_fixtures_cjs_somedata_json["somedata.json"]
-              test_runDepcruise_sample___mocks___test_fixtures_cjs_two_only_one_js["two_only_one.js"]
-            end
-          end
-        end
-      end
-    end
-  end
+subgraph 0["test"]
+subgraph 1["runDepcruise"]
+subgraph 2["sample"]
+subgraph 3["__mocks__"]
+subgraph 4["test"]
+subgraph 5["fixtures"]
+subgraph 6["cjs"]
+7["root_one.js"]
+8["root_two.js"]
+9["one_only_two.js"]
+a["shared.js"]
+subgraph b["sub"]
+c["dir.js"]
 end
-test_runDepcruise_sample___mocks___test_fixtures_cjs_root_one_js --> test_runDepcruise_sample___mocks___test_fixtures_cjs_one_only_two_js
-test_runDepcruise_sample___mocks___test_fixtures_cjs_root_one_js --> test_runDepcruise_sample___mocks___test_fixtures_cjs_shared_js
-test_runDepcruise_sample___mocks___test_fixtures_cjs_root_one_js --> test_runDepcruise_sample___mocks___test_fixtures_cjs_sub_dir_js
-test_runDepcruise_sample___mocks___test_fixtures_cjs_root_two_js --> test_runDepcruise_sample___mocks___test_fixtures_cjs_shared_js
-test_runDepcruise_sample___mocks___test_fixtures_cjs_root_two_js --> test_runDepcruise_sample___mocks___test_fixtures_cjs_somedata_json
-test_runDepcruise_sample___mocks___test_fixtures_cjs_root_two_js --> test_runDepcruise_sample___mocks___test_fixtures_cjs_two_only_one_js
+d["somedata.json"]
+e["two_only_one.js"]
+end
+end
+end
+end
+end
+end
+end
+7-->9
+7-->a
+7-->c
+8-->a
+8-->d
+8-->e
 
-style test_runDepcruise_sample___mocks___test_fixtures_cjs_root_one_js fill:lime,color:black
-style test_runDepcruise_sample___mocks___test_fixtures_cjs_root_two_js fill:lime,color:black
+style 7 fill:lime,color:black
+style 8 fill:lime,color:black
