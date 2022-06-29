@@ -18560,7 +18560,7 @@ const getSha = () => { var _a, _b, _c;
 return (_a = github.context.payload.after) !== null && _a !== void 0 ? _a : (_c = (_b = github.context.payload.pull_request) === null || _b === void 0 ? void 0 : _b.head) === null || _c === void 0 ? void 0 : _c.sha; };
 const getOptions = () => {
     const token = core.getInput('github_token', { required: true });
-    const changedFiles = core.getInput('target_files', { required: true }).split(' ');
+    const changedFiles = core.getInput('target_files', { required: false }).split(' ');
     const targetFiles = filterSupportedFiles(changedFiles);
     const focus = formatFocusOption(targetFiles);
     const cruiseScript = core.getInput('cruise_script', { required: true });
