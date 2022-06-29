@@ -23,7 +23,7 @@ const getSha = (): string =>
 
 export const getOptions = (): Promise<Options> => {
   const token = core.getInput('github_token', { required: true })
-  const changedFiles = core.getInput('target_files', { required: true }).split(' ')
+  const changedFiles = core.getInput('target_files', { required: false }).split(' ')
   const targetFiles = filterSupportedFiles(changedFiles)
   const focus = formatFocusOption(targetFiles)
   const cruiseScript = core.getInput('cruise_script', { required: true })
