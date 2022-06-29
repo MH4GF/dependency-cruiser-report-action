@@ -25,7 +25,7 @@ describe('validateOptions', () => {
   it('throw ActionError when targetFiles field is empty', async () => {
     const options = { ...baseOptions, targetFiles: '' }
     await expect(validateOptions(options)).rejects.toThrowError(
-      new ActionError('No target files ware found', 'warning'),
+      new ActionError('No target files were found', 'warning'),
     )
   })
   it('throw ValidationError when targetFiles field and issueNumber field are empty ', async () => {

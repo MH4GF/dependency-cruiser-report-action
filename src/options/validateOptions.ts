@@ -3,7 +3,7 @@ import { InferType, number, object, string, ValidationError } from 'yup'
 import { ActionError } from '../ActionError'
 
 const MESSAGE_REQUIRED_ISSUE_NUMBER = 'pull_request event payload is not found.'
-const MESSAGE_REQUIRED_TARGET_FILES = 'No target files ware found'
+const MESSAGE_REQUIRED_TARGET_FILES = 'No target files were found'
 const WARNING_MESSAGES = [MESSAGE_REQUIRED_TARGET_FILES]
 
 const optionsSchema = object({
