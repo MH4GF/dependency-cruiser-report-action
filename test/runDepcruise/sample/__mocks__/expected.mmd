@@ -7,13 +7,13 @@ subgraph 3["__mocks__"]
 subgraph 4["test"]
 subgraph 5["fixtures"]
 subgraph 6["cjs"]
-7["root_one.js"]
-8["root_two.js"]
-9["one_only_two.js"]
-a["shared.js"]
-subgraph b["sub"]
-c["dir.js"]
+7["one_only_two.js"]
+8["root_one.js"]
+9["shared.js"]
+subgraph a["sub"]
+b["dir.js"]
 end
+c["root_two.js"]
 d["somedata.json"]
 e["two_only_one.js"]
 end
@@ -23,12 +23,13 @@ end
 end
 end
 end
-7-->9
-7-->a
-7-->c
-8-->a
-8-->d
-8-->e
+8-->7
+8-->9
+8-->b
+c-->9
+c-->d
+c-->e
+e-->b
 
-style 7 fill:lime,color:black
 style 8 fill:lime,color:black
+style c fill:lime,color:black
