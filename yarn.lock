@@ -354,10 +354,10 @@ acorn-walk@8.2.0:
   resolved "https://registry.yarnpkg.com/acorn-walk/-/acorn-walk-8.2.0.tgz#741210f2e2426454508853a2f44d0ab83b7f69c1"
   integrity sha512-k+iyHEuPgSw6SbuDpGQM+06HQUa04DZ3o+F6CSzXMvvI5KMvnaEqXe+YVe555R9nn6GPt404fos4wcgpw12SDA==
 
-acorn@8.7.1, acorn@^8.5.0, acorn@^8.7.1:
-  version "8.7.1"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.7.1.tgz#0197122c843d1bf6d0a5e83220a788f278f63c30"
-  integrity sha512-Xx54uLJQZ19lKygFXOWsscKUbsBZW0CPykPhVQdhIeIwrbPmJzqeASDInc8nKBnp/JT6igTs82qPXz069H8I/A==
+acorn@8.8.0, acorn@^8.5.0, acorn@^8.7.1:
+  version "8.8.0"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.8.0.tgz#88c0187620435c7f6015803f5539dae05a9dbea8"
+  integrity sha512-QOxyigPVrpZ2GXT+PFyZTl6TtOFc5egxHIP9IlQ+RbupQuX4RkT/Bee4/kQuC02Xkzg84JcT7oLYtDIQxp+v7w==
 
 aggregate-error@^3.0.0:
   version "3.1.0"
@@ -676,11 +676,11 @@ define-properties@^1.1.3, define-properties@^1.1.4:
     object-keys "^1.1.1"
 
 dependency-cruiser@*:
-  version "11.12.0"
-  resolved "https://registry.yarnpkg.com/dependency-cruiser/-/dependency-cruiser-11.12.0.tgz#6671b5d117dfb2e7e64c790d3f7fd457091fc281"
-  integrity sha512-7qOrPdI4dWs0HIQ/StWu6Nih6YXGD8Wpknyf2MdxSPaBtOALJAiWwl8uyj0j24noZbaXYTiMvJK1L6eAVnHNxA==
+  version "11.13.0"
+  resolved "https://registry.yarnpkg.com/dependency-cruiser/-/dependency-cruiser-11.13.0.tgz#14c0c28b784ebdbdf40846a75c3af8a1c4804c9b"
+  integrity sha512-kNHlmD+LRe4HlF5dGz8i9sRHRiV+qzTaJgTvsBwWHU3LsWe0qoPOwDqtl0UeB7/mSsFa9Sk2Wa1FY0jWfRB28A==
   dependencies:
-    acorn "8.7.1"
+    acorn "8.8.0"
     acorn-jsx "5.3.2"
     acorn-jsx-walk "2.0.0"
     acorn-loose "8.3.0"
