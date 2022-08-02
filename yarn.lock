@@ -354,10 +354,10 @@ acorn-walk@8.2.0:
   resolved "https://registry.yarnpkg.com/acorn-walk/-/acorn-walk-8.2.0.tgz#741210f2e2426454508853a2f44d0ab83b7f69c1"
   integrity sha512-k+iyHEuPgSw6SbuDpGQM+06HQUa04DZ3o+F6CSzXMvvI5KMvnaEqXe+YVe555R9nn6GPt404fos4wcgpw12SDA==
 
-acorn@8.7.1, acorn@^8.5.0, acorn@^8.7.1:
-  version "8.7.1"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.7.1.tgz#0197122c843d1bf6d0a5e83220a788f278f63c30"
-  integrity sha512-Xx54uLJQZ19lKygFXOWsscKUbsBZW0CPykPhVQdhIeIwrbPmJzqeASDInc8nKBnp/JT6igTs82qPXz069H8I/A==
+acorn@8.8.0, acorn@^8.5.0, acorn@^8.7.1:
+  version "8.8.0"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.8.0.tgz#88c0187620435c7f6015803f5539dae05a9dbea8"
+  integrity sha512-QOxyigPVrpZ2GXT+PFyZTl6TtOFc5egxHIP9IlQ+RbupQuX4RkT/Bee4/kQuC02Xkzg84JcT7oLYtDIQxp+v7w==
 
 aggregate-error@^3.0.0:
   version "3.1.0"
@@ -676,11 +676,11 @@ define-properties@^1.1.3, define-properties@^1.1.4:
     object-keys "^1.1.1"
 
 dependency-cruiser@*:
-  version "11.12.0"
-  resolved "https://registry.yarnpkg.com/dependency-cruiser/-/dependency-cruiser-11.12.0.tgz#6671b5d117dfb2e7e64c790d3f7fd457091fc281"
-  integrity sha512-7qOrPdI4dWs0HIQ/StWu6Nih6YXGD8Wpknyf2MdxSPaBtOALJAiWwl8uyj0j24noZbaXYTiMvJK1L6eAVnHNxA==
+  version "11.14.0"
+  resolved "https://registry.yarnpkg.com/dependency-cruiser/-/dependency-cruiser-11.14.0.tgz#76ca6fbe49130574a12efe0450856cb349106482"
+  integrity sha512-4/xuIn4Zn2cAQaDFz7SSBUY+VO16ffAuOpiOS4vPGK4H4uJlpdC8wACs70wKeNCyNE5HE1k/btKYQ7J2AJ31OA==
   dependencies:
-    acorn "8.7.1"
+    acorn "8.8.0"
     acorn-jsx "5.3.2"
     acorn-jsx-walk "2.0.0"
     acorn-loose "8.3.0"
@@ -701,7 +701,8 @@ dependency-cruiser@*:
     semver "^7.3.7"
     semver-try-require "^5.0.2"
     teamcity-service-messages "0.1.14"
-    tsconfig-paths-webpack-plugin "3.5.2"
+    tsconfig-paths-webpack-plugin "4.0.0"
+    watskeburt "0.6.0"
     wrap-ansi "^7.0.0"
 
 deprecation@^2.0.0, deprecation@^2.3.1:
@@ -1612,7 +1613,7 @@ json-stable-stringify-without-jsonify@^1.0.1:
   resolved "https://registry.yarnpkg.com/json-stable-stringify-without-jsonify/-/json-stable-stringify-without-jsonify-1.0.1.tgz#9db7b59496ad3f3cfef30a75142d2d930ad72651"
   integrity sha1-nbe1lJatPzz+8wp1FC0tkwrXJlE=
 
-json5@2.2.1:
+json5@2.2.1, json5@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/json5/-/json5-2.2.1.tgz#655d50ed1e6f95ad1a3caababd2b0efda10b395c"
   integrity sha512-1hqLFMSrGHRHxav9q9gNjJ5EXznIxGVO09xQRrwplcS8qs28pZ8s8hupZAmqDwZUmVZ2Qb2jnyPOWcDH8m8dlA==
@@ -2372,22 +2373,31 @@ tr46@~0.0.3:
   resolved "https://registry.yarnpkg.com/tr46/-/tr46-0.0.3.tgz#8184fd347dac9cdc185992f3a6622e14b9d9ab6a"
   integrity sha1-gYT9NH2snNwYWZLzpmIuFLnZq2o=
 
-tsconfig-paths-webpack-plugin@3.5.2:
-  version "3.5.2"
-  resolved "https://registry.yarnpkg.com/tsconfig-paths-webpack-plugin/-/tsconfig-paths-webpack-plugin-3.5.2.tgz#01aafff59130c04a8c4ebc96a3045c43c376449a"
-  integrity sha512-EhnfjHbzm5IYI9YPNVIxx1moxMI4bpHD2e0zTXeDNQcwjjRaGepP7IhTHJkyDBG0CAOoxRfe7jCG630Ou+C6Pw==
+tsconfig-paths-webpack-plugin@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/tsconfig-paths-webpack-plugin/-/tsconfig-paths-webpack-plugin-4.0.0.tgz#84008fc3e3e0658fdb0262758b07b4da6265ff1a"
+  integrity sha512-fw/7265mIWukrSHd0i+wSwx64kYUSAKPfxRDksjKIYTxSAp9W9/xcZVBF4Kl0eqQd5eBpAQ/oQrc5RyM/0c1GQ==
   dependencies:
     chalk "^4.1.0"
     enhanced-resolve "^5.7.0"
-    tsconfig-paths "^3.9.0"
+    tsconfig-paths "^4.0.0"
 
-tsconfig-paths@^3.14.1, tsconfig-paths@^3.9.0:
+tsconfig-paths@^3.14.1:
   version "3.14.1"
   resolved "https://registry.yarnpkg.com/tsconfig-paths/-/tsconfig-paths-3.14.1.tgz#ba0734599e8ea36c862798e920bcf163277b137a"
   integrity sha512-fxDhWnFSLt3VuTwtvJt5fpwxBHg5AdKWMsgcPOOIilyjymcYVZoCQF8fvFRezCNfblEXmi+PcM1eYHeOAgXCOQ==
   dependencies:
     "@types/json5" "^0.0.29"
     json5 "^1.0.1"
+    minimist "^1.2.6"
+    strip-bom "^3.0.0"
+
+tsconfig-paths@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/tsconfig-paths/-/tsconfig-paths-4.0.0.tgz#1082f5d99fd127b72397eef4809e4dd06d229b64"
+  integrity sha512-SLBg2GBKlR6bVtMgJJlud/o3waplKtL7skmLkExomIiaAtLGtVsoXIqP3SYdjbcH9lq/KVv7pMZeCBpLYOit6Q==
+  dependencies:
+    json5 "^2.2.1"
     minimist "^1.2.6"
     strip-bom "^3.0.0"
 
@@ -2503,6 +2513,13 @@ vitest@*:
     tinypool "^0.2.4"
     tinyspy "^1.0.0"
     vite "^2.9.12 || ^3.0.0-0"
+
+watskeburt@0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/watskeburt/-/watskeburt-0.6.0.tgz#4bd7bf0ef46fdf73912eeea0a4fa79b147cb591d"
+  integrity sha512-/4VZGShXHTkSUFFMsyueYHWjZwqr034PSaCOR5QCqFN1bon2huZK2T69oJJIUNJVdZYmqd411+UrGe5R5GZmCQ==
+  dependencies:
+    commander "^9.3.0"
 
 wcwidth@^1.0.1:
   version "1.0.1"
