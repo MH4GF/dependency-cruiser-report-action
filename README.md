@@ -28,8 +28,6 @@ npm run depcruise --init
 name: 'depcruise'
 on:
   pull_request:
-    branches:
-      - main
 
 jobs:
   report:
