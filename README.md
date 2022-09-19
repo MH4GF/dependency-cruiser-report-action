@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: MH4GF/dependency-cruiser-report-action@v0.1.5
+      - uses: MH4GF/dependency-cruiser-report-action@v1
 ```
 
 ## Adbanced Usage
