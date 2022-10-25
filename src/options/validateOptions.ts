@@ -16,6 +16,7 @@ const optionsSchema = object({
   focus: string().required(),
   depcruiseConfigFilePath: string().required(),
   cruiseScript: string().required(),
+  workingDirectory: string().required(),
 })
 
 export type Options = InferType<typeof optionsSchema>

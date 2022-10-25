@@ -34,3 +34,4 @@ runs:
         INPUT_TARGET_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
         INPUT_CONFIG_FILE: ${{ inputs.config-file }}
         INPUT_CRUISE_SCRIPT: ${{ inputs.cruise-script }}
+        INPUT_WORKING_DIRECTORY: ${{ inputs.working-directory }}
