@@ -4,6 +4,7 @@ type Context = {
   owner: string
   repo: string
   issueNumber: number
+  workingDirectory: string
 }
 
 const hashedContext = (context: Context) => {
@@ -12,6 +13,7 @@ const hashedContext = (context: Context) => {
     owner: context.owner,
     repo: context.repo,
     issueNumber: context.issueNumber,
+    workingDirectory: context.workingDirectory,
   }
   hash.update(JSON.stringify(json))
   return hash.digest('hex')

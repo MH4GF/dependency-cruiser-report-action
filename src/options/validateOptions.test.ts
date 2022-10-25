@@ -15,6 +15,7 @@ const baseOptions: Options = {
   focus: `"^test/runDepcruise/sample/__mocks__/test/fixtures/cjs/root_one.js|^test/runDepcruise/sample/__mocks__/test/fixtures/cjs/root_two.js"`,
   depcruiseConfigFilePath: `test/runDepcruise/.dependency-cruiser.js`,
   cruiseScript: 'yarn run -s depcruise',
+  workingDirectory: 'test/runDepcruise',
 }
 
 describe('validateOptions', () => {

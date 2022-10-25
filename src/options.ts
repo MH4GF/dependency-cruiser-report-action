@@ -23,6 +23,7 @@ const getSha = (): string =>
 
 export const getOptions = (): Promise<Options> => {
   const token = core.getInput('github_token', { required: true })
+  const workingDirectory = core.getInput('working_directory', { required: true })
   const changedFiles = core.getInput('target_files', { required: false }).split(' ')
   const targetFiles = filterSupportedFiles(changedFiles)
   const focus = formatFocusOption(targetFiles)
@@ -31,6 +32,7 @@ export const getOptions = (): Promise<Options> => {
   const pr = context.payload.pull_request
   const options = {
     token,
+    workingDirectory,
     owner: context.repo.owner,
     repo: context.repo.repo,
     issueNumber: pr?.number,

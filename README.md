@@ -73,6 +73,15 @@ with:
   cruise-script: npm run depcruise
 ```
 
+### Customizing working directory
+
+If you want to run this action in another directory, specify `working-directory`:
+
+```yaml
+with:
+  working-directory: <dir>
+```
+
 ## Compatibility
 
 This action requires dependency-cruiser v11.10.0 or newer.
