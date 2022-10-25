@@ -13,6 +13,10 @@ inputs:
     required: true
     description: 'specify depcruise script (e.g. yarn depcruise)'
     default: yarn run -s depcruise
+  working-directory:
+    required: false
+    description: 'running actions in another directory'
+    default: '.'
 runs:
   using: composite
   steps:
@@ -20,6 +24,7 @@ runs:
     - id: changed-files
       uses: tj-actions/changed-files@v29.0.4
     - run: $GITHUB_ACTION_PATH/run.sh
+      working-directory: ${{ inputs.working-directory }}
       shell: bash
       env:
         INPUT_GITHUB_TOKEN: ${{ inputs.github-token }}
