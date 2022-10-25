@@ -11,6 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ./
+        with:
+          config-file: .dependency-cruiser.debug.js
       - uses: ./
         with:
           working-directory: test/sample
