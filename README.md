@@ -35,8 +35,7 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: MH4GF/dependency-cruiser-report-action@v1
+      - uses: MH4GF/dependency-cruiser-report-action@v2
 ```
 
 ## Adbanced Usage
