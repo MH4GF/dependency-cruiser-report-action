@@ -22,7 +22,7 @@ runs:
   steps:
     - uses: actions/checkout@v3
     - id: changed-files
-      uses: tj-actions/changed-files@v29.0.4
+      uses: tj-actions/changed-files@v33.0.0
       with:
         path: ${{ inputs.working-directory }}
         diff_relative: true
