@@ -11,3 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ./
+      - uses: ./
+        with:
+          working-directory: test/sample
