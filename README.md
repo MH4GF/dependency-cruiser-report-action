@@ -81,6 +81,22 @@ with:
   working-directory: <dir>
 ```
 
+### Customizing checkout repository
+
+By default, `actions/checkout` are run internally and do not need to be run by you.
+But if you want to customize your checkout options, you can skip the internal execution.
+
+```yaml
+steps:
+  - uses: actions/checkout@v3
+    with:
+      fetch-depth: 0
+  - uses: MH4GF/dependency-cruiser-report-action@v2
+    with:
+      checkout: false
+```
+
+
 ## Compatibility
 
 This action requires dependency-cruiser v11.10.0 or newer.
