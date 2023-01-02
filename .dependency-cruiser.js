@@ -251,7 +251,7 @@ module.exports = {
        true: also detect dependencies that only exist before typescript-to-javascript compilation
        "specify": for each dependency identify whether it only exists before compilation or also after
      */
-    // tsPreCompilationDeps: true,
+    tsPreCompilationDeps: true,
 
     /* list of extensions (typically non-parseable) to scan. Empty by default. */
     // extraExtensionsToScan: [".json", ".jpg", ".png", ".svg", ".webp"],
