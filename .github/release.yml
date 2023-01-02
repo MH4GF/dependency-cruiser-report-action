@@ -11,7 +11,7 @@ changelog:
         - bug
     - title: Maintenance 👨‍💻
       labels:
-        - dependenices
+        - dependencies
         - dev-ex
         - refactoring
     - title: Other Changes
