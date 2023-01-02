@@ -13,12 +13,12 @@ subgraph 6[\\"cjs\\"]
 7[\\"one_only_two.js\\"]
 8[\\"root_one.js\\"]
 9[\\"shared.js\\"]
-subgraph a[\\"sub\\"]
-b[\\"dir.js\\"]
+subgraph A[\\"sub\\"]
+B[\\"dir.js\\"]
 end
-c[\\"root_two.js\\"]
-d[\\"somedata.json\\"]
-e[\\"two_only_one.js\\"]
+C[\\"root_two.js\\"]
+D[\\"somedata.json\\"]
+E[\\"two_only_one.js\\"]
 end
 end
 end
@@ -28,12 +28,12 @@ end
 end
 8-->7
 8-->9
-8-->b
-c-->9
-c-->d
-c-->e
-e-->b
+8-->B
+C-->9
+C-->D
+C-->E
+E-->B
 
 style 8 fill:lime,color:black
-style c fill:lime,color:black"
+style C fill:lime,color:black"
 `;

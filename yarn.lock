@@ -491,10 +491,10 @@ aggregate-error@^3.0.0:
     clean-stack "^2.0.0"
     indent-string "^4.0.0"
 
-ajv@8.11.0:
-  version "8.11.0"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.11.0.tgz#977e91dd96ca669f54a11e23e378e33b884a565f"
-  integrity sha512-wGgprdCvMalC0BztXvitD2hC04YffAvtsUn93JbGXYLAtCUO4xd17mCCZQxUOItiBwZvJScWo8NIvQMQ71rdpg==
+ajv@8.11.2:
+  version "8.11.2"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.11.2.tgz#aecb20b50607acf2569b6382167b65a96008bb78"
+  integrity sha512-E4bfmKAhGiSTvMfL1Myyycaub+cUEU2/IvpylXkUu7CHBkBj1f/ikdzbD7YQ6FKUbixDxeYvB/xY4fvyroDlQg==
   dependencies:
     fast-deep-equal "^3.1.1"
     json-schema-traverse "^1.0.0"
@@ -756,36 +756,36 @@ define-properties@^1.1.3, define-properties@^1.1.4:
     object-keys "^1.1.1"
 
 dependency-cruiser@*:
-  version "11.18.0"
-  resolved "https://registry.yarnpkg.com/dependency-cruiser/-/dependency-cruiser-11.18.0.tgz#91bdb45298a5e79dba56872ef6ffb4a8770f7081"
-  integrity sha512-RzIwcb+7KhGLozDf0zWolT+pljNcSBfnadNz5utG08mDkQdYAbR11iXgmNtQ6bMKsLnvOkSTTCZBrIWF/4Ux9w==
+  version "12.3.0"
+  resolved "https://registry.yarnpkg.com/dependency-cruiser/-/dependency-cruiser-12.3.0.tgz#a75fc3a7344d95707952cc220b9770b7f01cda49"
+  integrity sha512-izkszSM6NmVe5a/Y5IZSbMEFKAyF4XlrmTJXUcjQS92yBIk65qx2bUlKdlCEzFND9U+BMu80JGljh4NYLDRNVQ==
   dependencies:
     acorn "8.8.1"
     acorn-jsx "5.3.2"
     acorn-jsx-walk "2.0.0"
     acorn-loose "8.3.0"
     acorn-walk "8.2.0"
-    ajv "8.11.0"
+    ajv "8.11.2"
     chalk "^4.1.2"
     commander "9.4.1"
-    enhanced-resolve "5.10.0"
+    enhanced-resolve "5.12.0"
     figures "^3.2.0"
     get-stream "^6.0.1"
     glob "7.2.0"
     handlebars "4.7.7"
     indent-string "^4.0.0"
-    interpret "^2.2.0"
+    interpret "^3.1.0"
     is-installed-globally "0.4.0"
-    json5 "2.2.1"
+    json5 "2.2.2"
     lodash "4.17.21"
     prompts "2.4.2"
     rechoir "^0.8.0"
     safe-regex "2.1.1"
     semver "^7.3.7"
-    semver-try-require "5.0.4"
+    semver-try-require "6.0.0"
     teamcity-service-messages "0.1.14"
     tsconfig-paths-webpack-plugin "4.0.0"
-    watskeburt "0.8.1"
+    watskeburt "0.9.0"
     wrap-ansi "^7.0.0"
 
 deprecation@^2.0.0, deprecation@^2.3.1:
@@ -829,10 +829,10 @@ emoji-regex@^9.2.2:
   resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-9.2.2.tgz#840c8803b0d8047f4ff0cf963176b32d4ef3ed72"
   integrity sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg==
 
-enhanced-resolve@5.10.0, enhanced-resolve@^5.7.0:
-  version "5.10.0"
-  resolved "https://registry.yarnpkg.com/enhanced-resolve/-/enhanced-resolve-5.10.0.tgz#0dc579c3bb2a1032e357ac45b8f3a6f3ad4fb1e6"
-  integrity sha512-T0yTFjdpldGY8PmuXXR0PyQ1ufZpEGiHVrp7zHKB7jdR4qlmZHhONVM5AQOAWXuF/w3dnHbEQVrNptJgt7F+cQ==
+enhanced-resolve@5.12.0, enhanced-resolve@^5.7.0:
+  version "5.12.0"
+  resolved "https://registry.yarnpkg.com/enhanced-resolve/-/enhanced-resolve-5.12.0.tgz#300e1c90228f5b570c4d35babf263f6da7155634"
+  integrity sha512-QHTXI/sZQmko1cbDoNAa3mJ5qhWUUNAq3vR0/YiD379fWQrcfuoX1+HW2S0MTt7XmoPLapdaDKUtelUSPic7hQ==
   dependencies:
     graceful-fs "^4.2.4"
     tapable "^2.2.0"
@@ -1424,10 +1424,10 @@ internal-slot@^1.0.3:
     has "^1.0.3"
     side-channel "^1.0.4"
 
-interpret@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/interpret/-/interpret-2.2.0.tgz#1a78a0b5965c40a5416d007ad6f50ad27c417df9"
-  integrity sha512-Ju0Bz/cEia55xDwUWEa8+olFpCiQoypjnQySseKtmjNrnps3P+xfpUmGr90T7yjlVJmOtybRvPXhKMbHr+fWnw==
+interpret@^3.1.0:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/interpret/-/interpret-3.1.1.tgz#5be0ceed67ca79c6c4bc5cf0d7ee843dcea110c4"
+  integrity sha512-6xwYfHbajpoF0xLW+iwLkhwgvLoZDfjYfoFNu8ftMoXINzwuymNLd9u/KmwtdT2GbR+/Cz66otEGEVVUHX9QLQ==
 
 is-bigint@^1.0.1:
   version "1.0.4"
@@ -1600,10 +1600,10 @@ json-stable-stringify-without-jsonify@^1.0.1:
   resolved "https://registry.yarnpkg.com/json-stable-stringify-without-jsonify/-/json-stable-stringify-without-jsonify-1.0.1.tgz#9db7b59496ad3f3cfef30a75142d2d930ad72651"
   integrity sha1-nbe1lJatPzz+8wp1FC0tkwrXJlE=
 
-json5@2.2.1, json5@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/json5/-/json5-2.2.1.tgz#655d50ed1e6f95ad1a3caababd2b0efda10b395c"
-  integrity sha512-1hqLFMSrGHRHxav9q9gNjJ5EXznIxGVO09xQRrwplcS8qs28pZ8s8hupZAmqDwZUmVZ2Qb2jnyPOWcDH8m8dlA==
+json5@2.2.2, json5@^2.2.1:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/json5/-/json5-2.2.2.tgz#64471c5bdcc564c18f7c1d4df2e2297f2457c5ab"
+  integrity sha512-46Tk9JiOL2z7ytNQWFLpj99RZkVgeHf87yGQKsIkaPz1qSH9UczKH1rO7K3wgRselo0tYMUNfecYpm/p1vC7tQ==
 
 json5@^1.0.1:
   version "1.0.1"
@@ -2173,10 +2173,10 @@ safe-regex@2.1.1:
   dependencies:
     regexp-tree "~0.1.1"
 
-semver-try-require@5.0.4:
-  version "5.0.4"
-  resolved "https://registry.yarnpkg.com/semver-try-require/-/semver-try-require-5.0.4.tgz#f2cf25ffddd30e0dfdcc4c8132ad3310ac9b2810"
-  integrity sha512-Abn38ZyrV6BV+tjyf2T9b6Qx7GiVIIrkiTLHEDDeboNzAPPBAqLnbW+eRtiln7iqNGBOmQrXtQSjCLOTGK+NyA==
+semver-try-require@6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/semver-try-require/-/semver-try-require-6.0.0.tgz#10e4a25b7780062add0e1239e4f115680000b274"
+  integrity sha512-C3RwXtL5VHhGcUeH+t/Gybit9XGHutb1fX8mp2L2v6rrD1GPC9FLQuYN/RoZAedmoWKmuWWDGbfej1LpJOcJxA==
   dependencies:
     semver "^7.3.8"
 
@@ -2567,10 +2567,10 @@ vitest@*:
     vite "^3.0.0 || ^4.0.0"
     vite-node "0.26.2"
 
-watskeburt@0.8.1:
-  version "0.8.1"
-  resolved "https://registry.yarnpkg.com/watskeburt/-/watskeburt-0.8.1.tgz#5f34cae5307d2b1b61d8d6d4b2a4b6d91ca80f10"
-  integrity sha512-QpTiPIyYJMzr+HxwZSM1pZk9sfOFhycuINSC2N+SmFwA4PVA++GNxaCC8Lr9PGWGwxB+uGlpTlF9IrfiqUBPeg==
+watskeburt@0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/watskeburt/-/watskeburt-0.9.0.tgz#14504b1fb2953e7f52887b6f9b90c49b395ce33c"
+  integrity sha512-rurSBKVssJXoiHGzYINYdFPd1M6a0HYA2KNoFj+qB3AvpDOIBbytMfeZo0oTMQqLs8YBjswonGt2ri8z1p3F6A==
   dependencies:
     commander "9.4.1"
 
