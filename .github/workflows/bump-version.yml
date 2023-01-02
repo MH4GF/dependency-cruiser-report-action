@@ -1,0 +1,27 @@
+name: bump version
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        type: choice
+        description: "patch | minor | major"
+        required: true
+        default: "patch"
+        options:
+          - patch
+          - minor
+          - major
+
+jobs:
+  tagging:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - run: |
+          git config --local user.name "GitHub Actions"
+          git config --local user.email "actions@github.com"
+          NEXT_VERSION=$(npm version ${{ github.event.inputs.version }})
+          git add package.json
+          git push origin ${NEXT_VERSION}
