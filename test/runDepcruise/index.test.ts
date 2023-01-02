@@ -1,12 +1,6 @@
-import { readFileSync } from 'fs'
-import { join } from 'path'
-import { fileURLToPath } from 'url'
-
 import { describe, it, expect } from 'vitest'
 
 import { runDepcruise } from '../../src/runDepcruise'
-
-const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
 describe('runDepcruise', () => {
   it('execute depcruise command', async () => {
@@ -17,11 +11,7 @@ describe('runDepcruise', () => {
       cruiseScript: 'yarn run -s depcruise',
     }
     const result = await runDepcruise(options)
-    const expectedMmd = readFileSync(
-      join(__dirname, 'sample', '__mocks__', 'expected.mmd'),
-      'utf-8',
-    )
 
-    expect(result.mermaidText).toStrictEqual(expectedMmd)
+    expect(result.mermaidText).toMatchSnapshot()
   })
 })
