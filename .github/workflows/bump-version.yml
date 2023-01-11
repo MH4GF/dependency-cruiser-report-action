@@ -24,6 +24,5 @@ jobs:
       - run: |
           git config --local user.name "GitHub Actions"
           git config --local user.email "actions@github.com"
-          NEXT_VERSION=$(npm version ${{ github.event.inputs.version }})
-          git add package.json
-          git push origin ${NEXT_VERSION}
+          npm version ${{ github.event.inputs.version }}
+          git push --tag
