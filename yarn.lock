@@ -478,10 +478,10 @@ acorn-walk@8.2.0, acorn-walk@^8.2.0:
   resolved "https://registry.yarnpkg.com/acorn-walk/-/acorn-walk-8.2.0.tgz#741210f2e2426454508853a2f44d0ab83b7f69c1"
   integrity sha512-k+iyHEuPgSw6SbuDpGQM+06HQUa04DZ3o+F6CSzXMvvI5KMvnaEqXe+YVe555R9nn6GPt404fos4wcgpw12SDA==
 
-acorn@8.8.1, acorn@^8.5.0, acorn@^8.8.0, acorn@^8.8.1:
-  version "8.8.1"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.8.1.tgz#0a3f9cbecc4ec3bea6f0a80b66ae8dd2da250b73"
-  integrity sha512-7zFpHzhnqYKrkYdUjF1HI1bzd0VygEGX8lFk4k5zVMqHEoES+P+7TKI+EvLO9WVMJ8eekdO0aDEK044xTXwPPA==
+acorn@8.8.2, acorn@^8.5.0, acorn@^8.8.0, acorn@^8.8.1:
+  version "8.8.2"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.8.2.tgz#1b2f25db02af965399b9776b0c2c391276d37c4a"
+  integrity sha512-xjIYgE8HBrkpd/sJqOGNspf8uHG+NOHGOw6a/Urj8taM2EXfdNAH2oFcPeIFfsv3+kz/mJrS5VuMqbNLjCa2vw==
 
 aggregate-error@^3.0.0:
   version "3.1.0"
@@ -491,10 +491,10 @@ aggregate-error@^3.0.0:
     clean-stack "^2.0.0"
     indent-string "^4.0.0"
 
-ajv@8.11.2:
-  version "8.11.2"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.11.2.tgz#aecb20b50607acf2569b6382167b65a96008bb78"
-  integrity sha512-E4bfmKAhGiSTvMfL1Myyycaub+cUEU2/IvpylXkUu7CHBkBj1f/ikdzbD7YQ6FKUbixDxeYvB/xY4fvyroDlQg==
+ajv@8.12.0:
+  version "8.12.0"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.12.0.tgz#d1a0527323e22f53562c567c00991577dfbe19d1"
+  integrity sha512-sRu1kpcO9yLtYxBKvqfTeh9KzZEwO3STyX1HT+4CaDzC6HpTGYhIhPIzj9XuKU7KYDwnaeh5hcOwjy1QuJzBPA==
   dependencies:
     fast-deep-equal "^3.1.1"
     json-schema-traverse "^1.0.0"
@@ -695,7 +695,12 @@ colorette@^2.0.16, colorette@^2.0.17:
   resolved "https://registry.yarnpkg.com/colorette/-/colorette-2.0.17.tgz#5dd4c0d15e2984b7433cb4a9f2ead45063b80c47"
   integrity sha512-hJo+3Bkn0NCHybn9Tu35fIeoOKGOk5OCC32y4Hz2It+qlCO2Q3DeQ1hRn/tDDMQKRYUEzqsl7jbF6dYKjlE60g==
 
-commander@9.4.1, commander@^9.3.0:
+commander@10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-10.0.0.tgz#71797971162cd3cf65f0b9d24eb28f8d303acdf1"
+  integrity sha512-zS5PnTI22FIRM6ylNW8G4Ap0IEOyk62fhLSD0+uHRT9McRCLGpkVNvao4bjimpK/GShynyQkFFxHhwMcETmduA==
+
+commander@^9.3.0:
   version "9.4.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-9.4.1.tgz#d1dd8f2ce6faf93147295c0df13c7c21141cfbdd"
   integrity sha512-5EEkTNyHNGFPD2H+c/dXXfQZYa/scCKasxWcXJaWnNJ99pnQN9Vnmqow+p+PlFPE63Q6mThaZws1T+HxfpgtPw==
@@ -756,27 +761,28 @@ define-properties@^1.1.3, define-properties@^1.1.4:
     object-keys "^1.1.1"
 
 dependency-cruiser@*:
-  version "12.3.0"
-  resolved "https://registry.yarnpkg.com/dependency-cruiser/-/dependency-cruiser-12.3.0.tgz#a75fc3a7344d95707952cc220b9770b7f01cda49"
-  integrity sha512-izkszSM6NmVe5a/Y5IZSbMEFKAyF4XlrmTJXUcjQS92yBIk65qx2bUlKdlCEzFND9U+BMu80JGljh4NYLDRNVQ==
+  version "12.7.0"
+  resolved "https://registry.yarnpkg.com/dependency-cruiser/-/dependency-cruiser-12.7.0.tgz#c20a41fd6cdf7c0b31e18220134cb35dc8d40706"
+  integrity sha512-5oq4nhJ2h/bRM8LgB+UfEUEmDtpdBVfuc9bEvkd7w9HaMfbRdcthU0Ek2NOrVNpU1Eiu6U5Y8q1CsDJqD/yO1g==
   dependencies:
-    acorn "8.8.1"
+    acorn "8.8.2"
     acorn-jsx "5.3.2"
     acorn-jsx-walk "2.0.0"
     acorn-loose "8.3.0"
     acorn-walk "8.2.0"
-    ajv "8.11.2"
+    ajv "8.12.0"
     chalk "^4.1.2"
-    commander "9.4.1"
+    commander "10.0.0"
     enhanced-resolve "5.12.0"
     figures "^3.2.0"
     get-stream "^6.0.1"
     glob "7.2.0"
     handlebars "4.7.7"
+    ignore "5.2.4"
     indent-string "^4.0.0"
     interpret "^3.1.0"
     is-installed-globally "0.4.0"
-    json5 "2.2.2"
+    json5 "2.2.3"
     lodash "4.17.21"
     prompts "2.4.2"
     rechoir "^0.8.0"
@@ -785,7 +791,7 @@ dependency-cruiser@*:
     semver-try-require "6.0.0"
     teamcity-service-messages "0.1.14"
     tsconfig-paths-webpack-plugin "4.0.0"
-    watskeburt "0.9.0"
+    watskeburt "0.9.1"
     wrap-ansi "^7.0.0"
 
 deprecation@^2.0.0, deprecation@^2.3.1:
@@ -1374,10 +1380,10 @@ husky@*:
   resolved "https://registry.yarnpkg.com/husky/-/husky-8.0.1.tgz#511cb3e57de3e3190514ae49ed50f6bc3f50b3e9"
   integrity sha512-xs7/chUH/CKdOCs7Zy0Aev9e/dKOMZf3K1Az1nar3tzlv0jfqnYtu235bstsWTmXOR0EfINrPa97yy4Lz6RiKw==
 
-ignore@^5.2.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.2.0.tgz#6d3bac8fa7fe0d45d9f9be7bac2fc279577e345a"
-  integrity sha512-CmxgYGiEPCLhfLnpPp1MoRmifwEIOgjcHXxOBjv7mY96c+eWScsOP9c112ZyLdWHi0FxHjI+4uVhKYp/gcdRmQ==
+ignore@5.2.4, ignore@^5.2.0:
+  version "5.2.4"
+  resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.2.4.tgz#a291c0c6178ff1b960befe47fcdec301674a6324"
+  integrity sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==
 
 import-fresh@^3.0.0, import-fresh@^3.2.1:
   version "3.3.0"
@@ -1600,10 +1606,10 @@ json-stable-stringify-without-jsonify@^1.0.1:
   resolved "https://registry.yarnpkg.com/json-stable-stringify-without-jsonify/-/json-stable-stringify-without-jsonify-1.0.1.tgz#9db7b59496ad3f3cfef30a75142d2d930ad72651"
   integrity sha1-nbe1lJatPzz+8wp1FC0tkwrXJlE=
 
-json5@2.2.2, json5@^2.2.1:
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/json5/-/json5-2.2.2.tgz#64471c5bdcc564c18f7c1d4df2e2297f2457c5ab"
-  integrity sha512-46Tk9JiOL2z7ytNQWFLpj99RZkVgeHf87yGQKsIkaPz1qSH9UczKH1rO7K3wgRselo0tYMUNfecYpm/p1vC7tQ==
+json5@2.2.3, json5@^2.2.1:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/json5/-/json5-2.2.3.tgz#78cd6f1a19bdc12b73db5ad0c61efd66c1e29283"
+  integrity sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==
 
 json5@^1.0.1:
   version "1.0.2"
@@ -2567,12 +2573,12 @@ vitest@*:
     vite "^3.0.0 || ^4.0.0"
     vite-node "0.26.2"
 
-watskeburt@0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/watskeburt/-/watskeburt-0.9.0.tgz#14504b1fb2953e7f52887b6f9b90c49b395ce33c"
-  integrity sha512-rurSBKVssJXoiHGzYINYdFPd1M6a0HYA2KNoFj+qB3AvpDOIBbytMfeZo0oTMQqLs8YBjswonGt2ri8z1p3F6A==
+watskeburt@0.9.1:
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/watskeburt/-/watskeburt-0.9.1.tgz#10bcc56ee71e6805ab6926a1ea1ed0d05cc90ca7"
+  integrity sha512-2PnMWbtOLS1/9ibx5zy02Sok15r7ZutglXl56caBEkV8ejeUdAnZcPyku3enF579MsAvE2MjtBno7CJErJjxPw==
   dependencies:
-    commander "9.4.1"
+    commander "10.0.0"
 
 webidl-conversions@^3.0.0:
   version "3.0.1"
