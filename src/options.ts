@@ -1,21 +1,10 @@
-import { existsSync } from 'fs'
-
 import * as core from '@actions/core'
 import { context } from '@actions/github'
 
 import { filterSupportedFiles } from './options/filterSupportedFiles'
 import { formatFocusOption } from './options/formatFocusOption'
+import { getConfigFilePath } from './options/getConfigFilePath'
 import { Options, validateOptions } from './options/validateOptions'
-
-const mayBeConfigFilePath = () => {
-  const path = '.dependency-cruiser.js'
-  return existsSync(path) ? path : ''
-}
-
-const getConfigFilePath = () => {
-  const depcruiseConfigFile = core.getInput('config_file', { required: false })
-  return depcruiseConfigFile !== '' ? depcruiseConfigFile : mayBeConfigFilePath()
-}
 
 const getSha = (): string =>
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access

@@ -14,3 +14,6 @@ jobs:
       - uses: ./
         with:
           working-directory: test/sample
+      - uses: ./
+        with:
+          working-directory: test/esm-sample

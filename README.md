@@ -42,7 +42,7 @@ jobs:
 
 ### Specifying config file
 
-This action automatically detects dependency-cruiser config file ( `.dependency-cruiser.js` ), but you can specify your own rules file.
+This action automatically detects dependency-cruiser config file ( `.dependency-cruiser.js`, etc.), but you can specify your own rules file.
 
 ```yaml
 with:
