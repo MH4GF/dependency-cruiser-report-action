@@ -19192,9 +19192,17 @@ var external_fs_ = __nccwpck_require__(7147);
 ;// CONCATENATED MODULE: ./src/options/getConfigFilePath.ts
 
 
+const RULES_FILE_NAME_SEARCH_ARRAY = [
+    '.dependency-cruiser.json',
+    '.dependency-cruiser.js',
+    '.dependency-cruiser.cjs',
+];
 const mayBeConfigFilePath = () => {
-    const path = '.dependency-cruiser.js';
-    return (0,external_fs_.existsSync)(path) ? path : '';
+    for (const filePath of RULES_FILE_NAME_SEARCH_ARRAY) {
+        if ((0,external_fs_.existsSync)(filePath))
+            return filePath;
+    }
+    return '';
 };
 const getConfigFilePath = () => {
     const depcruiseConfigFile = core.getInput('config_file', { required: false });
