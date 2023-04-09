@@ -1,3 +1,7 @@
-export const main = () => {
-  console.log('Hello, world!')
+const main = () => {
+  console.log('Hello, world!');
 }
+
+module.exports = {
+  main,
+};
