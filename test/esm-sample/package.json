@@ -1,0 +1,11 @@
+{
+  "name": "esm-sample",
+  "type": "module",
+  "version": "0.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "dependency-cruiser": "11.17.0"
+  }
+}
