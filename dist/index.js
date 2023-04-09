@@ -19155,8 +19155,6 @@ const installDependencies = async () => {
     return await (0,exec.exec)('yarn install');
 };
 
-// EXTERNAL MODULE: external "fs"
-var external_fs_ = __nccwpck_require__(7147);
 ;// CONCATENATED MODULE: ./src/options/filterSupportedFiles.ts
 // @see: https://github.com/sverweij/dependency-cruiser/blob/0b07cb71e059b5cea7856643d89fcea91b8df717/src/extract/transpile/meta.js#L14
 const SUPPORTED_EXTENSIONS = [
@@ -19187,6 +19185,20 @@ const filterSupportedFiles = (files) => {
 ;// CONCATENATED MODULE: ./src/options/formatFocusOption.ts
 const formatFocusOption = (files) => {
     return `"${files.map((file) => `^${file}`).join('|')}"`;
+};
+
+// EXTERNAL MODULE: external "fs"
+var external_fs_ = __nccwpck_require__(7147);
+;// CONCATENATED MODULE: ./src/options/getConfigFilePath.ts
+
+
+const mayBeConfigFilePath = () => {
+    const path = '.dependency-cruiser.js';
+    return (0,external_fs_.existsSync)(path) ? path : '';
+};
+const getConfigFilePath = () => {
+    const depcruiseConfigFile = core.getInput('config_file', { required: false });
+    return depcruiseConfigFile !== '' ? depcruiseConfigFile : mayBeConfigFilePath();
 };
 
 // EXTERNAL MODULE: ./node_modules/yup/lib/index.js
@@ -19226,14 +19238,6 @@ const validateOptions = async (params) => {
 
 
 
-const mayBeConfigFilePath = () => {
-    const path = '.dependency-cruiser.js';
-    return (0,external_fs_.existsSync)(path) ? path : '';
-};
-const getConfigFilePath = () => {
-    const depcruiseConfigFile = core.getInput('config_file', { required: false });
-    return depcruiseConfigFile !== '' ? depcruiseConfigFile : mayBeConfigFilePath();
-};
 const getSha = () => { var _a, _b, _c; 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access
 return (_a = github.context.payload.after) !== null && _a !== void 0 ? _a : (_c = (_b = github.context.payload.pull_request) === null || _b === void 0 ? void 0 : _b.head) === null || _c === void 0 ? void 0 : _c.sha; };
