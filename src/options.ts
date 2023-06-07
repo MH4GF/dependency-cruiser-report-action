@@ -4,7 +4,8 @@ import { context } from '@actions/github'
 import { filterSupportedFiles } from './options/filterSupportedFiles'
 import { formatFocusOption } from './options/formatFocusOption'
 import { getConfigFilePath } from './options/getConfigFilePath'
-import { Options, validateOptions } from './options/validateOptions'
+import type { Options } from './options/validateOptions'
+import { validateOptions } from './options/validateOptions'
 
 const getSha = (): string =>
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access

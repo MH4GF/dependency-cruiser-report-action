@@ -5,9 +5,9 @@ on:
     inputs:
       version:
         type: choice
-        description: "patch | minor | major"
+        description: 'patch | minor | major'
         required: true
-        default: "patch"
+        default: 'patch'
         options:
           - patch
           - minor

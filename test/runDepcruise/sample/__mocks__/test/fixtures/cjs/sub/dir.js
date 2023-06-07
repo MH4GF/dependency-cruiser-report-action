@@ -1,4 +1,4 @@
-import { depindir } from "./depindir"
-const path = require("path")
+import { depindir } from './depindir'
+const path = require('path')
 
 export const dir = depindir

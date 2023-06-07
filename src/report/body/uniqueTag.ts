@@ -1,6 +1,6 @@
 import { createHash } from 'crypto'
 
-type Context = {
+interface Context {
   owner: string
   repo: string
   issueNumber: number

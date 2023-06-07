@@ -3,28 +3,35 @@
   "version": "2.1.0",
   "private": true,
   "description": "visualize dependenices of changed files in each pull request.",
-  "main": "lib/main.js",
-  "scripts": {
-    "build": "tsc",
-    "format": "prettier --write '**/*.ts'",
-    "lint": "eslint src/**/*.ts",
-    "package": "ncc build src/main.ts --source-map --license licenses.txt",
-    "test": "vitest",
-    "coverage": "vitest run --coverage",
-    "all": "npm run build && npm run format && npm run lint && npm run package && npm test",
-    "prepare": "husky install"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MH4GF/dependency-cruiser-report-action.git"
-  },
   "keywords": [
     "actions",
     "node",
     "setup"
   ],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MH4GF/dependency-cruiser-report-action.git"
+  },
   "license": "MIT",
+  "author": "",
+  "main": "lib/main.js",
+  "scripts": {
+    "all": "npm run build && npm run format && npm run lint && npm run package && npm test",
+    "build": "tsc",
+    "coverage": "vitest run --coverage",
+    "format": "prettier --write .",
+    "lint": "eslint src",
+    "package": "ncc build src/main.ts --source-map --license licenses.txt",
+    "prepare": "husky install",
+    "test": "vitest"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "yarn lint",
+      "yarn format"
+    ]
+  },
+  "prettier": "@mh4gf/prettier-config",
   "dependencies": {
     "@actions/core": "*",
     "@actions/exec": "*",
@@ -32,33 +39,17 @@
     "yup": "*"
   },
   "devDependencies": {
+    "@mh4gf/eslint-config": "0.5.0",
+    "@mh4gf/prettier-config": "^0.2.0",
     "@types/node": "*",
-    "@typescript-eslint/eslint-plugin": "*",
-    "@typescript-eslint/parser": "*",
     "@vercel/ncc": "*",
     "dependency-cruiser": "*",
     "eslint": "*",
-    "eslint-config-prettier": "*",
-    "eslint-plugin-import": "*",
-    "eslint-plugin-unused-imports": "*",
     "husky": "*",
     "js-yaml": "*",
     "lint-staged": "*",
     "prettier": "*",
     "typescript": "*",
     "vitest": "*"
-  },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true,
-    "tabWidth": 2,
-    "trailingComma": "all",
-    "printWidth": 100
-  },
-  "lint-staged": {
-    "*.ts": [
-      "yarn lint",
-      "yarn format"
-    ]
   }
 }

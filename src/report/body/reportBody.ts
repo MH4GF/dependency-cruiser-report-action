@@ -1,6 +1,6 @@
 import { uniqueTag } from './uniqueTag'
 
-type Params = {
+interface Params {
   owner: string
   repo: string
   issueNumber: number

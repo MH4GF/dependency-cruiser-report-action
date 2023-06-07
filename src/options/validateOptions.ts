@@ -1,4 +1,5 @@
-import { InferType, number, object, string, ValidationError } from 'yup'
+import type { InferType } from 'yup'
+import { number, object, string, ValidationError } from 'yup'
 
 import { ActionError } from '../ActionError'
 

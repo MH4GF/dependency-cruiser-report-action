@@ -16,4 +16,4 @@ changelog:
         - refactoring
     - title: Other Changes
       labels:
-        - "*"
+        - '*'

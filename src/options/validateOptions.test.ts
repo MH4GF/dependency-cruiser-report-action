@@ -3,7 +3,8 @@ import { ValidationError } from 'yup'
 
 import { ActionError } from '../ActionError'
 
-import { Options, validateOptions } from './validateOptions'
+import type { Options } from './validateOptions'
+import { validateOptions } from './validateOptions'
 
 const baseOptions: Options = {
   token: 'x123456',
