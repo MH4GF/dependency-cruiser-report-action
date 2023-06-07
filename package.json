@@ -20,7 +20,7 @@
     "build": "tsc",
     "coverage": "vitest run --coverage",
     "format": "prettier --write .",
-    "lint": "eslint src/**/*.ts",
+    "lint": "eslint src",
     "package": "ncc build src/main.ts --source-map --license licenses.txt",
     "prepare": "husky install",
     "test": "vitest"

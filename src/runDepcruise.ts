@@ -1,13 +1,13 @@
 import { exec } from '@actions/exec'
 
-type Options = {
+interface Options {
   targetFiles: string
   focus: string
   depcruiseConfigFilePath: string
   cruiseScript: string
 }
 
-type DepcruiseResult = {
+interface DepcruiseResult {
   cmdText: string
   mermaidText: string
 }
