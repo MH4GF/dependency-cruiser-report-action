@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "@mh4gf/eslint-config": "0.5.0",
+    "@mh4gf/prettier-config": "^0.2.0",
     "@types/node": "*",
     "@vercel/ncc": "*",
     "dependency-cruiser": "*",
@@ -44,13 +45,7 @@
     "typescript": "*",
     "vitest": "*"
   },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true,
-    "tabWidth": 2,
-    "trailingComma": "all",
-    "printWidth": 100
-  },
+  "prettier": "@mh4gf/prettier-config",
   "lint-staged": {
     "*.ts": [
       "yarn lint",
