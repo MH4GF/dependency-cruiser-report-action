@@ -1,5 +1,5 @@
-import { Options } from '../options'
-import { Octokit } from '../type'
+import type { Options } from '../options'
+import type { Octokit } from '../type'
 
 import { reportBody } from './body/reportBody'
 import { fetchPreviousReport } from './fetchPreviousReport'
