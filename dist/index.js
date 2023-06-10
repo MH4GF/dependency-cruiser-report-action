@@ -13609,7 +13609,13 @@ const exitWithMessage = (error) => {
 var exec = __nccwpck_require__(1514);
 ;// CONCATENATED MODULE: ./src/installDependencies.ts
 
+const installPackageManager = async (packageManager) => {
+    if (packageManager === 'pnpm') {
+        await (0,exec.exec)('npm install -g pnpm');
+    }
+};
 const installDependencies = async (packageManager) => {
+    await installPackageManager(packageManager);
     return await (0,exec.exec)(`${packageManager} install`);
 };
 
