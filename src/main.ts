@@ -11,7 +11,7 @@ export const run = async (): Promise<void> => {
   const options = await getOptions()
   const octokit = getOctokit(options.token)
 
-  await installDependencies()
+  await installDependencies(options.packageManager)
   const { mermaidText, cmdText } = await runDepcruise(options)
   await generateReport(octokit, options, mermaidText, cmdText)
 }

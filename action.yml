@@ -17,6 +17,10 @@ inputs:
     required: false
     description: 'running actions in another directory'
     default: '.'
+  package-manager:
+    required: false
+    description: 'package manager that this action uses for dependency resolution'
+    default: 'yarn'
 runs:
   using: composite
   steps:
@@ -35,3 +39,4 @@ runs:
         INPUT_CONFIG_FILE: ${{ inputs.config-file }}
         INPUT_CRUISE_SCRIPT: ${{ inputs.cruise-script }}
         INPUT_WORKING_DIRECTORY: ${{ inputs.working-directory }}
+        INPUT_PACKAGE_MANAGER: ${{ inputs.package-manager }}

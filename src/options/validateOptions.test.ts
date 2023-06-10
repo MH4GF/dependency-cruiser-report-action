@@ -17,6 +17,7 @@ const baseOptions: Options = {
   depcruiseConfigFilePath: `test/runDepcruise/.dependency-cruiser.js`,
   cruiseScript: 'yarn run -s depcruise',
   workingDirectory: 'test/runDepcruise',
+  packageManager: 'yarn',
 }
 
 describe('validateOptions', () => {
@@ -38,6 +39,15 @@ describe('validateOptions', () => {
     } as unknown as Options
     await expect(validateOptions(options)).rejects.toThrowError(
       new ValidationError('2 errors occurred'),
+    )
+  })
+  it('throw ValidationError when packageManager field is invalid', async () => {
+    const options = {
+      ...baseOptions,
+      packageManager: 'invalid',
+    }
+    await expect(validateOptions(options)).rejects.toThrowError(
+      new ValidationError('inputs.package_manager must be one of: yarn, npm, pnpm'),
     )
   })
 })

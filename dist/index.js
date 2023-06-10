@@ -13609,8 +13609,8 @@ const exitWithMessage = (error) => {
 var exec = __nccwpck_require__(1514);
 ;// CONCATENATED MODULE: ./src/installDependencies.ts
 
-const installDependencies = async () => {
-    return await (0,exec.exec)('yarn install');
+const installDependencies = async (packageManager) => {
+    return await (0,exec.exec)(`${packageManager} install`);
 };
 
 ;// CONCATENATED MODULE: ./src/options/filterSupportedFiles.ts
@@ -13672,8 +13672,10 @@ var yup = __nccwpck_require__(8281);
 ;// CONCATENATED MODULE: ./src/options/validateOptions.ts
 
 
+const SUPPORTED_PACKAGE_MANAGERS = ['yarn', 'npm', 'pnpm'];
 const MESSAGE_REQUIRED_ISSUE_NUMBER = 'pull_request event payload is not found.';
 const MESSAGE_REQUIRED_TARGET_FILES = 'No target files were found';
+const MESSAGE_INVALID_PACKAGE_MANAGER = `inputs.package_manager must be one of: ${SUPPORTED_PACKAGE_MANAGERS.join(', ')}`;
 const WARNING_MESSAGES = [MESSAGE_REQUIRED_TARGET_FILES];
 const optionsSchema = (0,yup/* object */.Ry)({
     token: (0,yup/* string */.Z_)().required(),
@@ -13686,6 +13688,9 @@ const optionsSchema = (0,yup/* object */.Ry)({
     depcruiseConfigFilePath: (0,yup/* string */.Z_)().required(),
     cruiseScript: (0,yup/* string */.Z_)().required(),
     workingDirectory: (0,yup/* string */.Z_)().required(),
+    packageManager: (0,yup/* string */.Z_)()
+        .required()
+        .oneOf(SUPPORTED_PACKAGE_MANAGERS, MESSAGE_INVALID_PACKAGE_MANAGER),
 });
 const validateOptions = async (params) => {
     const options = await optionsSchema.validate(params, { abortEarly: false }).catch((e) => {
@@ -13714,6 +13719,7 @@ const getOptions = () => {
     const targetFiles = filterSupportedFiles(changedFiles);
     const focus = formatFocusOption(targetFiles);
     const cruiseScript = core.getInput('cruise_script', { required: true });
+    const packageManager = core.getInput('package_manager', { required: false });
     const depcruiseConfigFilePath = getConfigFilePath();
     const pr = github.context.payload.pull_request;
     const options = {
@@ -13727,6 +13733,7 @@ const getOptions = () => {
         focus,
         depcruiseConfigFilePath,
         cruiseScript,
+        packageManager,
     };
     return validateOptions(options);
 };
@@ -13860,7 +13867,7 @@ const runDepcruise = async ({ targetFiles, focus, depcruiseConfigFilePath, cruis
 const run = async () => {
     const options = await getOptions();
     const octokit = (0,github.getOctokit)(options.token);
-    await installDependencies();
+    await installDependencies(options.packageManager);
     const { mermaidText, cmdText } = await runDepcruise(options);
     await generateReport(octokit, options, mermaidText, cmdText);
 };

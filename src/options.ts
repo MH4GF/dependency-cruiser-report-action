@@ -18,6 +18,7 @@ export const getOptions = (): Promise<Options> => {
   const targetFiles = filterSupportedFiles(changedFiles)
   const focus = formatFocusOption(targetFiles)
   const cruiseScript = core.getInput('cruise_script', { required: true })
+  const packageManager = core.getInput('package_manager', { required: false })
   const depcruiseConfigFilePath = getConfigFilePath()
   const pr = context.payload.pull_request
   const options = {
@@ -31,6 +32,7 @@ export const getOptions = (): Promise<Options> => {
     focus,
     depcruiseConfigFilePath,
     cruiseScript,
+    packageManager,
   }
 
   return validateOptions(options)
