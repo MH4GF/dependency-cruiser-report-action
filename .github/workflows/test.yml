@@ -17,3 +17,7 @@ jobs:
       - uses: ./
         with:
           working-directory: test/esm-sample
+      - uses: ./
+        with:
+          working-directory: test/pnpm-workspace
+          package-manager: pnpm
