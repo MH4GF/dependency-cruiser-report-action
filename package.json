@@ -43,7 +43,7 @@
     "@mh4gf/prettier-config": "^0.2.0",
     "@types/node": "^20.2.5",
     "@vercel/ncc": "^0.36.1",
-    "dependency-cruiser": "12.11.1",
+    "dependency-cruiser": "13.0.3",
     "eslint": "^8.42.0",
     "husky": "^8.0.3",
     "js-yaml": "^4.1.0",
