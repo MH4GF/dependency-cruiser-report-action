@@ -65,11 +65,27 @@ So you don't need to specify additional flags - action will handle them automati
  --output-type mermaid --config ${SPECIFIED_CONFIG_FILE} ${DIFF_FILE_A DIFF_FILE_B ...etc}
 ```
 
-But you can use different package manager, yarn for example:
+But you can use additional options:
 
 ```yaml
 with:
-  cruise-script: npm run depcruise
+  cruise-script: yarn run -s depcruise --exclude "^lib"
+```
+
+### Usage with `npm` or `pnpm`
+
+This action will automatically download dependencies (default is yarn), but you can also specify `npm` or `pnpm`:
+
+```yaml
+with:
+  package-manager: npm
+```
+
+or 
+
+```yaml
+with:
+  package-manager: pnpm
 ```
 
 ### Customizing working directory
