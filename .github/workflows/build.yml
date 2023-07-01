@@ -1,5 +1,5 @@
 name: 'build'
-on: # rebuild any PRs and main branch changes
+on:
   pull_request:
   push:
     branches:
@@ -7,20 +7,13 @@ on: # rebuild any PRs and main branch changes
       - 'releases/*'
 
 jobs:
-  build: # make sure build/ci work properly
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
-      - name: Set Node.js 16.x
-        uses: actions/setup-node@v3.6.0
+      - uses: MH4GF/shared-config/.github/composite-actions/setup-pnpm@main
         with:
-          node-version: 16.x
-          cache: yarn
-
-      - name: Install dependencies
-        run: yarn
-
-      - name: run all
-        run: |
-          yarn all
+          node-version-file: .node-version
+          pnpm-version: '8.6.5'
+      - run: pnpm i
+      - run: pnpm run all
