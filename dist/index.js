@@ -13641,7 +13641,7 @@ const SUPPORTED_EXTENSIONS = [
 const filterSupportedFiles = (files) => {
     const filtered = files.filter((file) => {
         const ext = file.split('.').slice(-1)[0];
-        return SUPPORTED_EXTENSIONS.includes(`.${ext}`);
+        return SUPPORTED_EXTENSIONS.includes(`.${ext !== null && ext !== void 0 ? ext : ''}`);
     });
     return filtered;
 };
@@ -13717,7 +13717,7 @@ const validateOptions = async (params) => {
 
 const getSha = () => { var _a, _b, _c; 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access
-return (_a = github.context.payload.after) !== null && _a !== void 0 ? _a : (_c = (_b = github.context.payload.pull_request) === null || _b === void 0 ? void 0 : _b.head) === null || _c === void 0 ? void 0 : _c.sha; };
+return (_a = github.context.payload.after) !== null && _a !== void 0 ? _a : (_c = (_b = github.context.payload.pull_request) === null || _b === void 0 ? void 0 : _b['head']) === null || _c === void 0 ? void 0 : _c.sha; };
 const getOptions = () => {
     const token = core.getInput('github_token', { required: true });
     const workingDirectory = core.getInput('working_directory', { required: true });
