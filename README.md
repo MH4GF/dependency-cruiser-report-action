@@ -81,7 +81,7 @@ with:
   package-manager: npm
 ```
 
-or 
+or
 
 ```yaml
 with:
