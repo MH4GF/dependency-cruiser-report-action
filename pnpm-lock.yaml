@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -19,12 +19,12 @@ dependencies:
     version: 1.2.0
 
 devDependencies:
+  '@mh4gf/configs':
+    specifier: ^0.2.2
+    version: 0.2.2(@tsconfig/strictest@2.0.1)(prettier@2.8.8)
   '@mh4gf/eslint-config':
     specifier: 0.5.0
     version: 0.5.0(eslint@8.42.0)(typescript@5.1.3)
-  '@mh4gf/prettier-config':
-    specifier: ^0.2.0
-    version: 0.2.0(prettier@2.8.8)
   '@types/node':
     specifier: ^20.2.5
     version: 20.2.5
@@ -455,6 +455,20 @@ packages:
       }
     dev: true
 
+  /@mh4gf/configs@0.2.2(@tsconfig/strictest@2.0.1)(prettier@2.8.8):
+    resolution:
+      {
+        integrity: sha512-wQNG5fzW2xixWaFglz4lmlaOFZnE7Yh0VNKmjyrRDD/ki/1GXncmbZ+8rox4NE5Z8zaBKZeC72WnnWF7Xm8Uiw==,
+      }
+    peerDependencies:
+      '@tsconfig/strictest': ^2
+    dependencies:
+      '@mh4gf/prettier-config': 0.2.1(prettier@2.8.8)
+      '@tsconfig/strictest': 2.0.1
+    transitivePeerDependencies:
+      - prettier
+    dev: true
+
   /@mh4gf/eslint-config@0.5.0(eslint@8.42.0)(typescript@5.1.3):
     resolution:
       {
@@ -476,10 +490,10 @@ packages:
       - typescript
     dev: true
 
-  /@mh4gf/prettier-config@0.2.0(prettier@2.8.8):
+  /@mh4gf/prettier-config@0.2.1(prettier@2.8.8):
     resolution:
       {
-        integrity: sha512-e8UGyUZfnELnEnKoop1XyBR4EP4KpLjEOJ8bnNy35xs5UcyZZQ3uwVJH2pP8NsjWzc5QHCLUJhkeeiEuE2K4mA==,
+        integrity: sha512-5moWCPXMvADWXlmzAPGLGiaWLdoDP3lyrI1JnVYgcu1Vhgh/b72fg5LAWlJ3R6ZqDr4bHqzc4WZ/raQEzZFMHw==,
       }
     peerDependencies:
       prettier: ^2
@@ -649,6 +663,13 @@ packages:
       open: 9.1.0
       picocolors: 1.0.0
       tslib: 2.5.3
+    dev: true
+
+  /@tsconfig/strictest@2.0.1:
+    resolution:
+      {
+        integrity: sha512-7JHHCbyCsGUxLd0pDbp24yz3zjxw2t673W5oAP6HCEdr/UUhaRhYd3SSnUsGCk+VnPVJVA4mXROzbhI+nyIk+w==,
+      }
     dev: true
 
   /@types/chai-subset@1.3.3:
