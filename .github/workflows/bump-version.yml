@@ -5,13 +5,17 @@ on:
     inputs:
       version:
         type: choice
-        description: 'patch | minor | major'
+        description: 'major | minor | patch | premajor | preminor | prepatch | prerelease'
         required: true
         default: 'patch'
         options:
-          - patch
-          - minor
           - major
+          - minor
+          - patch
+          - premajor
+          - preminor
+          - prepatch
+          - prerelease
 
 jobs:
   tagging:
