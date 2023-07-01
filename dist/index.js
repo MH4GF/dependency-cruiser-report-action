@@ -13641,7 +13641,7 @@ const SUPPORTED_EXTENSIONS = [
 const filterSupportedFiles = (files) => {
     const filtered = files.filter((file) => {
         const ext = file.split('.').slice(-1)[0];
-        return SUPPORTED_EXTENSIONS.includes(`.${ext}`);
+        return SUPPORTED_EXTENSIONS.includes(`.${ext !== null && ext !== void 0 ? ext : ''}`);
     });
     return filtered;
 };

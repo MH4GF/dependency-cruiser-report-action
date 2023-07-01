@@ -1,22 +1,19 @@
 {
+  "extends": "@mh4gf/configs/tsconfig/base.json",
   "compilerOptions": {
     "target": "ES2018",
     "module": "ESNext",
     "outDir": "./lib",
     "moduleResolution": "Node",
     "lib": ["ESNext", "ESNext.AsyncIterable", "DOM"],
-    "esModuleInterop": true,
     "allowJs": true,
     "sourceMap": true,
-    "strict": true,
     "noEmit": true,
     "experimentalDecorators": true,
     "baseUrl": ".",
     "paths": {
       "~/*": ["./*"]
     },
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
     "incremental": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
