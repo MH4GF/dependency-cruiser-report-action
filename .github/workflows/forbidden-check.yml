@@ -16,4 +16,4 @@ jobs:
           node-version-file: .node-version
           pnpm-version: '8.6.5'
       - run: pnpm i
-      - run: pnpm run -s depcruise src --config --output-type markdown >> $GITHUB_STEP_SUMMARY
+      - run: pnpm exec depcruise src --config --output-type markdown >> $GITHUB_STEP_SUMMARY
