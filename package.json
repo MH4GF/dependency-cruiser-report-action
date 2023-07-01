@@ -27,8 +27,8 @@
   },
   "lint-staged": {
     "*.ts": [
-      "yarn lint",
-      "yarn format"
+      "pnpm run lint",
+      "pnpm run format"
     ]
   },
   "prettier": "@mh4gf/prettier-config",
