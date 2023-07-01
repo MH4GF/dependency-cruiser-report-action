@@ -29,7 +29,7 @@
   },
   "lint-staged": {
     "*.ts": [
-      "pnpm run lint",
+      "pnpm run lint:eslint",
       "pnpm run format"
     ]
   },
