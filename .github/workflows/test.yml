@@ -11,6 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ./
+        with:
+          package-manager: pnpm
       - uses: ./
         with:
           working-directory: test/sample
