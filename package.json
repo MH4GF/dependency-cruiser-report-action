@@ -44,7 +44,7 @@
     "@mh4gf/configs": "^0.2.2",
     "@mh4gf/eslint-config": "0.5.0",
     "@tsconfig/strictest": "^2.0.1",
-    "@types/node": "^20.3.3",
+    "@types/node": "^20.5.7",
     "@vercel/ncc": "^0.36.1",
     "dependency-cruiser": "13.0.4",
     "eslint": "^8.42.0",
