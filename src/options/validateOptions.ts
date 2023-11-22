@@ -3,7 +3,7 @@ import { number, object, string, ValidationError } from 'yup'
 
 import { ActionError } from '../ActionError'
 
-const SUPPORTED_PACKAGE_MANAGERS = ['yarn', 'npm', 'pnpm'] as const
+const SUPPORTED_PACKAGE_MANAGERS = ['yarn', 'npm', 'pnpm', 'bun'] as const
 
 const MESSAGE_REQUIRED_ISSUE_NUMBER = 'pull_request event payload is not found.'
 const MESSAGE_REQUIRED_TARGET_FILES = 'No target files were found'
