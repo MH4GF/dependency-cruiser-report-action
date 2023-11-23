@@ -20,8 +20,8 @@ dependencies:
 
 devDependencies:
   '@mh4gf/configs':
-    specifier: ^0.2.2
-    version: 0.2.2(@tsconfig/strictest@2.0.1)(prettier@2.8.8)
+    specifier: ^0.3.0
+    version: 0.3.0(prettier@2.8.8)
   '@mh4gf/eslint-config':
     specifier: 0.5.0
     version: 0.5.0(eslint@8.42.0)(typescript@5.1.6)
@@ -369,12 +369,11 @@ packages:
     resolution: {integrity: sha512-eF2rxCRulEKXHTRiDrDy6erMYWqNw4LPdQ8UQA4huuxaQsVeRPFl2oM8oDGxMFhJUWZf9McpLtJasDDZb/Bpeg==}
     dev: true
 
-  /@mh4gf/configs@0.2.2(@tsconfig/strictest@2.0.1)(prettier@2.8.8):
-    resolution: {integrity: sha512-wQNG5fzW2xixWaFglz4lmlaOFZnE7Yh0VNKmjyrRDD/ki/1GXncmbZ+8rox4NE5Z8zaBKZeC72WnnWF7Xm8Uiw==}
-    peerDependencies:
-      '@tsconfig/strictest': ^2
+  /@mh4gf/configs@0.3.0(prettier@2.8.8):
+    resolution: {integrity: sha512-pX2hCB3ij8G9XCsiK/5QodGI0nKevx60r00Yf7vZ6Kv5e10aXcEG16nVm6A8a0MC1+1gZYoEg5r2sgvjre/z4w==}
     dependencies:
       '@mh4gf/prettier-config': 0.2.1(prettier@2.8.8)
+    optionalDependencies:
       '@tsconfig/strictest': 2.0.1
     transitivePeerDependencies:
       - prettier
