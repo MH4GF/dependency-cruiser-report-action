@@ -41,20 +41,19 @@
     "yup": "^1.2.0"
   },
   "devDependencies": {
-    "@mh4gf/configs": "^0.2.2",
+    "@mh4gf/configs": "^0.3.0",
     "@mh4gf/eslint-config": "0.5.0",
     "@tsconfig/strictest": "^2.0.1",
-    "@types/node": "^20.3.3",
+    "@types/node": "^20.8.0",
     "@vercel/ncc": "^0.36.1",
     "dependency-cruiser": "13.0.4",
     "eslint": "^8.42.0",
     "husky": "^8.0.3",
     "js-yaml": "^4.1.0",
-    "lint-staged": "^13.2.2",
+    "lint-staged": "^14.0.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.8.8",
     "typescript": "^5.1.6",
     "vitest": "^0.32.0"
-  },
-  "packageManager": "pnpm@8.6.5"
+  }
 }
