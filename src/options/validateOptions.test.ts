@@ -47,7 +47,7 @@ describe('validateOptions', () => {
       packageManager: 'invalid',
     }
     await expect(validateOptions(options)).rejects.toThrowError(
-      new ValidationError('inputs.package_manager must be one of: yarn, npm, pnpm'),
+      new ValidationError('inputs.package_manager must be one of: yarn, npm, pnpm, bun'),
     )
   })
 })

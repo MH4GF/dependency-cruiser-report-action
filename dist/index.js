@@ -13613,6 +13613,9 @@ const installPackageManager = async (packageManager) => {
     if (packageManager === 'pnpm') {
         await (0,exec.exec)('npm install -g pnpm');
     }
+    if (packageManager === 'bun') {
+        await (0,exec.exec)('npm install -g bun');
+    }
 };
 const installDependencies = async (packageManager) => {
     await installPackageManager(packageManager);
@@ -13678,7 +13681,7 @@ var yup = __nccwpck_require__(596);
 ;// CONCATENATED MODULE: ./src/options/validateOptions.ts
 
 
-const SUPPORTED_PACKAGE_MANAGERS = ['yarn', 'npm', 'pnpm'];
+const SUPPORTED_PACKAGE_MANAGERS = ['yarn', 'npm', 'pnpm', 'bun'];
 const MESSAGE_REQUIRED_ISSUE_NUMBER = 'pull_request event payload is not found.';
 const MESSAGE_REQUIRED_TARGET_FILES = 'No target files were found';
 const MESSAGE_INVALID_PACKAGE_MANAGER = `inputs.package_manager must be one of: ${SUPPORTED_PACKAGE_MANAGERS.join(', ')}`;

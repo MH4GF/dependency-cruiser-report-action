@@ -38,7 +38,7 @@ jobs:
       - uses: MH4GF/dependency-cruiser-report-action@v2
 ```
 
-## Adbanced Usage
+## Advanced Usage
 
 ### Specifying config file
 
@@ -72,9 +72,9 @@ with:
   cruise-script: yarn run -s depcruise --exclude "^lib"
 ```
 
-### Usage with `npm` or `pnpm`
+### Usage with `bun`, `npm` or `pnpm`
 
-This action will automatically download dependencies (default is yarn), but you can also specify `npm` or `pnpm`:
+This action will automatically download dependencies (default is yarn), but you can also specify `bun`, `npm` or `pnpm`:
 
 ```yaml
 with:

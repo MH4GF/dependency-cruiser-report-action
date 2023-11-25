@@ -21,6 +21,10 @@ jobs:
           working-directory: test/esm-sample
       - uses: ./
         with:
+          working-directory: test/bun-workspace
+          package-manager: bun
+      - uses: ./
+        with:
           working-directory: test/npm-workspace
           package-manager: npm
       - uses: ./
