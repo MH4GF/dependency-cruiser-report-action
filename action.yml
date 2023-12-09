@@ -10,9 +10,8 @@ inputs:
     required: false
     description: 'read rules and options from file (e.g. .dependency-cruiser.js)'
   cruise-script:
-    required: true
+    required: false
     description: 'specify depcruise script (e.g. yarn depcruise)'
-    default: yarn run -s depcruise
   working-directory:
     required: false
     description: 'running actions in another directory'

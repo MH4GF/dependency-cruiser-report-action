@@ -15,7 +15,7 @@ const baseOptions: Options = {
   targetFiles: `test/runDepcruise/sample/__mocks__/test`,
   focus: `"^test/runDepcruise/sample/__mocks__/test/fixtures/cjs/root_one.js|^test/runDepcruise/sample/__mocks__/test/fixtures/cjs/root_two.js"`,
   depcruiseConfigFilePath: `test/runDepcruise/.dependency-cruiser.js`,
-  cruiseScript: 'yarn run -s depcruise',
+  cruiseScript: '',
   workingDirectory: 'test/runDepcruise',
   packageManager: 'yarn',
 }
@@ -49,5 +49,35 @@ describe('validateOptions', () => {
     await expect(validateOptions(options)).rejects.toThrowError(
       new ValidationError('inputs.package_manager must be one of: yarn, npm, pnpm, bun'),
     )
+  })
+
+  const cruiseScripts: Record<'packageManager' | 'result', string>[] = [
+    { packageManager: 'yarn', result: 'yarn run -s depcruise' },
+    { packageManager: 'npm', result: 'npx --no-install depcruise' },
+    { packageManager: 'pnpm', result: 'pnpm exec depcruise' },
+    { packageManager: 'bun', result: 'bun x depcruise' },
+  ]
+  describe.each(cruiseScripts)(
+    'detect default cruise script when cruiseScript is empty',
+    ({ packageManager, result }) => {
+      it(`return ${result} when packageManager is ${packageManager}`, async () => {
+        const options = {
+          ...baseOptions,
+          packageManager,
+          cruiseScript: '',
+        }
+        const resultOptions = await validateOptions(options)
+        expect(resultOptions.cruiseScript).toBe(result)
+      })
+    },
+  )
+  it("return cruiseScript when cruiseScript isn't empty", async () => {
+    const options = {
+      ...baseOptions,
+      packageManager: 'npm',
+      cruiseScript: 'npm run depcruise',
+    }
+    const resultOptions = await validateOptions(options)
+    expect(resultOptions.cruiseScript).toBe('npm run depcruise')
   })
 })

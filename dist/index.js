@@ -13686,6 +13686,22 @@ const MESSAGE_REQUIRED_ISSUE_NUMBER = 'pull_request event payload is not found.'
 const MESSAGE_REQUIRED_TARGET_FILES = 'No target files were found';
 const MESSAGE_INVALID_PACKAGE_MANAGER = `inputs.package_manager must be one of: ${SUPPORTED_PACKAGE_MANAGERS.join(', ')}`;
 const WARNING_MESSAGES = [MESSAGE_REQUIRED_TARGET_FILES];
+const packageManagerSchema = (0,yup/* string */.Z_)()
+    .required()
+    .oneOf(SUPPORTED_PACKAGE_MANAGERS, MESSAGE_INVALID_PACKAGE_MANAGER);
+const detectedCruiseScript = (_packageManager) => {
+    const packageManager = packageManagerSchema.validateSync(_packageManager);
+    switch (packageManager) {
+        case 'yarn':
+            return 'yarn run -s depcruise';
+        case 'npm':
+            return 'npx --no-install depcruise';
+        case 'pnpm':
+            return 'pnpm exec depcruise';
+        case 'bun':
+            return 'bun x depcruise';
+    }
+};
 const optionsSchema = (0,yup/* object */.Ry)({
     token: (0,yup/* string */.Z_)().required(),
     owner: (0,yup/* string */.Z_)().required(),
@@ -13695,11 +13711,17 @@ const optionsSchema = (0,yup/* object */.Ry)({
     targetFiles: (0,yup/* string */.Z_)().required(MESSAGE_REQUIRED_TARGET_FILES),
     focus: (0,yup/* string */.Z_)().required(),
     depcruiseConfigFilePath: (0,yup/* string */.Z_)().required(),
-    cruiseScript: (0,yup/* string */.Z_)().required(),
     workingDirectory: (0,yup/* string */.Z_)().required(),
-    packageManager: (0,yup/* string */.Z_)()
-        .required()
-        .oneOf(SUPPORTED_PACKAGE_MANAGERS, MESSAGE_INVALID_PACKAGE_MANAGER),
+    packageManager: packageManagerSchema,
+    cruiseScript: (0,yup/* string */.Z_)()
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+        .transform((value) => (value === '' ? undefined : value))
+        .when('packageManager', ([packageManager], schema) => {
+        return typeof packageManager === 'string'
+            ? schema.default(detectedCruiseScript(packageManager))
+            : schema;
+    })
+        .required(),
 });
 const validateOptions = async (params) => {
     const options = await optionsSchema.validate(params, { abortEarly: false }).catch((e) => {
@@ -13727,7 +13749,7 @@ const getOptions = () => {
     const changedFiles = core.getInput('target_files', { required: false }).split(' ');
     const targetFiles = filterSupportedFiles(changedFiles);
     const focus = formatFocusOption(targetFiles);
-    const cruiseScript = core.getInput('cruise_script', { required: true });
+    const cruiseScript = core.getInput('cruise_script', { required: false });
     const packageManager = core.getInput('package_manager', { required: false });
     const depcruiseConfigFilePath = getConfigFilePath();
     const pr = github.context.payload.pull_request;
