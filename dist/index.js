@@ -13749,7 +13749,7 @@ const getOptions = () => {
     const changedFiles = core.getInput('target_files', { required: false }).split(' ');
     const targetFiles = filterSupportedFiles(changedFiles);
     const focus = formatFocusOption(targetFiles);
-    const cruiseScript = core.getInput('cruise_script', { required: true });
+    const cruiseScript = core.getInput('cruise_script', { required: false });
     const packageManager = core.getInput('package_manager', { required: false });
     const depcruiseConfigFilePath = getConfigFilePath();
     const pr = github.context.payload.pull_request;
