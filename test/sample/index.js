@@ -5,3 +5,5 @@ const main = () => {
 module.exports = {
   main,
 }
+
+console.log('test')
