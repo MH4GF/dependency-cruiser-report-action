@@ -53,7 +53,7 @@ For more information on config file, please see [the official documentation](htt
 
 ### Customizing cruise script
 
-This action automatically adds necessary flags to your cruise script. The default script is:
+This action automatically adds necessary flags to your cruise script based on package manager. For example, if you are using yarn, the default script is:
 
 ```bash
 yarn run -s depcruise
