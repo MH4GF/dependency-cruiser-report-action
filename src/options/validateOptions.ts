@@ -12,6 +12,24 @@ const MESSAGE_INVALID_PACKAGE_MANAGER = `inputs.package_manager must be one of: 
 )}`
 const WARNING_MESSAGES = [MESSAGE_REQUIRED_TARGET_FILES]
 
+const packageManagerSchema = string()
+  .required()
+  .oneOf(SUPPORTED_PACKAGE_MANAGERS, MESSAGE_INVALID_PACKAGE_MANAGER)
+
+const detectedCruiseScript = (_packageManager: string): string => {
+  const packageManager = packageManagerSchema.validateSync(_packageManager)
+  switch (packageManager) {
+    case 'yarn':
+      return 'yarn run -s depcruise'
+    case 'npm':
+      return 'npx --no-install depcruise'
+    case 'pnpm':
+      return 'pnpm exec depcruise'
+    case 'bun':
+      return 'bun x depcruise'
+  }
+}
+
 const optionsSchema = object({
   token: string().required(),
   owner: string().required(),
@@ -21,11 +39,17 @@ const optionsSchema = object({
   targetFiles: string().required(MESSAGE_REQUIRED_TARGET_FILES),
   focus: string().required(),
   depcruiseConfigFilePath: string().required(),
-  cruiseScript: string().required(),
   workingDirectory: string().required(),
-  packageManager: string()
-    .required()
-    .oneOf(SUPPORTED_PACKAGE_MANAGERS, MESSAGE_INVALID_PACKAGE_MANAGER),
+  packageManager: packageManagerSchema,
+  cruiseScript: string()
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    .transform((value) => (value === '' ? undefined : value))
+    .when('packageManager', ([packageManager], schema) => {
+      return typeof packageManager === 'string'
+        ? schema.default(detectedCruiseScript(packageManager))
+        : schema
+    })
+    .required(),
 })
 
 export type Options = InferType<typeof optionsSchema>
