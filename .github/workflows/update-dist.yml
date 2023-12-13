@@ -14,10 +14,23 @@ jobs:
     timeout-minutes: 5
 
     steps:
+      - name: Set branch ref
+        uses: actions/github-script@v6
+        id: set-target-branch
+        with:
+          result-encoding: string
+          script: |
+            const pull_request = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number
+            })
+            return pull_request.data.head.ref
+
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.issue.pull_request.head.ref }}
+          ref: ${{ steps.set-target-branch.outputs.result }}
           token: ${{ secrets.MH4GF_PAT }}
 
       - uses: MH4GF/shared-config/.github/composite-actions/setup-pnpm@main
