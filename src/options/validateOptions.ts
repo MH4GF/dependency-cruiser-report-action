@@ -55,7 +55,6 @@ const optionsSchema = object({
 export type Options = InferType<typeof optionsSchema>
 
 export const validateOptions = async (params: unknown): Promise<Options> => {
-  console.log('test')
   const options = await optionsSchema.validate(params, { abortEarly: false }).catch((e) => {
     if (e instanceof ValidationError && e.errors.every((e) => WARNING_MESSAGES.includes(e))) {
       throw new ActionError(e.errors.join(', '), 'warning')

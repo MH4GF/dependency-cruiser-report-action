@@ -1,17 +1,15 @@
 name: Update Dist on PR Comment
 
 on:
-  # issue_comment:
-  #   types: [created]
-  push:
-
+  issue_comment:
+    types: [created]
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   update-dist:
-    # if: github.event.issue.pull_request && contains(github.event.comment.body, '/update-dist')
+    if: github.event.issue.pull_request && contains(github.event.comment.body, '/update-dist')
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
