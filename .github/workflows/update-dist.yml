@@ -1,0 +1,37 @@
+name: Update Dist on PR Comment
+
+on:
+  issue_comment:
+    types: [created]
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  update-dist:
+    if: github.event.issue.pull_request && contains(github.event.comment.body, '/update-dist')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.issue.pull_request.head.ref }}
+          token: ${{ secrets.MH4GF_PAT }}
+
+      - uses: MH4GF/shared-config/.github/composite-actions/setup-pnpm@main
+        with:
+          node-version-file: .node-version
+          pnpm-version: '8.6.5'
+
+      - run: pnpm package
+
+      - name: Commit and Push if there are changes
+        run: |
+          git remote set-url origin https://github-actions:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
+          git config --global user.name "${GITHUB_ACTOR}"
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          git add .
+          git diff --staged --quiet || git commit -m 'update dist'
+          git push
