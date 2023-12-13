@@ -13749,7 +13749,6 @@ const optionsSchema = (0,yup/* object */.Ry)({
         .required(),
 });
 const validateOptions = async (params) => {
-    console.log('test');
     const options = await optionsSchema.validate(params, { abortEarly: false }).catch((e) => {
         if (e instanceof yup/* ValidationError */.p8 && e.errors.every((e) => WARNING_MESSAGES.includes(e))) {
             throw new ActionError(e.errors.join(', '), 'warning');
