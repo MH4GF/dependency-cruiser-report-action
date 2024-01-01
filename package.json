@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@mh4gf/configs": "^0.3.0",
-    "@mh4gf/eslint-config": "0.5.0",
+    "@mh4gf/eslint-config": "0.5.2",
     "@tsconfig/strictest": "^2.0.1",
     "@types/node": "^20.10.1",
     "@vercel/ncc": "^0.38.1",
