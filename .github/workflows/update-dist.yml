@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: Set branch ref
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         id: set-target-branch
         with:
           result-encoding: string
