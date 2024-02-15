@@ -33,7 +33,6 @@
   "devDependencies": {
     "@biomejs/biome": "^1.5.3",
     "@mh4gf/configs": "^0.3.0",
-    "@tsconfig/strictest": "^2.0.2",
     "@types/node": "^20.10.1",
     "@vercel/ncc": "^0.38.1",
     "dependency-cruiser": "15.4.0",
