@@ -1,5 +1,5 @@
 import type { InferType } from 'yup'
-import { number, object, string, ValidationError } from 'yup'
+import { ValidationError, number, object, string } from 'yup'
 
 import { ActionError } from '../ActionError'
 
