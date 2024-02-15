@@ -42,7 +42,6 @@ const optionsSchema = object({
   workingDirectory: string().required(),
   packageManager: packageManagerSchema,
   cruiseScript: string()
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     .transform((value) => (value === '' ? undefined : value))
     .when('packageManager', ([packageManager], schema) => {
       return typeof packageManager === 'string'
