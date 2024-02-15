@@ -19,7 +19,7 @@
     "all": "npm run build && npm run format && npm run lint && npm test",
     "build": "tsc",
     "coverage": "vitest run --coverage",
-    "format": "biome format --write .",
+    "format": "biome check --apply-unsafe .",
     "lint": "run-s lint:*",
     "lint:eslint": "eslint src",
     "lint:biome": "biome ci .",
