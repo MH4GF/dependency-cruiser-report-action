@@ -35708,7 +35708,7 @@ ${params.cmdText}
 
 const fetchPreviousReport = async (octokit, options) => {
     const { owner, repo, issueNumber } = options;
-    const comments = await octokit.paginate(`GET /repos/{owner}/{repo}/issues/{issue_number}/comments`, {
+    const comments = await octokit.paginate('GET /repos/{owner}/{repo}/issues/{issue_number}/comments', {
         owner,
         repo,
         issue_number: issueNumber,
