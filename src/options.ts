@@ -7,9 +7,7 @@ import { getConfigFilePath } from './options/getConfigFilePath'
 import type { Options } from './options/validateOptions'
 import { validateOptions } from './options/validateOptions'
 
-const getSha = (): string =>
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access
-  context.payload['after'] ?? context.payload.pull_request?.['head']?.sha
+const getSha = (): string => context.payload['after'] ?? context.payload.pull_request?.['head']?.sha
 
 export const getOptions = (): Promise<Options> => {
   const token = core.getInput('github_token', { required: true })

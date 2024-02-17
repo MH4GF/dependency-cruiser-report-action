@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { ValidationError } from 'yup'
 
 import { ActionError } from '../ActionError'
@@ -12,9 +12,9 @@ const baseOptions: Options = {
   repo: 'hello-world',
   issueNumber: 1,
   sha: '8ef39983ce21a9c80821addbeb63bfe4d4068f9a',
-  targetFiles: `test/runDepcruise/sample/__mocks__/test`,
+  targetFiles: 'test/runDepcruise/sample/__mocks__/test',
   focus: `"^test/runDepcruise/sample/__mocks__/test/fixtures/cjs/root_one.js|^test/runDepcruise/sample/__mocks__/test/fixtures/cjs/root_two.js"`,
-  depcruiseConfigFilePath: `test/runDepcruise/.dependency-cruiser.js`,
+  depcruiseConfigFilePath: 'test/runDepcruise/.dependency-cruiser.js',
   cruiseScript: '',
   workingDirectory: 'test/runDepcruise',
   packageManager: 'yarn',

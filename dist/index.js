@@ -35587,7 +35587,6 @@ const optionsSchema = (0,yup/* object */.Ry)({
     workingDirectory: (0,yup/* string */.Z_)().required(),
     packageManager: packageManagerSchema,
     cruiseScript: (0,yup/* string */.Z_)()
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
         .transform((value) => (value === '' ? undefined : value))
         .when('packageManager', ([packageManager], schema) => {
         return typeof packageManager === 'string'
@@ -35613,9 +35612,7 @@ const validateOptions = async (params) => {
 
 
 
-const getSha = () => { var _a, _b, _c; 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access
-return (_a = github.context.payload.after) !== null && _a !== void 0 ? _a : (_c = (_b = github.context.payload.pull_request) === null || _b === void 0 ? void 0 : _b['head']) === null || _c === void 0 ? void 0 : _c.sha; };
+const getSha = () => { var _a, _b, _c; return (_a = github.context.payload.after) !== null && _a !== void 0 ? _a : (_c = (_b = github.context.payload.pull_request) === null || _b === void 0 ? void 0 : _b['head']) === null || _c === void 0 ? void 0 : _c.sha; };
 const getOptions = () => {
     const token = core.getInput('github_token', { required: true });
     const workingDirectory = core.getInput('working_directory', { required: true });
@@ -35708,7 +35705,7 @@ ${params.cmdText}
 
 const fetchPreviousReport = async (octokit, options) => {
     const { owner, repo, issueNumber } = options;
-    const comments = await octokit.paginate(`GET /repos/{owner}/{repo}/issues/{issue_number}/comments`, {
+    const comments = await octokit.paginate('GET /repos/{owner}/{repo}/issues/{issue_number}/comments', {
         owner,
         repo,
         issue_number: issueNumber,

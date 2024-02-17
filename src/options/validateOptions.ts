@@ -1,5 +1,5 @@
 import type { InferType } from 'yup'
-import { number, object, string, ValidationError } from 'yup'
+import { ValidationError, number, object, string } from 'yup'
 
 import { ActionError } from '../ActionError'
 
@@ -42,7 +42,6 @@ const optionsSchema = object({
   workingDirectory: string().required(),
   packageManager: packageManagerSchema,
   cruiseScript: string()
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     .transform((value) => (value === '' ? undefined : value))
     .when('packageManager', ([packageManager], schema) => {
       return typeof packageManager === 'string'
