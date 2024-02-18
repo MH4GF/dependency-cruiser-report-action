@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@actions/core':
     specifier: ^1.10.1
@@ -20,7 +24,7 @@ devDependencies:
     version: 1.5.3
   '@mh4gf/configs':
     specifier: ^0.3.0
-    version: 0.3.0
+    version: 0.3.0(prettier@2.8.8)
   '@types/node':
     specifier: ^20.10.1
     version: 20.10.1
@@ -376,22 +380,23 @@ packages:
     resolution: {integrity: sha512-eF2rxCRulEKXHTRiDrDy6erMYWqNw4LPdQ8UQA4huuxaQsVeRPFl2oM8oDGxMFhJUWZf9McpLtJasDDZb/Bpeg==}
     dev: true
 
-  /@mh4gf/configs@0.3.0:
+  /@mh4gf/configs@0.3.0(prettier@2.8.8):
     resolution: {integrity: sha512-pX2hCB3ij8G9XCsiK/5QodGI0nKevx60r00Yf7vZ6Kv5e10aXcEG16nVm6A8a0MC1+1gZYoEg5r2sgvjre/z4w==}
     dependencies:
-      '@mh4gf/prettier-config': 0.2.1
+      '@mh4gf/prettier-config': 0.2.1(prettier@2.8.8)
     optionalDependencies:
       '@tsconfig/strictest': 2.0.2
     transitivePeerDependencies:
       - prettier
     dev: true
 
-  /@mh4gf/prettier-config@0.2.1:
+  /@mh4gf/prettier-config@0.2.1(prettier@2.8.8):
     resolution: {integrity: sha512-5moWCPXMvADWXlmzAPGLGiaWLdoDP3lyrI1JnVYgcu1Vhgh/b72fg5LAWlJ3R6ZqDr4bHqzc4WZ/raQEzZFMHw==}
     peerDependencies:
       prettier: ^2
     dependencies:
-      prettier-plugin-packagejson: 2.4.3
+      prettier: 2.8.8
+      prettier-plugin-packagejson: 2.4.3(prettier@2.8.8)
     dev: true
 
   /@nodelib/fs.scandir@2.1.5:
@@ -1403,7 +1408,7 @@ packages:
       source-map-js: 1.0.2
     dev: true
 
-  /prettier-plugin-packagejson@2.4.3:
+  /prettier-plugin-packagejson@2.4.3(prettier@2.8.8):
     resolution: {integrity: sha512-kPeeviJiwy0BgOSk7No8NmzzXfW4R9FYWni6ziA5zc1kGVVrKnBzMZdu2TUhI+I7h8/5Htt3vARYOk7KKJTTNQ==}
     peerDependencies:
       prettier: '>= 1.16.0'
@@ -1411,8 +1416,15 @@ packages:
       prettier:
         optional: true
     dependencies:
+      prettier: 2.8.8
       sort-package-json: 2.4.1
       synckit: 0.8.5
+    dev: true
+
+  /prettier@2.8.8:
+    resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
     dev: true
 
   /pretty-format@27.5.1:
@@ -1953,7 +1965,3 @@ packages:
       toposort: 2.0.2
       type-fest: 2.19.0
     dev: false
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false

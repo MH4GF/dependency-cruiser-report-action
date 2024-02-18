@@ -8,7 +8,7 @@ describe('runDepcruise', () => {
       targetFiles: 'test/runDepcruise/sample/__mocks__/test',
       focus: `"^test/runDepcruise/sample/__mocks__/test/fixtures/cjs/root_one.js|^test/runDepcruise/sample/__mocks__/test/fixtures/cjs/root_two.js"`,
       depcruiseConfigFilePath: 'test/runDepcruise/.dependency-cruiser.js',
-      cruiseScript: 'yarn run -s depcruise',
+      cruiseScript: 'pnpm exec depcruise',
     }
     const result = await runDepcruise(options)
 
