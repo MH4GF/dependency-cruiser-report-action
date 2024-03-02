@@ -1,6 +1,25 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended", // https://docs.renovatebot.com/presets-config/#configrecommended
+    ":pinAllExceptPeerDependencies", // https://docs.renovatebot.com/presets-default/#pinonlydevdependencies
+    "helpers:pinGitHubActionDigests", // https://docs.renovatebot.com/upgrade-best-practices/#extends-helperspingithubactiondigests
+    "schedule:monthly" // https://docs.renovatebot.com/presets-schedule/#schedulemonthly
+  ],
+  "packageRules": [
+    {
+      "groupName": "all devDependencies",
+      "excludePackageNames": ["dependency-cruiser", "tj-actions/changed-files", "actions/checkout"],
+      "matchDepTypes": ["devDependencies", "packageManager", "actions"],
+      "automerge": true
+    },
+    {
+      "groupName": "all dependencies",
+      "matchDepTypes": ["dependencies", "engines", "github-runner"]
+    },
+    {
+      "groupName": "all dependencies (github-actions)",
+      "matchPackageNames": ["tj-actions/changed-files", "actions/checkout"]
+    }
   ]
 }
