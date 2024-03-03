@@ -6,6 +6,7 @@
     "helpers:pinGitHubActionDigests", // https://docs.renovatebot.com/upgrade-best-practices/#extends-helperspingithubactiondigests
     "schedule:monthly" // https://docs.renovatebot.com/presets-schedule/#schedulemonthly
   ],
+  "labels": ["dependencies"],
   "packageRules": [
     {
       "groupName": "all devDependencies",
