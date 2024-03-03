@@ -30489,7 +30489,7 @@ function wrappy (fn, cb) {
 
 /***/ }),
 
-/***/ 370:
+/***/ 5600:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -34872,8 +34872,8 @@ const getConfigFilePath = () => {
     return depcruiseConfigFile !== '' ? depcruiseConfigFile : mayBeConfigFilePath();
 };
 
-// EXTERNAL MODULE: ./node_modules/.pnpm/yup@1.3.2/node_modules/yup/index.js
-var yup = __nccwpck_require__(370);
+// EXTERNAL MODULE: ./node_modules/.pnpm/yup@1.3.3/node_modules/yup/index.js
+var yup = __nccwpck_require__(5600);
 ;// CONCATENATED MODULE: ./src/options/validateOptions.ts
 
 
