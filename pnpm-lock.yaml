@@ -32,8 +32,8 @@ devDependencies:
     specifier: 0.38.1
     version: 0.38.1
   dependency-cruiser:
-    specifier: 15.4.0
-    version: 15.4.0
+    specifier: 15.5.0
+    version: 15.5.0
   js-yaml:
     specifier: 4.1.0
     version: 4.1.0
@@ -807,8 +807,8 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /dependency-cruiser@15.4.0:
-    resolution: {integrity: sha512-NmfExJHok6xtBVzmK2PnQX7dI+D9rfsXnjDvzRbn+540IWhDFEBOJrp1FGPBKK2BQsC2FkD3pLjeXGH7SRamEw==}
+  /dependency-cruiser@15.5.0:
+    resolution: {integrity: sha512-f6pY7rh6IHl39pLHdA9CUg3LzbJRDPeZXGa1q0A4v7qTy3CDP8xOg0gsecFglurvsB6kuIYkUSW1PUtfyVkEOA==}
     engines: {node: ^18.17||>=20}
     hasBin: true
     dependencies:
