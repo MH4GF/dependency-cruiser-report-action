@@ -3,22 +3,22 @@
 exports[`runDepcruise > execute depcruise command 1`] = `
 "flowchart LR
 
-subgraph 0[\\"test\\"]
-subgraph 1[\\"runDepcruise\\"]
-subgraph 2[\\"sample\\"]
-subgraph 3[\\"__mocks__\\"]
-subgraph 4[\\"test\\"]
-subgraph 5[\\"fixtures\\"]
-subgraph 6[\\"cjs\\"]
-7[\\"one_only_two.js\\"]
-8[\\"root_one.js\\"]
-9[\\"shared.js\\"]
-subgraph A[\\"sub\\"]
-B[\\"dir.js\\"]
+subgraph 0["test"]
+subgraph 1["runDepcruise"]
+subgraph 2["sample"]
+subgraph 3["__mocks__"]
+subgraph 4["test"]
+subgraph 5["fixtures"]
+subgraph 6["cjs"]
+7["one_only_two.js"]
+8["root_one.js"]
+9["shared.js"]
+subgraph A["sub"]
+B["dir.js"]
 end
-C[\\"root_two.js\\"]
-D[\\"somedata.json\\"]
-E[\\"two_only_one.js\\"]
+C["root_two.js"]
+D["somedata.json"]
+E["two_only_one.js"]
 end
 end
 end
