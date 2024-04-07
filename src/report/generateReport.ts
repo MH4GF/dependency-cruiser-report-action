@@ -2,6 +2,7 @@ import type { Options } from '../options'
 import type { Octokit } from '../type'
 
 import { reportBody } from './body/reportBody'
+import { uniqueTag } from './body/uniqueTag'
 import { fetchPreviousReport } from './fetchPreviousReport'
 
 export const generateReport = async (
@@ -10,7 +11,8 @@ export const generateReport = async (
   mermaidText: string,
   cmdText: string,
 ) => {
-  const previousReport = await fetchPreviousReport(octokit, options)
+  const tag = uniqueTag({ ...options, cmdText })
+  const previousReport = await fetchPreviousReport(octokit, options, tag)
 
   // TODO: add logging
   if (previousReport) {

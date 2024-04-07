@@ -5,6 +5,7 @@ interface Context {
   repo: string
   issueNumber: number
   workingDirectory: string
+  cmdText: string
 }
 
 const hashedContext = (context: Context) => {
@@ -14,6 +15,7 @@ const hashedContext = (context: Context) => {
     repo: context.repo,
     issueNumber: context.issueNumber,
     workingDirectory: context.workingDirectory,
+    cmdText: context.cmdText,
   }
   hash.update(JSON.stringify(json))
   return hash.digest('hex')

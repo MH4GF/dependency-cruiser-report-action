@@ -29,6 +29,7 @@ export const reportBody = (params: Params) => {
     owner: params.owner,
     repo: params.repo,
     issueNumber: params.issueNumber,
+    cmdText: params.cmdText,
     workingDirectory: params.workingDirectory,
   })}
 # dependency-cruiser report
