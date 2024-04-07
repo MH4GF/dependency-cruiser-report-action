@@ -31,14 +31,14 @@
     "yup": "1.3.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.5.3",
+    "@biomejs/biome": "1.6.4",
     "@mh4gf/configs": "0.3.0",
-    "@types/node": "20.10.1",
+    "@types/node": "20.12.5",
     "@vercel/ncc": "0.38.1",
     "dependency-cruiser": "16.2.4",
     "js-yaml": "4.1.0",
-    "typescript": "5.3.3",
-    "vitest": "0.32.0"
+    "typescript": "5.4.4",
+    "vitest": "0.34.6"
   },
-  "packageManager": "pnpm@8.15.4"
+  "packageManager": "pnpm@8.15.6"
 }
