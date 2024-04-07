@@ -20,6 +20,10 @@ inputs:
     required: false
     description: 'package manager that this action uses for dependency resolution'
     default: 'yarn'
+  visualize-option:
+    required: false
+    description: 'visualize option for target files (`--focus` or `--reaches)'
+    default: '--focus'
 runs:
   using: composite
   steps:
@@ -39,3 +43,4 @@ runs:
         INPUT_CRUISE_SCRIPT: ${{ inputs.cruise-script }}
         INPUT_WORKING_DIRECTORY: ${{ inputs.working-directory }}
         INPUT_PACKAGE_MANAGER: ${{ inputs.package-manager }}
+        INPUT_VISUALIZE_OPTION: ${{ inputs.visualize-option }}

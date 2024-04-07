@@ -1,4 +1,4 @@
-name: 'build-test'
+name: "build-test"
 on: # rebuild any PRs and main branch changes
   pull_request:
 
@@ -16,6 +16,10 @@ jobs:
       - uses: ./
         with:
           package-manager: pnpm
+      - uses: ./
+        with:
+          package-manager: pnpm
+          visualize-option: --reaches
       - uses: ./
         with:
           working-directory: test/sample

@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`runDepcruise > execute depcruise command 1`] = `
+exports[`runDepcruise > execute depcruise command(--focus) 1`] = `
 "flowchart LR
 
 subgraph 0["test"]
@@ -36,4 +36,29 @@ E-->B
 
 style 8 fill:lime,color:black
 style C fill:lime,color:black"
+`;
+
+exports[`runDepcruise > execute depcruise command(--reaches) 1`] = `
+"flowchart LR
+
+subgraph 0["test"]
+subgraph 1["runDepcruise"]
+subgraph 2["sample"]
+subgraph 3["__mocks__"]
+subgraph 4["test"]
+subgraph 5["fixtures"]
+subgraph 6["cjs"]
+7["root_one.js"]
+8["root_two.js"]
+end
+end
+end
+end
+end
+end
+end
+
+
+style 7 fill:lime,color:black
+style 8 fill:lime,color:black"
 `;
