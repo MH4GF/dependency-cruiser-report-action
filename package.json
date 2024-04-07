@@ -34,7 +34,7 @@
     "dependency-cruiser": "16.2.4",
     "js-yaml": "4.1.0",
     "typescript": "5.4.4",
-    "vitest": "0.34.6"
+    "vitest": "1.4.0"
   },
   "packageManager": "pnpm@8.15.6"
 }
