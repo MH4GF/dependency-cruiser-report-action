@@ -34850,8 +34850,8 @@ const formatFocusOption = (files) => {
     return `"${files.map((file) => `^${file}`).join('|')}"`;
 };
 
-// EXTERNAL MODULE: external "fs"
-var external_fs_ = __nccwpck_require__(7147);
+;// CONCATENATED MODULE: external "node:fs"
+const external_node_fs_namespaceObject = require("node:fs");
 ;// CONCATENATED MODULE: ./src/options/getConfigFilePath.ts
 
 
@@ -34862,7 +34862,7 @@ const RULES_FILE_NAME_SEARCH_ARRAY = [
 ];
 const mayBeConfigFilePath = () => {
     for (const filePath of RULES_FILE_NAME_SEARCH_ARRAY) {
-        if ((0,external_fs_.existsSync)(filePath))
+        if ((0,external_node_fs_namespaceObject.existsSync)(filePath))
             return filePath;
     }
     return '';
@@ -34962,12 +34962,12 @@ const getOptions = () => {
     return validateOptions(options);
 };
 
-// EXTERNAL MODULE: external "crypto"
-var external_crypto_ = __nccwpck_require__(6113);
+;// CONCATENATED MODULE: external "node:crypto"
+const external_node_crypto_namespaceObject = require("node:crypto");
 ;// CONCATENATED MODULE: ./src/report/body/uniqueTag.ts
 
 const hashedContext = (context) => {
-    const hash = (0,external_crypto_.createHash)('sha256');
+    const hash = (0,external_node_crypto_namespaceObject.createHash)('sha256');
     const json = {
         owner: context.owner,
         repo: context.repo,
