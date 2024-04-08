@@ -1,9 +1,10 @@
 import { exec } from '@actions/exec'
+import type { VisualizeType } from './options/validateOptions'
 
 interface Options {
   targetFiles: string
   focusFiles: string
-  visualizeType: string
+  visualizeType: VisualizeType
   depcruiseConfigFilePath: string
   cruiseScript: string
 }
