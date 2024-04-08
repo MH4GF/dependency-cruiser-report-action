@@ -19,7 +19,7 @@ jobs:
       - uses: ./
         with:
           package-manager: pnpm
-          visualize-option: --reaches
+          visualize-type: reaches
       - uses: ./
         with:
           working-directory: test/sample
