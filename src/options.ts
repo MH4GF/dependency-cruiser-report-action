@@ -15,7 +15,7 @@ export const getOptions = (): Promise<Options> => {
   const changedFiles = core.getInput('target_files', { required: false }).split(' ')
   const targetFiles = filterSupportedFiles(changedFiles)
   const focusFiles = formatFocusFiles(targetFiles)
-  const visualizeOption = core.getInput('visualize_option', { required: false })
+  const visualizeType = core.getInput('visualize_type', { required: false })
   const cruiseScript = core.getInput('cruise_script', { required: false })
   const packageManager = core.getInput('package_manager', { required: false })
   const depcruiseConfigFilePath = getConfigFilePath()
@@ -29,7 +29,7 @@ export const getOptions = (): Promise<Options> => {
     sha: getSha(),
     targetFiles: targetFiles.join(' '),
     focusFiles,
-    visualizeOption,
+    visualizeType,
     depcruiseConfigFilePath,
     cruiseScript,
     packageManager,

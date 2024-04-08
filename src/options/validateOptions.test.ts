@@ -14,7 +14,7 @@ const baseOptions: Options = {
   sha: '8ef39983ce21a9c80821addbeb63bfe4d4068f9a',
   targetFiles: 'test/runDepcruise/sample/__mocks__/test',
   focusFiles: `"^test/runDepcruise/sample/__mocks__/test/fixtures/cjs/root_one.js|^test/runDepcruise/sample/__mocks__/test/fixtures/cjs/root_two.js"`,
-  visualizeOption: '--focus',
+  visualizeType: 'focus',
   depcruiseConfigFilePath: 'test/runDepcruise/.dependency-cruiser.js',
   cruiseScript: '',
   workingDirectory: 'test/runDepcruise',
@@ -51,13 +51,13 @@ describe('validateOptions', () => {
       new ValidationError('inputs.package_manager must be one of: yarn, npm, pnpm, bun'),
     )
   })
-  it('throw ValidationError when visualizeOption field is invalid', async () => {
+  it('throw ValidationError when visualizeType field is invalid', async () => {
     const options = {
       ...baseOptions,
-      visualizeOption: '--invalid',
+      visualizeType: 'invalid',
     }
     await expect(validateOptions(options)).rejects.toThrowError(
-      new ValidationError('inputs.visualize_option must be one of: --focus, --reaches'),
+      new ValidationError('inputs.visualize_type must be one of: focus, reaches'),
     )
   })
 
