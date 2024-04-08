@@ -2,7 +2,7 @@ import { exec } from '@actions/exec'
 
 interface Options {
   targetFiles: string
-  focus: string
+  focusFiles: string
   visualizeOption: string
   depcruiseConfigFilePath: string
   cruiseScript: string
@@ -15,14 +15,14 @@ interface DepcruiseResult {
 
 export const runDepcruise = async ({
   targetFiles,
-  focus,
+  focusFiles,
   visualizeOption,
   depcruiseConfigFilePath,
   cruiseScript,
 }: Options): Promise<DepcruiseResult> => {
   const outputTypeOption = '--output-type mermaid'
   const configOption = depcruiseConfigFilePath !== '' ? `--config ${depcruiseConfigFilePath}` : ''
-  const cmd = `${cruiseScript} ${outputTypeOption} ${configOption} ${visualizeOption} ${focus} ${targetFiles}`
+  const cmd = `${cruiseScript} ${outputTypeOption} ${configOption} ${visualizeOption} ${focusFiles} ${targetFiles}`
   const options = { listeners: {} }
   let mermaid = ''
   options.listeners = {
