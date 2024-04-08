@@ -4,14 +4,14 @@ import { ValidationError, number, object, string } from 'yup'
 import { ActionError } from '../ActionError'
 
 const SUPPORTED_PACKAGE_MANAGERS = ['yarn', 'npm', 'pnpm', 'bun'] as const
-const SUPPORTED_VISUALIZE_OPTIONS = ['--focus', '--reaches'] as const
+const SUPPORTED_VISUALIZE_TYPES = ['focus', 'reaches'] as const
 
 const MESSAGE_REQUIRED_ISSUE_NUMBER = 'pull_request event payload is not found.'
 const MESSAGE_REQUIRED_TARGET_FILES = 'No target files were found'
 const MESSAGE_INVALID_PACKAGE_MANAGER = `inputs.package_manager must be one of: ${SUPPORTED_PACKAGE_MANAGERS.join(
   ', ',
 )}`
-const MESSAGE_INVALID_VISUALIZE_OPTIONS = `inputs.visualize_option must be one of: ${SUPPORTED_VISUALIZE_OPTIONS.join(
+const MESSAGE_INVALID_VISUALIZE_TYPES = `inputs.visualize_type must be one of: ${SUPPORTED_VISUALIZE_TYPES.join(
   ', ',
 )}`
 
@@ -21,9 +21,9 @@ const packageManagerSchema = string()
   .required()
   .oneOf(SUPPORTED_PACKAGE_MANAGERS, MESSAGE_INVALID_PACKAGE_MANAGER)
 
-const visualizeOptionSchema = string()
+const visualizeTypeSchema = string()
   .required()
-  .oneOf(SUPPORTED_VISUALIZE_OPTIONS, MESSAGE_INVALID_VISUALIZE_OPTIONS)
+  .oneOf(SUPPORTED_VISUALIZE_TYPES, MESSAGE_INVALID_VISUALIZE_TYPES)
 
 const detectedCruiseScript = (_packageManager: string): string => {
   const packageManager = packageManagerSchema.validateSync(_packageManager)
@@ -47,7 +47,7 @@ const optionsSchema = object({
   sha: string().required(),
   targetFiles: string().required(MESSAGE_REQUIRED_TARGET_FILES),
   focusFiles: string().required(),
-  visualizeOption: visualizeOptionSchema,
+  visualizeType: visualizeTypeSchema,
   depcruiseConfigFilePath: string().required(),
   workingDirectory: string().required(),
   packageManager: packageManagerSchema,

@@ -11,13 +11,13 @@ const defaultOptions = {
 
 describe('runDepcruise', () => {
   it('execute depcruise command(--focus)', async () => {
-    const options = { ...defaultOptions, visualizeOption: '--focus' }
+    const options = { ...defaultOptions, visualizeType: 'focus' }
     const result = await runDepcruise(options)
 
     expect(result.mermaidText).toMatchSnapshot()
   })
   it('execute depcruise command(--reaches)', async () => {
-    const options = { ...defaultOptions, visualizeOption: '--reaches' }
+    const options = { ...defaultOptions, visualizeType: 'reaches' }
     const result = await runDepcruise(options)
 
     expect(result.mermaidText).toMatchSnapshot()
