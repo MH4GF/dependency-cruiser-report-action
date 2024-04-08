@@ -4,7 +4,7 @@ import { runDepcruise } from '../../src/runDepcruise'
 
 const defaultOptions = {
   targetFiles: 'test/runDepcruise/sample/__mocks__/test',
-  focus: `"^test/runDepcruise/sample/__mocks__/test/fixtures/cjs/root_one.js|^test/runDepcruise/sample/__mocks__/test/fixtures/cjs/root_two.js"`,
+  focusFiles: `"^test/runDepcruise/sample/__mocks__/test/fixtures/cjs/root_one.js|^test/runDepcruise/sample/__mocks__/test/fixtures/cjs/root_two.js"`,
   depcruiseConfigFilePath: 'test/runDepcruise/.dependency-cruiser.js',
   cruiseScript: 'pnpm exec depcruise',
 }

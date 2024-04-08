@@ -46,7 +46,7 @@ const optionsSchema = object({
   issueNumber: number().required(MESSAGE_REQUIRED_ISSUE_NUMBER),
   sha: string().required(),
   targetFiles: string().required(MESSAGE_REQUIRED_TARGET_FILES),
-  focus: string().required(),
+  focusFiles: string().required(),
   visualizeOption: visualizeOptionSchema,
   depcruiseConfigFilePath: string().required(),
   workingDirectory: string().required(),
