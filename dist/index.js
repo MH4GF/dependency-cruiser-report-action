@@ -35060,8 +35060,8 @@ const filterSupportedFiles = (files) => {
     return filtered;
 };
 
-;// CONCATENATED MODULE: ./src/options/formatFocusOption.ts
-const formatFocusOption = (files) => {
+;// CONCATENATED MODULE: ./src/options/formatFocusFiles.ts
+const formatFocusFiles = (files) => {
     return `"${files.map((file) => `^${file}`).join('|')}"`;
 };
 
@@ -35093,13 +35093,18 @@ var yup = __nccwpck_require__(5600);
 
 
 const SUPPORTED_PACKAGE_MANAGERS = ['yarn', 'npm', 'pnpm', 'bun'];
+const SUPPORTED_VISUALIZE_TYPES = ['focus', 'reaches'];
 const MESSAGE_REQUIRED_ISSUE_NUMBER = 'pull_request event payload is not found.';
 const MESSAGE_REQUIRED_TARGET_FILES = 'No target files were found';
 const MESSAGE_INVALID_PACKAGE_MANAGER = `inputs.package_manager must be one of: ${SUPPORTED_PACKAGE_MANAGERS.join(', ')}`;
+const MESSAGE_INVALID_VISUALIZE_TYPES = `inputs.visualize_type must be one of: ${SUPPORTED_VISUALIZE_TYPES.join(', ')}`;
 const WARNING_MESSAGES = [MESSAGE_REQUIRED_TARGET_FILES];
 const packageManagerSchema = (0,yup/* string */.Z_)()
     .required()
     .oneOf(SUPPORTED_PACKAGE_MANAGERS, MESSAGE_INVALID_PACKAGE_MANAGER);
+const visualizeTypeSchema = (0,yup/* string */.Z_)()
+    .required()
+    .oneOf(SUPPORTED_VISUALIZE_TYPES, MESSAGE_INVALID_VISUALIZE_TYPES);
 const detectedCruiseScript = (_packageManager) => {
     const packageManager = packageManagerSchema.validateSync(_packageManager);
     switch (packageManager) {
@@ -35120,7 +35125,8 @@ const optionsSchema = (0,yup/* object */.Ry)({
     issueNumber: (0,yup/* number */.Rx)().required(MESSAGE_REQUIRED_ISSUE_NUMBER),
     sha: (0,yup/* string */.Z_)().required(),
     targetFiles: (0,yup/* string */.Z_)().required(MESSAGE_REQUIRED_TARGET_FILES),
-    focus: (0,yup/* string */.Z_)().required(),
+    focusFiles: (0,yup/* string */.Z_)().required(),
+    visualizeType: visualizeTypeSchema,
     depcruiseConfigFilePath: (0,yup/* string */.Z_)().required(),
     workingDirectory: (0,yup/* string */.Z_)().required(),
     packageManager: packageManagerSchema,
@@ -35156,7 +35162,8 @@ const getOptions = () => {
     const workingDirectory = core.getInput('working_directory', { required: true });
     const changedFiles = core.getInput('target_files', { required: false }).split(' ');
     const targetFiles = filterSupportedFiles(changedFiles);
-    const focus = formatFocusOption(targetFiles);
+    const focusFiles = formatFocusFiles(targetFiles);
+    const visualizeType = core.getInput('visualize_type', { required: false });
     const cruiseScript = core.getInput('cruise_script', { required: false });
     const packageManager = core.getInput('package_manager', { required: false });
     const depcruiseConfigFilePath = getConfigFilePath();
@@ -35169,7 +35176,8 @@ const getOptions = () => {
         issueNumber: pr === null || pr === void 0 ? void 0 : pr.number,
         sha: getSha(),
         targetFiles: targetFiles.join(' '),
-        focus,
+        focusFiles,
+        visualizeType,
         depcruiseConfigFilePath,
         cruiseScript,
         packageManager,
@@ -35188,6 +35196,7 @@ const hashedContext = (context) => {
         repo: context.repo,
         issueNumber: context.issueNumber,
         workingDirectory: context.workingDirectory,
+        cmdText: context.cmdText,
     };
     hash.update(JSON.stringify(json));
     return hash.digest('hex');
@@ -35214,6 +35223,7 @@ const reportBody = (params) => {
         owner: params.owner,
         repo: params.repo,
         issueNumber: params.issueNumber,
+        cmdText: params.cmdText,
         workingDirectory: params.workingDirectory,
     })}
 # dependency-cruiser report
@@ -35240,8 +35250,7 @@ ${params.cmdText}
 };
 
 ;// CONCATENATED MODULE: ./src/report/fetchPreviousReport.ts
-
-const fetchPreviousReport = async (octokit, options) => {
+const fetchPreviousReport = async (octokit, options, tag) => {
     const { owner, repo, issueNumber } = options;
     const comments = await octokit.paginate('GET /repos/{owner}/{repo}/issues/{issue_number}/comments', {
         owner,
@@ -35250,7 +35259,7 @@ const fetchPreviousReport = async (octokit, options) => {
     });
     const previousReport = comments.find((comment) => {
         var _a;
-        return (_a = comment.body) === null || _a === void 0 ? void 0 : _a.startsWith(uniqueTag(options));
+        return (_a = comment.body) === null || _a === void 0 ? void 0 : _a.startsWith(tag);
     });
     return previousReport;
 };
@@ -35258,8 +35267,10 @@ const fetchPreviousReport = async (octokit, options) => {
 ;// CONCATENATED MODULE: ./src/report/generateReport.ts
 
 
+
 const generateReport = async (octokit, options, mermaidText, cmdText) => {
-    const previousReport = await fetchPreviousReport(octokit, options);
+    const tag = uniqueTag({ ...options, cmdText });
+    const previousReport = await fetchPreviousReport(octokit, options, tag);
     // TODO: add logging
     if (previousReport) {
         await octokit.rest.issues.updateComment({
@@ -35279,11 +35290,12 @@ const generateReport = async (octokit, options, mermaidText, cmdText) => {
 
 ;// CONCATENATED MODULE: ./src/runDepcruise.ts
 
-const runDepcruise = async ({ targetFiles, focus, depcruiseConfigFilePath, cruiseScript, }) => {
+const runDepcruise = async ({ targetFiles, focusFiles, visualizeType, depcruiseConfigFilePath, cruiseScript, }) => {
     const outputTypeOption = '--output-type mermaid';
     const configOption = depcruiseConfigFilePath !== '' ? `--config ${depcruiseConfigFilePath}` : '';
-    const focusOption = `--focus ${focus}`;
-    const cmd = `${cruiseScript} ${outputTypeOption} ${configOption} ${focusOption} ${targetFiles}`;
+    // NOTE: All files are covered if the "reaches" option is used. This is experimental.
+    const filesOrDirectories = visualizeType === 'reaches' ? '.' : targetFiles;
+    const cmd = `${cruiseScript} ${outputTypeOption} ${configOption} --${visualizeType} ${focusFiles} ${filesOrDirectories}`;
     const options = { listeners: {} };
     let mermaid = '';
     options.listeners = {
