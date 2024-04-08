@@ -62,6 +62,7 @@ const optionsSchema = object({
 })
 
 export type Options = InferType<typeof optionsSchema>
+export type VisualizeType = InferType<typeof visualizeTypeSchema>
 
 export const validateOptions = async (params: unknown): Promise<Options> => {
   const options = await optionsSchema.validate(params, { abortEarly: false }).catch((e) => {
