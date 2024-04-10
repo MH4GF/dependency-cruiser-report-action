@@ -1,3 +1,4 @@
+import type { VisualizeType } from '~/src/options/validateOptions'
 import { uniqueTag } from './uniqueTag'
 
 interface Params {
@@ -8,6 +9,7 @@ interface Params {
   cmdText: string
   mermaidText: string
   workingDirectory: string
+  visualizeType: VisualizeType
 }
 
 const NO_OUTPUT_TEXT = 'flowchart LR\n\n\n\n'
@@ -29,7 +31,7 @@ export const reportBody = (params: Params) => {
     owner: params.owner,
     repo: params.repo,
     issueNumber: params.issueNumber,
-    cmdText: params.cmdText,
+    visualizeType: params.visualizeType,
     workingDirectory: params.workingDirectory,
   })}
 # dependency-cruiser report

@@ -1,11 +1,12 @@
 import { createHash } from 'node:crypto'
+import type { VisualizeType } from '~/src/options/validateOptions'
 
 interface Context {
   owner: string
   repo: string
   issueNumber: number
   workingDirectory: string
-  cmdText: string
+  visualizeType: VisualizeType
 }
 
 const hashedContext = (context: Context) => {
@@ -15,7 +16,7 @@ const hashedContext = (context: Context) => {
     repo: context.repo,
     issueNumber: context.issueNumber,
     workingDirectory: context.workingDirectory,
-    cmdText: context.cmdText,
+    visualizeType: context.visualizeType,
   }
   hash.update(JSON.stringify(json))
   return hash.digest('hex')
