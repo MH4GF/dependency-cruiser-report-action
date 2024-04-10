@@ -35196,7 +35196,7 @@ const hashedContext = (context) => {
         repo: context.repo,
         issueNumber: context.issueNumber,
         workingDirectory: context.workingDirectory,
-        cmdText: context.cmdText,
+        visualizeType: context.visualizeType,
     };
     hash.update(JSON.stringify(json));
     return hash.digest('hex');
@@ -35223,7 +35223,7 @@ const reportBody = (params) => {
         owner: params.owner,
         repo: params.repo,
         issueNumber: params.issueNumber,
-        cmdText: params.cmdText,
+        visualizeType: params.visualizeType,
         workingDirectory: params.workingDirectory,
     })}
 # dependency-cruiser report
@@ -35269,7 +35269,7 @@ const fetchPreviousReport = async (octokit, options, tag) => {
 
 
 const generateReport = async (octokit, options, mermaidText, cmdText) => {
-    const tag = uniqueTag({ ...options, cmdText });
+    const tag = uniqueTag({ ...options });
     const previousReport = await fetchPreviousReport(octokit, options, tag);
     // TODO: add logging
     if (previousReport) {
