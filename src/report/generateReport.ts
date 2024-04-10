@@ -11,7 +11,7 @@ export const generateReport = async (
   mermaidText: string,
   cmdText: string,
 ) => {
-  const tag = uniqueTag({ ...options, cmdText })
+  const tag = uniqueTag({ ...options })
   const previousReport = await fetchPreviousReport(octokit, options, tag)
 
   // TODO: add logging
