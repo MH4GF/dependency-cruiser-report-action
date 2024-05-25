@@ -2,7 +2,7 @@ import * as core from '@actions/core'
 import { context } from '@actions/github'
 
 import { filterSupportedFiles } from './options/filterSupportedFiles'
-import { formatFocusOption } from './options/formatFocusOption'
+import { formatFocusFiles } from './options/formatFocusFiles'
 import { getConfigFilePath } from './options/getConfigFilePath'
 import type { Options } from './options/validateOptions'
 import { validateOptions } from './options/validateOptions'
@@ -14,7 +14,8 @@ export const getOptions = (): Promise<Options> => {
   const workingDirectory = core.getInput('working_directory', { required: true })
   const changedFiles = core.getInput('target_files', { required: false }).split(' ')
   const targetFiles = filterSupportedFiles(changedFiles)
-  const focus = formatFocusOption(targetFiles)
+  const focusFiles = formatFocusFiles(targetFiles)
+  const visualizeType = core.getInput('visualize_type', { required: false })
   const cruiseScript = core.getInput('cruise_script', { required: false })
   const packageManager = core.getInput('package_manager', { required: false })
   const depcruiseConfigFilePath = getConfigFilePath()
@@ -27,7 +28,8 @@ export const getOptions = (): Promise<Options> => {
     issueNumber: pr?.number,
     sha: getSha(),
     targetFiles: targetFiles.join(' '),
-    focus,
+    focusFiles,
+    visualizeType,
     depcruiseConfigFilePath,
     cruiseScript,
     packageManager,

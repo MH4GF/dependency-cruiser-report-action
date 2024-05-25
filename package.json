@@ -1,6 +1,6 @@
 {
   "name": "dependency-cruiser-report-action",
-  "version": "2.4.1",
+  "version": "2.5.0-1",
   "private": true,
   "description": "visualize dependenices of changed files in each pull request.",
   "keywords": ["actions", "node", "setup"],
