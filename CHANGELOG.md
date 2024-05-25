@@ -1,5 +1,37 @@
 # Changelog
 
+## [v2.5.0](https://github.com/MH4GF/dependency-cruiser-report-action/compare/v2.4.1...v2.5.0) - 2024-05-25
+### Exciting New Features 🎉
+- feat: Support for `--reaches` option (experimental) by @MH4GF in https://github.com/MH4GF/dependency-cruiser-report-action/pull/338
+### Maintenance 👨‍💻
+- chore: Configure Renovate by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/318
+- chore(deps): pin dependencies by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/320
+- chore(deps): pin dependencies by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/322
+- chore(deps): pin dependencies by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/321
+- fix(deps): pin dependencies by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/323
+- chore(deps): update actions/setup-node action to v4.0.2 by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/324
+- chore(deps): update dependency dependency-cruiser to v15.5.0 by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/325
+- chore(deps): update dependency node to v18.19.1 by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/326
+- chore(deps): update dependency dependency-cruiser to v16 by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/327
+- fix(deps): update dependency yup to v1.3.3 by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/328
+- chore(deps): update dependency node to v20 by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/329
+- chore(deps): update dependency node to v20.12.1 by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/335
+- chore(deps): update github/codeql-action digest to 4355270 by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/332
+- chore(deps): update dependency dependency-cruiser to v16.2.4 by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/333
+- chore(deps): update all devdependencies by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/334
+- chore(deps): update dependency vitest to v1 by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/330
+- chore(deps): bump undici from 5.28.3 to 5.28.4 by @dependabot in https://github.com/MH4GF/dependency-cruiser-report-action/pull/337
+- maintenance: fix ERR_PNPM_BAD_PM_VERSION by @MH4GF in https://github.com/MH4GF/dependency-cruiser-report-action/pull/342
+- chore(deps): update all dependencies (github-actions) by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/340
+- chore(deps): update github/codeql-action digest to 9fdb3e4 by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/341
+- maintenance: setup tagpr by @MH4GF in https://github.com/MH4GF/dependency-cruiser-report-action/pull/344
+- maintenance: change token to PAT for tagpr by @MH4GF in https://github.com/MH4GF/dependency-cruiser-report-action/pull/345
+- Revert "maintenance: change token to PAT for tagpr" by @MH4GF in https://github.com/MH4GF/dependency-cruiser-report-action/pull/346
+- Release for v2.4.2 by @github-actions in https://github.com/MH4GF/dependency-cruiser-report-action/pull/347
+- debug: chore tagpr by @MH4GF in https://github.com/MH4GF/dependency-cruiser-report-action/pull/348
+- maintenance: remove bump-version.yml workflow by @MH4GF in https://github.com/MH4GF/dependency-cruiser-report-action/pull/350
+- maintenance: add tagpr to release.yml by @MH4GF in https://github.com/MH4GF/dependency-cruiser-report-action/pull/351
+
 ## [v2.4.2](https://github.com/MH4GF/dependency-cruiser-report-action/compare/v2.4.1...v2.4.2) - 2024-05-25
 ### Maintenance 👨‍💻
 - chore: Configure Renovate by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/318
