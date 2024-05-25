@@ -7,8 +7,6 @@ interface Context {
   workingDirectory: string
 }
 
-console.log('debug')
-
 const hashedContext = (context: Context) => {
   const hash = createHash('sha256')
   const json = {
