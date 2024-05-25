@@ -3,11 +3,7 @@
   "version": "2.5.0",
   "private": true,
   "description": "visualize dependenices of changed files in each pull request.",
-  "keywords": [
-    "actions",
-    "node",
-    "setup"
-  ],
+  "keywords": ["actions", "node", "setup"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MH4GF/dependency-cruiser-report-action.git"
