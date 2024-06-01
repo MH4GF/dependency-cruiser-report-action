@@ -12,8 +12,4 @@ jobs:
     steps:
       - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
       - uses: MH4GF/shared-config/.github/composite-actions/setup-pnpm@main
-        with:
-          node-version-file: .node-version
-          pnpm-version: '8.12.0'
-      - run: pnpm i
       - run: pnpm run all
