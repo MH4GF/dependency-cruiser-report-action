@@ -35328,12 +35328,16 @@ const generateReport = async (octokit, options, mermaidText, cmdText) => {
 
 ;// CONCATENATED MODULE: ./src/runDepcruise.ts
 
-const runDepcruise = async ({ targetFiles, focusFiles, visualizeType, depcruiseConfigFilePath, cruiseScript, }) => {
+const runDepcruise = async ({ 
+// targetFiles,
+focusFiles, visualizeType, 
+// visualizeFilesType,
+depcruiseConfigFilePath, cruiseScript, }) => {
     const outputTypeOption = '--output-type mermaid';
     const configOption = depcruiseConfigFilePath !== '' ? `--config ${depcruiseConfigFilePath}` : '';
     // NOTE: All files are covered if the "reaches" option is used. This is experimental.
-    const filesOrDirectories = visualizeType === 'reaches' ? '.' : targetFiles;
-    const cmd = `${cruiseScript} ${outputTypeOption} ${configOption} --${visualizeType} ${focusFiles} ${filesOrDirectories}`;
+    // const filesOrDirectories = visualizeType === 'reaches' ? '.' : targetFiles
+    const cmd = `${cruiseScript} ${outputTypeOption} ${configOption} --${visualizeType} ${focusFiles} .`;
     const options = { listeners: {} };
     let mermaid = '';
     options.listeners = {
