@@ -15,17 +15,18 @@ interface DepcruiseResult {
 }
 
 export const runDepcruise = async ({
-  targetFiles,
+  // targetFiles,
   focusFiles,
   visualizeType,
+  // visualizeFilesType,
   depcruiseConfigFilePath,
   cruiseScript,
 }: Options): Promise<DepcruiseResult> => {
   const outputTypeOption = '--output-type mermaid'
   const configOption = depcruiseConfigFilePath !== '' ? `--config ${depcruiseConfigFilePath}` : ''
   // NOTE: All files are covered if the "reaches" option is used. This is experimental.
-  const filesOrDirectories = visualizeType === 'reaches' ? '.' : targetFiles
-  const cmd = `${cruiseScript} ${outputTypeOption} ${configOption} --${visualizeType} ${focusFiles} ${filesOrDirectories}`
+  // const filesOrDirectories = visualizeType === 'reaches' ? '.' : targetFiles
+  const cmd = `${cruiseScript} ${outputTypeOption} ${configOption} --${visualizeType} ${focusFiles} .`
   const options = { listeners: {} }
   let mermaid = ''
   options.listeners = {
