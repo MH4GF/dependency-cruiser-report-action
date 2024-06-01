@@ -21,14 +21,8 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           token: ${{ secrets.MH4GF_PAT }}
-
       - uses: MH4GF/shared-config/.github/composite-actions/setup-pnpm@main
-        with:
-          node-version-file: .node-version
-          pnpm-version: '8.6.5'
-
       - run: pnpm package
-
       - name: Commit and Push if there are changes
         run: |
           git remote set-url origin https://github-actions:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
