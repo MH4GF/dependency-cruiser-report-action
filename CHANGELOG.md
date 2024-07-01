@@ -1,5 +1,14 @@
 # Changelog
 
+## [v2.5.1](https://github.com/MH4GF/dependency-cruiser-report-action/compare/v2.5.0...v2.5.1) - 2024-07-01
+### Maintenance 👨‍💻
+- chore(deps): update all devdependencies by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/353
+- chore(deps): update github/codeql-action digest to f079b84 by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/352
+- maintenance: integrate depcruise into lint by @MH4GF in https://github.com/MH4GF/dependency-cruiser-report-action/pull/355
+- chore(deps): update pnpm to v9 by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/356
+- maintenance: chore ci by @MH4GF in https://github.com/MH4GF/dependency-cruiser-report-action/pull/357
+- chore(deps): update all devdependencies by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/361
+
 ## [v2.5.0](https://github.com/MH4GF/dependency-cruiser-report-action/compare/v2.4.1...v2.5.0) - 2024-05-25
 ### Exciting New Features 🎉
 - feat: Support for `--reaches` option (experimental) by @MH4GF in https://github.com/MH4GF/dependency-cruiser-report-action/pull/338
