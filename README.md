@@ -2,7 +2,7 @@
 
 A GitHub Actions that report to visualize dependencies of changed files each pull requests.
 
-[![build](https://github.com/MH4GF/dependency-cruiser-report-action/actions/workflows/build.yml/badge.svg)](https://github.com/MH4GF/dependency-cruiser-report-action/actions/workflows/build.yml)
+[![test](https://github.com/MH4GF/dependency-cruiser-report-action/actions/workflows/test.yml/badge.svg)](https://github.com/MH4GF/dependency-cruiser-report-action/actions/workflows/test.yml)
 
 ![sample](./docs/assets/sample-light.png#gh-light-mode-only)![sample](./docs/assets/sample-dark.png#gh-dark-mode-only)
 
