@@ -30736,7 +30736,7 @@ function wrappy (fn, cb) {
 
 /***/ }),
 
-/***/ 5600:
+/***/ 27:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -30790,29 +30790,18 @@ function toArray(value) {
   return value == null ? [] : [].concat(value);
 }
 
-let _Symbol$toStringTag;
+let _Symbol$toStringTag, _Symbol$hasInstance, _Symbol$toStringTag2;
 let strReg = /\$\{\s*(\w+)\s*\}/g;
 _Symbol$toStringTag = Symbol.toStringTag;
-class ValidationError extends Error {
-  static formatError(message, params) {
-    const path = params.label || params.path || 'this';
-    if (path !== params.path) params = Object.assign({}, params, {
-      path
-    });
-    if (typeof message === 'string') return message.replace(strReg, (_, key) => printValue(params[key]));
-    if (typeof message === 'function') return message(params);
-    return message;
-  }
-  static isError(err) {
-    return err && err.name === 'ValidationError';
-  }
-  constructor(errorOrErrors, value, field, type, disableStack) {
-    super();
+class ValidationErrorNoStack {
+  constructor(errorOrErrors, value, field, type) {
+    this.name = void 0;
+    this.message = void 0;
     this.value = void 0;
     this.path = void 0;
     this.type = void 0;
-    this.errors = void 0;
     this.params = void 0;
+    this.errors = void 0;
     this.inner = void 0;
     this[_Symbol$toStringTag] = 'Error';
     this.name = 'ValidationError';
@@ -30831,7 +30820,49 @@ class ValidationError extends Error {
       }
     });
     this.message = this.errors.length > 1 ? `${this.errors.length} errors occurred` : this.errors[0];
-    if (!disableStack && Error.captureStackTrace) Error.captureStackTrace(this, ValidationError);
+  }
+}
+_Symbol$hasInstance = Symbol.hasInstance;
+_Symbol$toStringTag2 = Symbol.toStringTag;
+class ValidationError extends Error {
+  static formatError(message, params) {
+    const path = params.label || params.path || 'this';
+    if (path !== params.path) params = Object.assign({}, params, {
+      path
+    });
+    if (typeof message === 'string') return message.replace(strReg, (_, key) => printValue(params[key]));
+    if (typeof message === 'function') return message(params);
+    return message;
+  }
+  static isError(err) {
+    return err && err.name === 'ValidationError';
+  }
+  constructor(errorOrErrors, value, field, type, disableStack) {
+    const errorNoStack = new ValidationErrorNoStack(errorOrErrors, value, field, type);
+    if (disableStack) {
+      return errorNoStack;
+    }
+    super();
+    this.value = void 0;
+    this.path = void 0;
+    this.type = void 0;
+    this.params = void 0;
+    this.errors = [];
+    this.inner = [];
+    this[_Symbol$toStringTag2] = 'Error';
+    this.name = errorNoStack.name;
+    this.message = errorNoStack.message;
+    this.type = errorNoStack.type;
+    this.value = errorNoStack.value;
+    this.path = errorNoStack.path;
+    this.errors = errorNoStack.errors;
+    this.inner = errorNoStack.inner;
+    if (Error.captureStackTrace) {
+      Error.captureStackTrace(this, ValidationError);
+    }
+  }
+  static [_Symbol$hasInstance](inst) {
+    return ValidationErrorNoStack[Symbol.hasInstance](inst) || super[Symbol.hasInstance](inst);
   }
 }
 
@@ -30860,6 +30891,9 @@ let string = {
   email: '${path} must be a valid email',
   url: '${path} must be a valid URL',
   uuid: '${path} must be a valid UUID',
+  datetime: '${path} must be a valid ISO date-time',
+  datetime_precision: '${path} must be a valid ISO date-time with a sub-second precision of exactly ${precision} digits',
+  datetime_offset: '${path} must be a valid ISO date-time with UTC "Z" timezone',
   trim: '${path} must be a trimmed string',
   lowercase: '${path} must be a lowercase string',
   uppercase: '${path} must be a upper case string'
@@ -31043,16 +31077,16 @@ function createValidation(config) {
       return Reference.isRef(item) ? item.getValue(value, parent, context) : item;
     }
     function createError(overrides = {}) {
-      var _overrides$disableSta;
       const nextParams = Object.assign({
         value,
         originalValue,
         label: schema.spec.label,
         path: overrides.path || path,
-        spec: schema.spec
+        spec: schema.spec,
+        disableStackTrace: overrides.disableStackTrace || disableStackTrace
       }, params, overrides.params);
       for (const key of Object.keys(nextParams)) nextParams[key] = resolve(nextParams[key]);
-      const error = new ValidationError(ValidationError.formatError(overrides.message || message, nextParams), value, nextParams.path, overrides.type || name, (_overrides$disableSta = overrides.disableStackTrace) != null ? _overrides$disableSta : disableStackTrace);
+      const error = new ValidationError(ValidationError.formatError(overrides.message || message, nextParams), value, nextParams.path, overrides.type || name, nextParams.disableStackTrace);
       error.params = nextParams;
       return error;
     }
@@ -31494,7 +31528,7 @@ class Schema {
       key: undefined,
       // index: undefined,
       [isIndex ? 'index' : 'key']: k,
-      path: isIndex || k.includes('.') ? `${parentPath || ''}[${value ? k : `"${k}"`}]` : (parentPath ? `${parentPath}.` : '') + key
+      path: isIndex || k.includes('.') ? `${parentPath || ''}[${isIndex ? k : `"${k}"`}]` : (parentPath ? `${parentPath}.` : '') + key
     });
     return (_, panic, next) => this.resolve(testOptions)._validate(value, testOptions, panic, next);
   }
@@ -31897,6 +31931,60 @@ class BooleanSchema extends Schema {
 }
 create$7.prototype = BooleanSchema.prototype;
 
+/**
+ * This file is a modified version of the file from the following repository:
+ * Date.parse with progressive enhancement for ISO 8601 <https://github.com/csnover/js-iso8601>
+ * NON-CONFORMANT EDITION.
+ * © 2011 Colin Snover <http://zetafleet.com>
+ * Released under MIT license.
+ */
+
+// prettier-ignore
+//                1 YYYY                2 MM        3 DD              4 HH     5 mm        6 ss           7 msec         8 Z 9 ±   10 tzHH    11 tzmm
+const isoReg = /^(\d{4}|[+-]\d{6})(?:-?(\d{2})(?:-?(\d{2}))?)?(?:[ T]?(\d{2}):?(\d{2})(?::?(\d{2})(?:[,.](\d{1,}))?)?(?:(Z)|([+-])(\d{2})(?::?(\d{2}))?)?)?$/;
+function parseIsoDate(date) {
+  const struct = parseDateStruct(date);
+  if (!struct) return Date.parse ? Date.parse(date) : Number.NaN;
+
+  // timestamps without timezone identifiers should be considered local time
+  if (struct.z === undefined && struct.plusMinus === undefined) {
+    return new Date(struct.year, struct.month, struct.day, struct.hour, struct.minute, struct.second, struct.millisecond).valueOf();
+  }
+  let totalMinutesOffset = 0;
+  if (struct.z !== 'Z' && struct.plusMinus !== undefined) {
+    totalMinutesOffset = struct.hourOffset * 60 + struct.minuteOffset;
+    if (struct.plusMinus === '+') totalMinutesOffset = 0 - totalMinutesOffset;
+  }
+  return Date.UTC(struct.year, struct.month, struct.day, struct.hour, struct.minute + totalMinutesOffset, struct.second, struct.millisecond);
+}
+function parseDateStruct(date) {
+  var _regexResult$7$length, _regexResult$;
+  const regexResult = isoReg.exec(date);
+  if (!regexResult) return null;
+
+  // use of toNumber() avoids NaN timestamps caused by “undefined”
+  // values being passed to Date constructor
+  return {
+    year: toNumber(regexResult[1]),
+    month: toNumber(regexResult[2], 1) - 1,
+    day: toNumber(regexResult[3], 1),
+    hour: toNumber(regexResult[4]),
+    minute: toNumber(regexResult[5]),
+    second: toNumber(regexResult[6]),
+    millisecond: regexResult[7] ?
+    // allow arbitrary sub-second precision beyond milliseconds
+    toNumber(regexResult[7].substring(0, 3)) : 0,
+    precision: (_regexResult$7$length = (_regexResult$ = regexResult[7]) == null ? void 0 : _regexResult$.length) != null ? _regexResult$7$length : undefined,
+    z: regexResult[8] || undefined,
+    plusMinus: regexResult[9] || undefined,
+    hourOffset: toNumber(regexResult[10]),
+    minuteOffset: toNumber(regexResult[11])
+  };
+}
+function toNumber(str, defaultValue = 0) {
+  return Number(str) || defaultValue;
+}
+
 // Taken from HTML spec: https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address
 let rEmail =
 // eslint-disable-next-line
@@ -31907,6 +31995,10 @@ let rUrl =
 
 // eslint-disable-next-line
 let rUUID = /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i;
+let yearMonthDay = '^\\d{4}-\\d{2}-\\d{2}';
+let hourMinuteSecond = '\\d{2}:\\d{2}:\\d{2}';
+let zOrOffset = '(([+-]\\d{2}(:?\\d{2})?)|Z)';
+let rIsoDateTime = new RegExp(`${yearMonthDay}T${hourMinuteSecond}(\\.\\d+)?${zOrOffset}$`);
 let isTrimmed = value => isAbsent(value) || value === value.trim();
 let objStringTag = {}.toString();
 function create$6() {
@@ -32035,6 +32127,53 @@ class StringSchema extends Schema {
       name: 'uuid',
       message,
       excludeEmptyString: false
+    });
+  }
+  datetime(options) {
+    let message = '';
+    let allowOffset;
+    let precision;
+    if (options) {
+      if (typeof options === 'object') {
+        ({
+          message = '',
+          allowOffset = false,
+          precision = undefined
+        } = options);
+      } else {
+        message = options;
+      }
+    }
+    return this.matches(rIsoDateTime, {
+      name: 'datetime',
+      message: message || string.datetime,
+      excludeEmptyString: true
+    }).test({
+      name: 'datetime_offset',
+      message: message || string.datetime_offset,
+      params: {
+        allowOffset
+      },
+      skipAbsent: true,
+      test: value => {
+        if (!value || allowOffset) return true;
+        const struct = parseDateStruct(value);
+        if (!struct) return false;
+        return !!struct.z;
+      }
+    }).test({
+      name: 'datetime_precision',
+      message: message || string.datetime_precision,
+      params: {
+        precision
+      },
+      skipAbsent: true,
+      test: value => {
+        if (!value || precision == undefined) return true;
+        const struct = parseDateStruct(value);
+        if (!struct) return false;
+        return struct.precision === precision;
+      }
     });
   }
 
@@ -32194,54 +32333,6 @@ create$5.prototype = NumberSchema.prototype;
 //
 // Number Interfaces
 //
-
-/**
- * This file is a modified version of the file from the following repository:
- * Date.parse with progressive enhancement for ISO 8601 <https://github.com/csnover/js-iso8601>
- * NON-CONFORMANT EDITION.
- * © 2011 Colin Snover <http://zetafleet.com>
- * Released under MIT license.
- */
-
-// prettier-ignore
-//                1 YYYY                2 MM        3 DD              4 HH     5 mm        6 ss           7 msec         8 Z 9 ±   10 tzHH    11 tzmm
-const isoReg = /^(\d{4}|[+-]\d{6})(?:-?(\d{2})(?:-?(\d{2}))?)?(?:[ T]?(\d{2}):?(\d{2})(?::?(\d{2})(?:[,.](\d{1,}))?)?(?:(Z)|([+-])(\d{2})(?::?(\d{2}))?)?)?$/;
-function toNumber(str, defaultValue = 0) {
-  return Number(str) || defaultValue;
-}
-function parseIsoDate(date) {
-  const regexResult = isoReg.exec(date);
-  if (!regexResult) return Date.parse ? Date.parse(date) : Number.NaN;
-
-  // use of toNumber() avoids NaN timestamps caused by “undefined”
-  // values being passed to Date constructor
-  const struct = {
-    year: toNumber(regexResult[1]),
-    month: toNumber(regexResult[2], 1) - 1,
-    day: toNumber(regexResult[3], 1),
-    hour: toNumber(regexResult[4]),
-    minute: toNumber(regexResult[5]),
-    second: toNumber(regexResult[6]),
-    millisecond: regexResult[7] ?
-    // allow arbitrary sub-second precision beyond milliseconds
-    toNumber(regexResult[7].substring(0, 3)) : 0,
-    z: regexResult[8] || undefined,
-    plusMinus: regexResult[9] || undefined,
-    hourOffset: toNumber(regexResult[10]),
-    minuteOffset: toNumber(regexResult[11])
-  };
-
-  // timestamps without timezone identifiers should be considered local time
-  if (struct.z === undefined && struct.plusMinus === undefined) {
-    return new Date(struct.year, struct.month, struct.day, struct.hour, struct.minute, struct.second, struct.millisecond).valueOf();
-  }
-  let totalMinutesOffset = 0;
-  if (struct.z !== 'Z' && struct.plusMinus !== undefined) {
-    totalMinutesOffset = struct.hourOffset * 60 + struct.minuteOffset;
-    if (struct.plusMinus === '+') totalMinutesOffset = 0 - totalMinutesOffset;
-  }
-  return Date.UTC(struct.year, struct.month, struct.day, struct.hour, struct.minute + totalMinutesOffset, struct.second, struct.millisecond);
-}
 
 let invalidDate = new Date('');
 let isDate = obj => Object.prototype.toString.call(obj) === '[object Date]';
@@ -35125,8 +35216,8 @@ const getConfigFilePath = () => {
     return depcruiseConfigFile !== '' ? depcruiseConfigFile : mayBeConfigFilePath();
 };
 
-// EXTERNAL MODULE: ./node_modules/.pnpm/yup@1.3.3/node_modules/yup/index.js
-var yup = __nccwpck_require__(5600);
+// EXTERNAL MODULE: ./node_modules/.pnpm/yup@1.4.0/node_modules/yup/index.js
+var yup = __nccwpck_require__(27);
 ;// CONCATENATED MODULE: ./src/options/validateOptions.ts
 
 
