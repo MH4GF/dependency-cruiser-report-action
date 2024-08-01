@@ -1,5 +1,10 @@
 # Changelog
 
+## [v2.5.2](https://github.com/MH4GF/dependency-cruiser-report-action/compare/v2.5.1...v2.5.2) - 2024-08-01
+### Maintenance 👨‍💻
+- chore(deps): update all devdependencies by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/365
+- chore(deps): update dependency vitest to v2 by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/368
+
 ## [v2.5.1](https://github.com/MH4GF/dependency-cruiser-report-action/compare/v2.5.0...v2.5.1) - 2024-07-27
 ### Maintenance 👨‍💻
 - chore(deps): update all devdependencies by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/353
