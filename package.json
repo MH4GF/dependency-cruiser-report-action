@@ -15,7 +15,7 @@
   },
   "main": "lib/main.js",
   "scripts": {
-    "all": "npm run build && npm run lint && npm test",
+    "all": "pnpm run build && pnpm run lint && pnpm run test",
     "build": "tsc",
     "fmt": "biome check --write --unsafe .",
     "lint": "pnpm run lint:biome & pnpm run lint:depcruise",
