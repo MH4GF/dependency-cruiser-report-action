@@ -15,13 +15,13 @@
   },
   "main": "lib/main.js",
   "scripts": {
-    "all": "pnpm run build && pnpm run lint && pnpm run test",
-    "build": "tsc",
+    "all": "pnpm run lint && pnpm run test",
     "fmt": "biome check --write --unsafe .",
     "lint": "pnpm run lint:biome & pnpm run lint:depcruise",
     "lint:biome": "biome ci .",
     "lint:depcruise": "depcruise src --config",
     "lint:knip": "knip",
+    "lint:tsc": "tsc --noEmit",
     "package": "ncc build src/main.ts --source-map --license licenses.txt",
     "test": "vitest"
   },
