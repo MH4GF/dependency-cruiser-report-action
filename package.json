@@ -33,7 +33,7 @@
     "@mh4gf/configs": "0.4.1",
     "@types/node": "22.10.5",
     "@vercel/ncc": "0.38.3",
-    "dependency-cruiser": "16.3.10",
+    "dependency-cruiser": "16.8.0",
     "js-yaml": "4.1.0",
     "typescript": "5.7.2",
     "vitest": "2.1.8"
