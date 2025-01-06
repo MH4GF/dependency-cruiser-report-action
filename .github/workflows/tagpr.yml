@@ -8,5 +8,26 @@ jobs:
     steps:
     - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
     - uses: Songmu/tagpr@3dca11e7c0d68637ee212ddd35acc3d30a7403a4 # v1.5.0
+      id: run-tagpr
       env:
         GITHUB_TOKEN: ${{ secrets.MH4GF_PAT }}
+    outputs:
+      tagpr-tag: ${{ steps.run-tagpr.outputs.tag }}
+
+  bump_major_branch:
+    if: needs.tagpr.outputs.tagpr-tag != ''
+    needs: tagpr
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Git config
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      - name: Get major version
+        run: echo "MAJOR_VERSION=$(echo ${{ needs.tagpr.outputs.tagpr-tag }} | cut -d '.' -f 1)" >> "$GITHUB_ENV"
+      - name: Push new tag
+        run: git push --force origin "HEAD:refs/heads/${MAJOR_VERSION}"
