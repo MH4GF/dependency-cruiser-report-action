@@ -17,7 +17,7 @@
   "scripts": {
     "all": "pnpm run lint && pnpm run test",
     "fmt": "biome check --write --unsafe .",
-    "lint": "pnpm run lint:biome & pnpm run lint:depcruise",
+    "lint": "pnpm run '/^lint:.*/'",
     "lint:biome": "biome ci .",
     "lint:depcruise": "depcruise src --config",
     "lint:knip": "knip",
