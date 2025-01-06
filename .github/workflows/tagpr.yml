@@ -29,5 +29,5 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
       - name: Get major version
         run: echo "MAJOR_VERSION=$(echo ${{ needs.tagpr.outputs.tagpr-tag }} | cut -d '.' -f 1)" >> "$GITHUB_ENV"
-      - name: Push new tag
+      - name: Update major branch
         run: git push --force origin "HEAD:refs/heads/${MAJOR_VERSION}"
