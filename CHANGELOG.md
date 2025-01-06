@@ -1,5 +1,22 @@
 # Changelog
 
+## [v2.5.2](https://github.com/MH4GF/dependency-cruiser-report-action/compare/v2.5.1...v2.5.2) - 2025-01-06
+### Maintenance 👨‍💻
+- chore(deps): update all devdependencies by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/365
+- chore(deps): update dependency vitest to v2 by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/368
+- chore(deps): update tj-actions/changed-files action to v44 by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/369
+- fix(deps): update all dependencies by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/366
+- chore(deps): update dependency @types/node to v22 by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/375
+- chore(deps): update all devdependencies by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/370
+- chore(deps): update dependency dependency-cruiser to v16.8.0 by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/371
+- chore(deps): update all dependencies (github-actions) by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/372
+- chore(deps): update node.js to v22 by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/376
+- chore(deps): update tj-actions/changed-files action to v45 by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/377
+- chore(deps): update songmu/tagpr action to v1.5.0 by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/374
+- chore(deps): bump nanoid from 3.3.7 to 3.3.8 by @dependabot in https://github.com/MH4GF/dependency-cruiser-report-action/pull/380
+- chore(deps): bump rollup from 4.18.0 to 4.29.1 by @dependabot in https://github.com/MH4GF/dependency-cruiser-report-action/pull/381
+- chore(deps): bump vite from 5.2.12 to 5.4.11 by @dependabot in https://github.com/MH4GF/dependency-cruiser-report-action/pull/382
+
 ## [v2.5.1](https://github.com/MH4GF/dependency-cruiser-report-action/compare/v2.5.0...v2.5.1) - 2024-07-27
 ### Maintenance 👨‍💻
 - chore(deps): update all devdependencies by @renovate in https://github.com/MH4GF/dependency-cruiser-report-action/pull/353
