@@ -100,3 +100,8 @@ with:
 ## Compatibility
 
 This action requires dependency-cruiser v11.10.0 or newer.
+
+## Articles
+
+- [Visualize TypeScript Dependencies of Changed Files in a Pull Request Using dependency-cruiser-report-action](https://dev.to/mh4gf/visualize-typescript-dependencies-of-changed-files-in-a-pull-request-using-127j)
+- [(JA)dependency-cruiser-report-actionでPRの変更ファイルの依存関係を可視化してコメントする](https://zenn.dev/mh4gf/articles/12fcdcba14e576)
