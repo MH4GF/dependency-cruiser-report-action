@@ -9,7 +9,10 @@
     "url": "git+https://github.com/MH4GF/dependency-cruiser-report-action.git"
   },
   "license": "MIT",
-  "author": "",
+  "author": {
+    "name": "Hirotaka Miyagi",
+    "email": "h.miyagi.cnw@gmail.com"
+  },
   "main": "lib/main.js",
   "scripts": {
     "all": "npm run build && npm run lint && npm test",
