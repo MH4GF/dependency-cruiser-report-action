@@ -19,6 +19,7 @@
     "lint": "pnpm run lint:biome & pnpm run lint:depcruise",
     "lint:biome": "biome ci .",
     "lint:depcruise": "depcruise src --config",
+    "lint:knip": "knip",
     "package": "ncc build src/main.ts --source-map --license licenses.txt",
     "test": "vitest"
   },
@@ -35,6 +36,7 @@
     "@vercel/ncc": "0.38.3",
     "dependency-cruiser": "16.8.0",
     "js-yaml": "4.1.0",
+    "knip": "5.41.1",
     "typescript": "5.7.2",
     "vitest": "2.1.8"
   },
