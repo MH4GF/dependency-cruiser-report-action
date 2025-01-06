@@ -15,7 +15,7 @@
     "all": "npm run build && npm run lint && npm test",
     "build": "tsc",
     "coverage": "vitest run --coverage",
-    "format": "biome check --apply-unsafe .",
+    "format": "biome check --write --unsafe .",
     "lint": "pnpm run lint:biome & pnpm run lint:depcruise",
     "lint:biome": "biome ci .",
     "lint:depcruise": "depcruise src --config",
