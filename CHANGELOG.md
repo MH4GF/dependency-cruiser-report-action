@@ -1,5 +1,7 @@
 # Changelog
 
+## [v2.5.4](https://github.com/MH4GF/dependency-cruiser-report-action/compare/v2.5.3...v2.5.4) - 2025-01-06
+
 ## [v2.5.3](https://github.com/MH4GF/dependency-cruiser-report-action/compare/v2.5.2...v2.5.3) - 2025-01-06
 ### Other Changes
 - maintenance by @MH4GF in https://github.com/MH4GF/dependency-cruiser-report-action/pull/383
