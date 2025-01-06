@@ -17,7 +17,6 @@
   "scripts": {
     "all": "npm run build && npm run lint && npm test",
     "build": "tsc",
-    "coverage": "vitest run --coverage",
     "fmt": "biome check --write --unsafe .",
     "lint": "pnpm run lint:biome & pnpm run lint:depcruise",
     "lint:biome": "biome ci .",
