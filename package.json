@@ -34,12 +34,12 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@mh4gf/configs": "0.4.1",
-    "@types/node": "22.10.5",
+    "@types/node": "22.13.0",
     "@vercel/ncc": "0.38.3",
     "dependency-cruiser": "16.8.0",
-    "knip": "5.41.1",
-    "typescript": "5.7.2",
+    "knip": "5.43.6",
+    "typescript": "5.7.3",
     "vitest": "2.1.8"
   },
-  "packageManager": "pnpm@9.15.2"
+  "packageManager": "pnpm@9.15.4"
 }
