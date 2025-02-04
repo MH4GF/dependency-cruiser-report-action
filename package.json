@@ -39,7 +39,7 @@
     "dependency-cruiser": "16.8.0",
     "knip": "5.43.6",
     "typescript": "5.7.3",
-    "vitest": "2.1.8"
+    "vitest": "2.1.9"
   },
   "packageManager": "pnpm@9.15.4"
 }
