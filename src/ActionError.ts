@@ -1,4 +1,5 @@
 import * as core from '@actions/core'
+
 type Severity = 'warning' | 'error'
 
 export class ActionError extends Error {

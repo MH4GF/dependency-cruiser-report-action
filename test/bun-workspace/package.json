@@ -6,7 +6,9 @@
   "author": "",
   "type": "module",
   "main": "index.js",
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
