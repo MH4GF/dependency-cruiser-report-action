@@ -40,7 +40,7 @@
     "@mh4gf/configs": "0.5.0",
     "@types/node": "24.11.0",
     "@vercel/ncc": "0.38.4",
-    "dependency-cruiser": "16.10.4",
+    "dependency-cruiser": "17.3.8",
     "knip": "5.85.0",
     "typescript": "5.9.3",
     "vitest": "4.0.18"
