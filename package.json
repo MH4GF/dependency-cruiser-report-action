@@ -3,7 +3,11 @@
   "version": "2.5.3",
   "private": true,
   "description": "visualize dependenices of changed files in each pull request.",
-  "keywords": ["actions", "node", "setup"],
+  "keywords": [
+    "actions",
+    "node",
+    "setup"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MH4GF/dependency-cruiser-report-action.git"
@@ -32,14 +36,14 @@
     "yup": "1.6.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.4",
+    "@biomejs/biome": "2.4.5",
     "@mh4gf/configs": "0.4.5",
-    "@types/node": "22.13.14",
+    "@types/node": "24.11.0",
     "@vercel/ncc": "0.38.3",
     "dependency-cruiser": "16.8.0",
     "knip": "5.46.4",
     "typescript": "5.8.2",
-    "vitest": "2.1.9"
+    "vitest": "4.0.18"
   },
-  "packageManager": "pnpm@9.15.9"
+  "packageManager": "pnpm@10.30.3"
 }

@@ -1,5 +1,4 @@
 import { describe, expect, it } from 'vitest'
-import { ValidationError } from 'yup'
 
 import { ActionError } from '../ActionError'
 
@@ -38,9 +37,7 @@ describe('validateOptions', () => {
       targetFiles: '',
       issueNumber: undefined,
     } as unknown as Options
-    await expect(validateOptions(options)).rejects.toThrowError(
-      new ValidationError('2 errors occurred'),
-    )
+    await expect(validateOptions(options)).rejects.toThrowError('2 errors occurred')
   })
   it('throw ValidationError when packageManager field is invalid', async () => {
     const options = {
@@ -48,7 +45,7 @@ describe('validateOptions', () => {
       packageManager: 'invalid',
     }
     await expect(validateOptions(options)).rejects.toThrowError(
-      new ValidationError('inputs.package_manager must be one of: yarn, npm, pnpm, bun'),
+      'inputs.package_manager must be one of: yarn, npm, pnpm, bun',
     )
   })
   it('throw ValidationError when visualizeType field is invalid', async () => {
@@ -57,7 +54,7 @@ describe('validateOptions', () => {
       visualizeType: 'invalid',
     }
     await expect(validateOptions(options)).rejects.toThrowError(
-      new ValidationError('inputs.visualize_type must be one of: focus, reaches'),
+      'inputs.visualize_type must be one of: focus, reaches',
     )
   })
 
@@ -67,20 +64,20 @@ describe('validateOptions', () => {
     { packageManager: 'pnpm', result: 'pnpm exec depcruise' },
     { packageManager: 'bun', result: 'bun x depcruise' },
   ]
-  describe.each(cruiseScripts)(
-    'detect default cruise script when cruiseScript is empty',
-    ({ packageManager, result }) => {
-      it(`return ${result} when packageManager is ${packageManager}`, async () => {
-        const options = {
-          ...baseOptions,
-          packageManager,
-          cruiseScript: '',
-        }
-        const resultOptions = await validateOptions(options)
-        expect(resultOptions.cruiseScript).toBe(result)
-      })
-    },
-  )
+  describe.each(cruiseScripts)('detect default cruise script when cruiseScript is empty', ({
+    packageManager,
+    result,
+  }) => {
+    it(`return ${result} when packageManager is ${packageManager}`, async () => {
+      const options = {
+        ...baseOptions,
+        packageManager,
+        cruiseScript: '',
+      }
+      const resultOptions = await validateOptions(options)
+      expect(resultOptions.cruiseScript).toBe(result)
+    })
+  })
   it("return cruiseScript when cruiseScript isn't empty", async () => {
     const options = {
       ...baseOptions,
