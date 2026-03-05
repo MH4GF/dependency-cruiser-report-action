@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           ref: ${{ github.event.pull_request.head.ref }}
-          token: ${{ secrets.MH4GF_PAT }}
+          persist-credentials: false
       - uses: MH4GF/shared-config/.github/composite-actions/setup-pnpm@main
       - run: pnpm package
       - name: Commit and Push if there are changes
