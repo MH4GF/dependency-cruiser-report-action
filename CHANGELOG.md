@@ -1,5 +1,21 @@
 # Changelog
 
+## [v2.5.4](https://github.com/MH4GF/dependency-cruiser-report-action/compare/v2.5.3...v2.5.4) - 2026-03-06
+### Maintenance 👨‍💻
+- chore(deps): update all devdependencies by @renovate[bot] in https://github.com/MH4GF/dependency-cruiser-report-action/pull/387
+- chore(deps): update songmu/tagpr action to v1.5.1 by @renovate[bot] in https://github.com/MH4GF/dependency-cruiser-report-action/pull/386
+- chore(deps): update dependency vitest to v2.1.9 [security] by @renovate[bot] in https://github.com/MH4GF/dependency-cruiser-report-action/pull/388
+- chore(deps): update all devdependencies by @renovate[bot] in https://github.com/MH4GF/dependency-cruiser-report-action/pull/389
+- chore(deps): update all devdependencies by @renovate[bot] in https://github.com/MH4GF/dependency-cruiser-report-action/pull/393
+- chore(deps): update all devdependencies (major) by @renovate[bot] in https://github.com/MH4GF/dependency-cruiser-report-action/pull/400
+- chore(deps): update all devdependencies by @renovate[bot] in https://github.com/MH4GF/dependency-cruiser-report-action/pull/396
+- chore(deps): update dependency dependency-cruiser to v16.10.4 by @renovate[bot] in https://github.com/MH4GF/dependency-cruiser-report-action/pull/398
+- chore(deps): update dependency dependency-cruiser to v17 by @renovate[bot] in https://github.com/MH4GF/dependency-cruiser-report-action/pull/401
+- chore(deps): update all dependencies (github-actions) (major) by @renovate[bot] in https://github.com/MH4GF/dependency-cruiser-report-action/pull/402
+- chore(deps): update node.js to v22.22.1 by @renovate[bot] in https://github.com/MH4GF/dependency-cruiser-report-action/pull/399
+- chore(deps): update songmu/tagpr action to v1.17.1 by @renovate[bot] in https://github.com/MH4GF/dependency-cruiser-report-action/pull/395
+- chore(deps): update node.js to v24 by @renovate[bot] in https://github.com/MH4GF/dependency-cruiser-report-action/pull/404
+
 ## [v2.5.3](https://github.com/MH4GF/dependency-cruiser-report-action/compare/v2.5.2...v2.5.3) - 2025-01-06
 ### Other Changes
 - maintenance by @MH4GF in https://github.com/MH4GF/dependency-cruiser-report-action/pull/383
