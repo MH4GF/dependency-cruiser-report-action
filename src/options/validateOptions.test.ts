@@ -64,20 +64,20 @@ describe('validateOptions', () => {
     { packageManager: 'pnpm', result: 'pnpm exec depcruise' },
     { packageManager: 'bun', result: 'bun x depcruise' },
   ]
-  describe.each(cruiseScripts)('detect default cruise script when cruiseScript is empty', ({
-    packageManager,
-    result,
-  }) => {
-    it(`return ${result} when packageManager is ${packageManager}`, async () => {
-      const options = {
-        ...baseOptions,
-        packageManager,
-        cruiseScript: '',
-      }
-      const resultOptions = await validateOptions(options)
-      expect(resultOptions.cruiseScript).toBe(result)
-    })
-  })
+  describe.each(cruiseScripts)(
+    'detect default cruise script when cruiseScript is empty',
+    ({ packageManager, result }) => {
+      it(`return ${result} when packageManager is ${packageManager}`, async () => {
+        const options = {
+          ...baseOptions,
+          packageManager,
+          cruiseScript: '',
+        }
+        const resultOptions = await validateOptions(options)
+        expect(resultOptions.cruiseScript).toBe(result)
+      })
+    },
+  )
   it("return cruiseScript when cruiseScript isn't empty", async () => {
     const options = {
       ...baseOptions,
